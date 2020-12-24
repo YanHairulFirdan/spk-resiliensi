@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-    <form>
+    <form method="POST" action="/motivation">
+        @csrf
         <div class="form-group">
             <label for="situation">Bagaimana Pembelajaran selama pandemi covid-19?</label>
             <input type="text" class="form-control" id="situation" name="situation" placeholder="Jawaban kamu..." value="{{ old('situations')? old('situations') : '' }}">

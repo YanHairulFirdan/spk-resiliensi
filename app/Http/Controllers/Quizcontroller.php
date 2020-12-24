@@ -19,6 +19,14 @@ class Quizcontroller extends Controller
     {
         return redirect('/hasil');
     }
+    public function motivationForm()
+    {
+        return view('kuisioners.motivasi');
+    }
+    public function savemotivationForm()
+    {
+        return redirect('/kuisioner');
+    }
 
     public function result()
     {
