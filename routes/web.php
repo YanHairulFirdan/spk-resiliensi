@@ -21,6 +21,8 @@ Route::get('/', function () {
 });
 Route::get('/kuisioner', 'QuizController@index');
 Route::post('/kuisioner', 'QuizController@saveQuiz');
+Route::get('/motivation', 'QuizController@motivationForm');
+Route::post('/motivation', 'QuizController@savemotivationForm');
 Route::get('/hasil', 'QuizController@result');
 
 Auth::routes();
