@@ -1,20 +1,10 @@
 @extends('layouts.app')
 @section('content')
-    <div class="container">
         <form method="POST" action="/kuisioner"> 
             @csrf
             @for ($i = 0; $i < 7; $i++)
                 <div class="card my-2 input-group" id="form-group-{{ $i+1 }}" class="">
                     <div class="card-header">
-                    @for ($questions = 0; $questions < rand(3,4); $questions++)    
-                    <div class="">
-                        <div class="form-group">
-                            <label for="input">Random question {{ $questions+1 }}</label>
-                            <input id="input"  type="text" class="form-control" placeholder="silahkan isi jawaban anda" required>
-                        </div>
-                    </div>
-                    @endfor
-                    <hr>
                         <b>Pernyataan {{ $i+1 }}</b>
                         <div class="statement">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae optio labore ipsam dolorum suscipit perspiciatis et totam praesentium beatae corrupti, maiores quia iste rerum magnam ad cupiditate, nostrum vitae dolor?
@@ -41,8 +31,7 @@
                     <li class="page-item page-link page-number active" >{{ $i+1 }}</li>
                 @endfor
             </ul>
-          </nav>
-    </div>
+        </nav>
 @endsection
 
 @section('javascript')
