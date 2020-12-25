@@ -10930,3 +10930,33 @@ form:not(:first-child) {
     color: white;
 } */
 
+span.stepper-point {
+  display: inline-block;
+  height: 1.5em;
+  width: 1.5em;
+  border-radius: 50%;
+  background-color: #f123f1;
+  margin-right: auto;
+}
+
+span.stepper-point:not(:last-child) {
+  margin-right: 10em;
+}
+
+span.stepper-point:not(:last-child)::after {
+  content: "";
+  /* display: block; */
+  background-color: #000;
+  width: 13em;
+  height: 0.2em;
+  position: absolute;
+  top: 0.6em;
+  /* right: 0; */
+  z-index: -1;
+}
+
+.nav-label {
+  position: absolute;
+  top: 2em;
+}
+

@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('content')
+
+    <div class="content">
         <form method="POST" action="/kuisioner"> 
+            <div class="d-flex justify-content-center">
+                <div class="stepperm">
+                    <span class="stepper-point"></span>
+                    <span class="nav-label">motivasi</span>
+                    <span class="stepper-point"></span>
+                    <span class="nav-label">resiliensi</span>
+                    <span class="stepper-point"></span>
+                    <span class="nav-label">hasil</span>
+                </div>
+            </div>
             @csrf
             @for ($i = 0; $i < 7; $i++)
                 <div class="card my-2 input-group" id="form-group-{{ $i+1 }}" class="">
@@ -32,6 +44,7 @@
                 @endfor
             </ul>
         </nav>
+    </div>
 @endsection
 
 @section('javascript')

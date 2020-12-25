@@ -1,5 +1,17 @@
 @extends('layouts.app')
 @section('content')
+{{-- @include('components.formStepper') --}}
+{{-- <div class="container-fluid">
+    <div class="row justifiy-content-center">
+        <div class="col-md-10">
+            <div class="stepper">
+                <span class="stepper-point">blabla</span>
+                <span class="stepper-point">blabla</span>
+                <span class="stepper-point">blabla</span>
+            </div>
+        </div>
+    </div>
+</div> --}}
     <form method="POST" action="/motivation">
         @csrf
         <div class="form-group">
