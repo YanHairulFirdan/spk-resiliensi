@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePizzasTable extends Migration
+class CreateAspectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreatePizzasTable extends Migration
      */
     public function up()
     {
-        Schema::create('pizzas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('aspects', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('aspect');
+            $table->text('strength_suggestion');
+            $table->text('weak_suggestion');
             $table->timestamps();
-            $table->string('type');
-            $table->string('base');
-            $table->string('name');
         });
     }
 
@@ -29,6 +29,6 @@ class CreatePizzasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pizzas');
+        Schema::dropIfExists('aspects');
     }
 }

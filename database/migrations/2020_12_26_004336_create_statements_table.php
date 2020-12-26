@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddPriceToPizzasTable extends Migration
+class CreateStatementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddPriceToPizzasTable extends Migration
      */
     public function up()
     {
-        Schema::table('pizzas', function (Blueprint $table) {
-            $table->integer('price');
+        Schema::create('statements', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('aspect_id');
+            $table->string('statement');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddPriceToPizzasTable extends Migration
      */
     public function down()
     {
-        Schema::table('pizzas', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('statements');
     }
 }
