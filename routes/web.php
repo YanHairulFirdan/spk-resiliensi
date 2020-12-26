@@ -16,9 +16,17 @@
 // use Symfony\Component\Routing\Route;
 
 // $route  = new Route();
+
+
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/admin-test', function () {
+    return view('admin.index');
+});
+Route::resource('aspect', 'AspectController');
+Route::get('/aspect', 'AspectController@index');
 Route::get('/kuisioner', 'QuizController@index');
 Route::post('/kuisioner', 'QuizController@saveQuiz');
 Route::get('/motivation', 'QuizController@motivationForm');

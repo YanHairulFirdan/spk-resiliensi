@@ -25,7 +25,7 @@ class aspectSeeder extends Seeder
         ];
         $faker = Faker::create('id-ID');
         foreach ($aspects as $key => $aspect) {
-            Aspect::insert([
+            Aspect::create([
                 'aspect' => $aspect,
                 'strength_suggestion' => $faker->text(100),
                 'weak_suggestion' => $faker->text(100)
