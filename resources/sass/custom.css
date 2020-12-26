@@ -39,3 +39,7 @@ span.stepper-point:not(:last-child)::after{
     position: absolute;
     top: 2em;
 }
+.form-radio{
+    display: inline-block;
+    margin: 0 auto;
+}

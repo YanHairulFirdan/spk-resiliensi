@@ -25,8 +25,10 @@ Route::get('/', function () {
 Route::get('/admin-test', function () {
     return view('admin.index');
 });
-Route::resource('aspect', 'AspectController');
-Route::get('/aspect', 'AspectController@index');
+Route::prefix('/admin')->group(function () {
+    Route::resource('aspect', 'AspectController');
+});
+// Route::get('/aspect', 'AspectController@index');
 Route::get('/kuisioner', 'QuizController@index');
 Route::post('/kuisioner', 'QuizController@saveQuiz');
 Route::get('/motivation', 'QuizController@motivationForm');

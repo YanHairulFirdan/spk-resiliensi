@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Aspect;
+use App\Statement;
 use Illuminate\Http\Request;
 
 class Quizcontroller extends Controller
@@ -13,7 +15,9 @@ class Quizcontroller extends Controller
     }
     public function index()
     {
-        return view('kuisioners.kuisioner');
+        $aspects = Aspect::with(['statements'])->get();
+
+        return view('kuisioners.kuisioner', compact(['aspects']));
     }
     public function saveQuiz()
     {
