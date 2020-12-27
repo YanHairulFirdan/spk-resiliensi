@@ -71,15 +71,12 @@
     </script>
 
 
-    <div id="toaster"></div>
+    <div id="toaster">
+
+    </div>
 
 
     <div class="wrapper">
-        @if (Session::has('success'))
-            <div class="alert alert-success">
-                {{ Session::get('success') }}
-            </div>
-        @endif
         <!-- Github Link -->
         <a href="https://github.com/tafcoder/sleek-dashboard" target="_blank" class="github-link">
             <svg width="70" height="70" viewBox="0 0 250 250" aria-hidden="true">
@@ -173,55 +170,12 @@
                             </a>
                             <ul class="collapse" id="app" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
                                     <li>
                                         <a class="sidenav-item-link" href="/aspect">
                                             <span class="nav-text">Daftar Aspek</span>
 
                                         </a>
                                     </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="contacts.html">
-                                            <span class="nav-text">Contacts</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="team.html">
-                                            <span class="nav-text">Team</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="calendar.html">
-                                            <span class="nav-text">Calendar</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
                                 </div>
                             </ul>
                         </li>
@@ -234,239 +188,16 @@
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                 data-target="#components" aria-expanded="false" aria-controls="components">
                                 <i class="mdi mdi-folder-multiple-outline"></i>
-                                <span class="nav-text">Components</span> <b class="caret"></b>
+                                <span class="nav-text">Pernyataan</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="components" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
-
-
-
                                     <li>
                                         <a class="sidenav-item-link" href="alert.html">
-                                            <span class="nav-text">Alert</span>
+                                            <span class="nav-text">Daftar Pernyataan</span>
 
                                         </a>
                                     </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="badge.html">
-                                            <span class="nav-text">Badge</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="breadcrumb.html">
-                                            <span class="nav-text">Breadcrumb</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="button-default.html">
-                                            <span class="nav-text">Button Default</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="button-dropdown.html">
-                                            <span class="nav-text">Button Dropdown</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="button-group.html">
-                                            <span class="nav-text">Button Group</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="button-social.html">
-                                            <span class="nav-text">Button Social</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="button-loading.html">
-                                            <span class="nav-text">Button Loading</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="card.html">
-                                            <span class="nav-text">Card</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="carousel.html">
-                                            <span class="nav-text">Carousel</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="collapse.html">
-                                            <span class="nav-text">Collapse</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="list-group.html">
-                                            <span class="nav-text">List Group</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="modal.html">
-                                            <span class="nav-text">Modal</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="pagination.html">
-                                            <span class="nav-text">Pagination</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="popover-tooltip.html">
-                                            <span class="nav-text">Popover & Tooltip</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="progress-bar.html">
-                                            <span class="nav-text">Progress Bar</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="spinner.html">
-                                            <span class="nav-text">Spinner</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="switcher.html">
-                                            <span class="nav-text">Switcher</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
-
-
-                                    <li>
-                                        <a class="sidenav-item-link" href="tab.html">
-                                            <span class="nav-text">Tab</span>
-
-                                        </a>
-                                    </li>
-
-
-
-
                                 </div>
                             </ul>
                         </li>
@@ -1152,6 +883,15 @@
 
             <div class="content-wrapper">
                 <div class="content">
+                    <div class="container-fluid">
+                        @if (Session::has('success'))
+                            <div class="alert alert-success">
+                                <span class="">
+                                    {{ Session::get('success') }}
+                                </span>
+                            </div>
+                        @endif
+                    </div>
                     <!-- Top Statistics -->
                     @yield('content')
                 </div>

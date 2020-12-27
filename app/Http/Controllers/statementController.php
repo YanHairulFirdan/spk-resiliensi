@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Aspect;
 use App\Statement;
 use Illuminate\Http\Request;
 use StatementSeeder;
@@ -15,8 +16,9 @@ class statementController extends Controller
      */
     public function index()
     {
-        $statements = Statement::paginate(10)->sortBy('aspect_id');
-        return view('statement.index', compact('statements'));
+        $aspects = Aspect::get();
+        $statements = Statement::paginate(10);
+        return view('admin.statement.index', compact('statements', 'aspects'));
     }
 
     /**
@@ -37,7 +39,19 @@ class statementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'aspect_id' => 'required',
+            'statement' => 'required|min:25',
+        ]);
+
+        Statement::create(
+            $request->only([
+                'aspect_id',
+                'statement'
+            ])
+        );
+        session()->flash('success', 'data berhasil ditambah');
+        return redirect('/admin/statement');
     }
 
     /**
@@ -57,9 +71,10 @@ class statementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Statement $statement)
     {
-        //
+        $aspects = Aspect::get();
+        return view('admin.statement.edit', compact('statement', 'aspects'));
     }
 
     /**
@@ -69,9 +84,20 @@ class statementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Statement $statement)
     {
-        //
+        $request->validate([
+            'aspect_id' => 'required',
+            'statement' => 'required|min:25',
+        ]);
+        $statement->update(
+            $request->only([
+                'aspect_id',
+                'statement'
+            ])
+        );
+        session()->flash('success', 'data berhasil diperbaharui');
+        return redirect('/admin/statement');
     }
 
     /**
@@ -80,8 +106,10 @@ class statementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Statement $statement)
     {
-        //
+        $statement->delete();
+        session()->flash('success', 'data berhasil dihapus');
+        return redirect('/admin/statement');
     }
 }

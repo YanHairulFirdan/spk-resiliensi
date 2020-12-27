@@ -3,28 +3,41 @@
     <div class="row">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Perbaharui data aspek {{ $aspect->aspect }}</div>
+                <div class="card-header">Perbaharui data pernyataan</div>
                 <div class="card-body">
-                    <form action="/aspect/{{ $aspect->id }}" class="form" method="POST">
+                    <form action="/admin/statement/{{ $statement->id }}" class="form" method="POST">
                         @csrf
+                        @if ($errors->has('any'))
+                            {{ dd($errors) }}
+                        @endif
                         @method('PUT')
                         <div class="form-group">
-                            <label for="aspec">aspek</label>
-                            <input type="text" id="aspect" class="form-control" name="aspect"
-                                value="{{ old('aspect') ? old('aspect') : $aspect->aspect }}">
+                            <label for="aspect_id">kategori aspek</label>
+                            <select name="aspect_id" id="aspect_id" class="form-control">
+                                @foreach ($aspects as $aspect)
+                                    <option value="{{ $aspect->id }}"
+                                        {{ $aspect->id == $statement->aspect_id ? 'selected' : '' }}>
+                                        {{ $aspect->aspect }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('aspect_id')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <label for="strength_suggestion">Pesan untuk kelebihan pada aspek {{ $aspect->aspect }}</label>
-                            <textarea class="form-control" id="strength_suggestion" rows="3" name="strength_suggestion">
-                            {{ old('strength_suggestion') ? old('strength_suggestion') : $aspect->strength_suggestion }}
+                            <label for="statement">Pernyataan</label>
+                            <textarea class="form-control" id="statement" rows="3" name="statement">
+                            {{ old('statement') ? old('statement') : $statement->statement }}
                             </textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="weak_suggestion">Pesan untuk kekurangan pada aspek {{ $aspect->aspect }}</label>
-                            <textarea class="form-control" rows="3" name="weak_suggestion">
-                            {{ old('weak_suggestion') ? old('weak_suggestion') : $aspect->weak_suggestion }}
-                            </textarea>
-                        </div>
+                        @error('statement')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                         <button type="submit" class="btn btn-large btn-primary">Perbaharui</button>
                     </form>
                 </div>
