@@ -28,6 +28,7 @@ Route::get('/admin-test', function () {
 Route::prefix('/admin')->group(function () {
     Route::resource('aspect', 'AspectController');
     Route::resource('statement', 'statementController');
+    Route::resource('quisioner', 'QuisionerController');
 });
 // Route::get('/aspect', 'AspectController@index');
 Route::get('/kuisioner', 'QuizController@index');
