@@ -62,7 +62,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
+                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -118,27 +118,7 @@
             buttons.forEach(button => button.addEventListener('click', showForm))
         }
 
-        function showForm(event) {
-            // console.log('ok1');
-            // return;
-            var element = event.target;
-            //get all input-form class
-            var previousActiveButtons = document.querySelectorAll('.active');
-            previousActiveButtons.forEach(button => {
-                button.classList.remove('active')
-            })
-            console.log(element);
-            element.classList.add('active')
-            var inputElement = Array.from(document.getElementsByClassName("input-group"));
-            //hide all input-form class
-            inputElement.forEach(input => {
-                input.style.display = 'none';
-            })
-            //get specific form-group
-            var showform = document.getElementById("form-group-" + element.innerText)
-            //show that form-group
-            showform.style.display = 'block'
-        }
+
 
         function flagChange(event) {
 

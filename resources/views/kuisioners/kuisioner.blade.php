@@ -23,32 +23,16 @@
                             <div class="card-header">
                                 {{ $statement->statement }}
                             </div>
-                            <div class="card-body">
-                                <span class="form-radio">
-                                    <input type="radio" name="{{ $aspect->aspect . $loop->index }}" id="">
-
-                                    <label for="{{ $aspect->aspect . $loop->index }}">5</label>
-                                </span>
-                                <span class="form-radio">
-                                    <input type="radio" name="{{ $aspect->aspect . $loop->index }}" id="">
-
-                                    <label for="{{ $aspect->aspect . $loop->index }}">4</label>
-                                </span>
-                                <span class="form-radio">
-                                    <input type="radio" name="{{ $aspect->aspect . $loop->index }}" id="">
-
-                                    <label for="{{ $aspect->aspect . $loop->index }}">3</label>
-                                </span>
-                                <span class="form-radio">
-                                    <input type="radio" name="{{ $aspect->aspect . $loop->index }}" id="">
-
-                                    <label for="{{ $aspect->aspect . $loop->index }}">2</label>
-                                </span>
-                                <span class="form-radio">
-                                    <input type="radio" name="{{ $aspect->aspect . $loop->index }}" id="">
-
-                                    <label for="{{ $aspect->aspect . $loop->index }}">1</label>
-                                </span>
+                            <div class="card-body d-flex justify-content-center">
+                                @for ($i = 0; $i < 5; $i++)
+                                    <span class="form-radio mx-4">
+                                        <input type="radio" name="{{ $aspect->aspect . '-' . $loop->index }}"
+                                            id="{{ $aspect->aspect . '-' . $loop->index }}" value="{{ $i }}"
+                                            {{ $i == 0 ? 'checked' : '' }}>
+                                        <br>
+                                        <label for="">{{ $i + 1 }}</label>
+                                    </span>
+                                @endfor
                             </div>
                         </div>
                     @endforeach
@@ -56,123 +40,80 @@
             @endforeach
         </form>
 
+        <div class="button-group d-flex justify-content-center">
+            <button class="btn border-primary btn-sm btn-large m-2" id="previous"
+                onclick="previousForm()">sebelumnya</button>
+            <button class="btn btn-primary btn-sm btn-large m-2" id="next" onclick="nextForm()">selanjutnya</button>
+            <button class="btn btn-success btn-sm btn-large m-2" id="submit" style="dis" type="submit">simpan</button>
+        </div>
+    @endsection
 
 
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
-                @for ($i = 0; $i < 7; $i++)
-                    <li class="page-item page-link page-number active">{{ $i + 1 }}</li>
-                @endfor
-            </ul>
-        </nav>
-    </div>
-@endsection
-
-@section('javascript')
-    {{-- <script src="{{ asset('js/form.js') }}"></script> --}}
-    <script>
-        console.log('okkkk');
-        document.querySelectorAll('.page-number').addEventListener('click', () => {
-            console.log('clicked');
-        })
+    @push('javascript')
+        <script>
+            const previousButton = document.getElementById('previous');
+            const btnNext = document.getElementById('next');
+            const submit = document.getElementById('submit');
+            previousButton.style.display = 'none';
+            submit.style.display = 'none';
 
 
-        //     var flag.$loop->index = ;      
-        //     document.getElementById("form-group-1").style.display = "block";
-        //     function init(){
-        //         var length = Array.from(document.getElementsByClassName('form-group')).length;
-        //         for(var i = 0; i < length ; i++){
-        //             flag[i] = false;
-        //         }
+            var counter = 1;
 
-        //     }
+            function nextForm() {
+                counter++;
+                toggleDisplayButton(counter);
+                showForm(counter);
+                console.log('next');
+                console.log(typeof(counter));
+                console.log('form ke-' + counter);
+            }
 
-        //     init();
+            function previousForm() {
+                counter--;
+                toggleDisplayButton(counter);
+                console.log(typeof(counter));
+                showForm(counter);
+                console.log('form ke-' + counter);
+                console.log('previous');
+            }
 
-        //     function
-        //      showForm(event){
-        //         var element = event.target;
-        //         //get all input-form class
-        //         var previousActiveButtons = document.querySelectorAll('.btn-active');
-        //         previousActiveButtons.forEach(button => {
-        //             button.classList.remove('btn-active')
-        //         })
-        //         element.classList.add('btn-active')
-        //         var inputElement =  Array.from(document.getElementsByClassName("input-group"));
-        //         //hide all input-form class
-        //         inputElement.forEach(input =>{
-        //             input.style.display = 'none';
-        //         })
-        //         //get specific form-group
-        //         var showform = document.getElementById("form-group-"+ element.innerText)
-        //         //show that form-group
-        //         showform.style.display = 'block'
-        //     }
+            function toggleDisplayButton(counter) {
+                if (counter > 1) {
+                    previousButton.style.display = 'inline';
+                    if (counter > 6) {
+                        console.log(counter);
+                        btnNext.style.display = 'none';
+                        submit.style.display = 'inline';
+                    } else {
+                        btnNext.style.display = 'inline';
+                        submit.style.display = 'none';
+                    }
+                } else {
+                    previousButton.style.display = 'none';
+                }
+            }
 
+            function showForm(counter) {
+                var inputElement = Array.from(document.getElementsByClassName("input-group"));
+                inputElement.forEach(input => {
+                    input.style.display = 'none';
+                })
+                var showform = document.getElementById("form-group-" + counter)
+                showform.style.display = 'block'
+            }
 
+            /*
+                function for check whether  all of input were select?
+                get the input from current section
+                looping each input and check for if there any input section does not have check/select
+                if all input section has been selected show button submit
+            */
 
-        // //onchange function 
-        //     function flagChange(event){
-        // //listen for event change occurs
-        //         var element = event.target;
-        //         let uncheck = 0;
-        //         //get the id of event's parent
-        //         var parentId = element.parentElement.id;
-        //         //get the last index of the id e.x 1
-        //         var indexOfId = parentId[parentId.length - 1];
-        //         //  console.log(indexOfId)
-        //         //get all of input element from the current form input group
-        //         var checkboxes = Array.from(document.querySelectorAll("#"+parentId+" input"));
+            function activate(counter) {
+                let inputGroup = Array.from(document.querySelectorAll('form-group-' + counter + 'input[radio]'));
+                inputGroup.filter(input => input.checked == 'false')
+            }
 
-        //         //check if the there  or some input were checked set flag i to true
-        //         if(!element.checked){
-        //         // console.log("checked false");
-        //             checkboxes.forEach(checkbox=> console.log(checkbox.checked))
-        //             check= checkboxes.forEach(checkbox =>{
-        //                 if(!checkbox.checked){
-        //                     uncheck++;
-        //                     //console.log("amount of uncheck form= "+uncheck)
-        //                 }
-        //             })
-        //             if(uncheck != 4){
-        //             // console.log("all input has checked")
-        //                 flag[indexOfId-1] = true;
-        //             }
-        //             else{
-        //                 flag[indexOfId-1] = false;
-        //             }
-        //         }
-        //         else if(element.checked){
-        //             if(uncheck > 0) uncheck--;
-        //             else if(uncheck == 0) flag[indexOfId-1] = true;
-        //         }
-
-        //         //else if none of them were checked set flag i to false
-
-
-        //         var flagCheck = 0;
-
-        //         //if all of flag is true set button of submit to enable
-        //         var btn = document.getElementById('button');
-
-        //         flag.forEach(singleFlag => {
-        //             if(singleFlag)flagCheck++;
-        //             else if(!singleFlag){
-        //                 if(flagCheck>0)flagCheck--;
-        //             }
-        //         });
-
-        //         if(flagCheck == 4) btn.style.display = "block";
-        //         else btn.style.display = "none";
-
-        //     }
-
-
-        document.addEventListener('click', function(event) {
-            console.log('clicked anywhere :D');
-        }
-        })
-
-    </script>
-
-@endsection
+        </script>
+    @endpush
