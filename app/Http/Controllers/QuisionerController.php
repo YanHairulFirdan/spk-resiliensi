@@ -40,7 +40,7 @@ class QuisionerController extends Controller
             'question' => 'required|min:12'
         ]);
         Quisioner::create($request->only(['question']));
-        return redirect('/admin/quisioners')->with('success', 'Data kuisioner baru berhasil ditambahkan');
+        return redirect('/admin/quisioner')->with('success', 'Data kuisioner baru berhasil ditambahkan');
     }
 
     /**
@@ -78,7 +78,7 @@ class QuisionerController extends Controller
             'question' => 'required|min:12'
         ]);
         $quisioner->update($request->only(['question']));
-        return redirect('/admin/quisioners')->with('success', 'Data kuisioner berhasil diperbaharui');
+        return redirect('/admin/quisioner')->with('success', 'Data kuisioner berhasil diperbaharui');
     }
 
     /**
@@ -90,6 +90,6 @@ class QuisionerController extends Controller
     public function destroy(Quisioner $quisioner)
     {
         $quisioner->delete();
-        return redirect('/admin/quisioners')->with('success', 'Data kuisioner berhasil dihapus');
+        return redirect('/admin/quisioner')->with('success', 'Data kuisioner berhasil dihapus');
     }
 }

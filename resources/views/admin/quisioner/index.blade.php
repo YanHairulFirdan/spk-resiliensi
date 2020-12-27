@@ -19,8 +19,8 @@
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $quisioner->question }}</td>
                             <td>
-                                <a href="/quisioner/{{ $quisioner->id }}/edit" class="btn btn-sm btn-success">Edit</a>
-                                <form action="/quisioner/{{ $quisioner->id }}" style="display: inline" method="post">
+                                <a href="/admin/quisioner/{{ $quisioner->id }}/edit" class="btn btn-sm btn-success">Edit</a>
+                                <form action="/admin/quisioner/{{ $quisioner->id }}" style="display: inline" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Quisioner extends Model
 {
-    //
+    protected $fillable = ['question'];
 }

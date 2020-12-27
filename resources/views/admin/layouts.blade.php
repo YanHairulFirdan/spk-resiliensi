@@ -210,7 +210,7 @@
                             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                 data-target="#icons" aria-expanded="false" aria-controls="icons">
                                 <i class="mdi mdi-diamond-stone"></i>
-                                <span class="nav-text">Icons</span> <b class="caret"></b>
+                                <span class="nav-text">Pertanyaan</span> <b class="caret"></b>
                             </a>
                             <ul class="collapse" id="icons" data-parent="#sidebar-menu">
                                 <div class="sub-menu">
@@ -218,8 +218,8 @@
 
 
                                     <li>
-                                        <a class="sidenav-item-link" href="material-icon.html">
-                                            <span class="nav-text">Material Icon</span>
+                                        <a class="sidenav-item-link" href="/admin/quisioner">
+                                            <span class="nav-text">daftar pertayaan kuisioner</span>
 
                                         </a>
                                     </li>
