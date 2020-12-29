@@ -76,48 +76,94 @@ class Quizcontroller extends Controller
 
     public function scoreCalculation($request)
     {
+        $types = ['positive', 'negative'];
         $datas = [];
         $scores = [];
         $aspects = Aspect::with(['statements'])->get();
         $temp = 0;
         $tempScore = 0;
+        $aspectGroup = [];
+        // for ($i=0; $i < ; $i++) { 
+        //     # code...
+        // }
+        $existingData = Score::where('user_id', auth()->user()->id);
 
+        if ($existingData) {
+            $existingData->delete();
+        }
         foreach ($this->aspectsArr as $key => $singleAspect) {
+            $aspectGroup[$singleAspect] = [];
             $iteration = $aspects[$temp]->statements->count();
-            $scores[$singleAspect] = 0;
+            $numberOfNegative = 0;
+            $numberOfPositive = 0;
 
             for ($i = 0; $i < $iteration; $i++) {
-                if (array_key_exists($singleAspect . '_' . $i, $request)) {
-
-                    $tempScore += $request[$singleAspect . '_' . $i];
+                foreach ($types as $key => $type) {
+                    if (!isset($aspectGroup[$singleAspect][$type])) {
+                        $aspectGroup[$singleAspect][$type] = 0;
+                    }
+                    if (array_key_exists($singleAspect . '_' . $type . '_' . $i, $request)) {
+                        $aspectGroup[$singleAspect][$type] += $request[$singleAspect . '_' . $type . '_' . $i];
+                    }
+                    ($type == 'positive') ? $numberOfPositive++ : $numberOfNegative++;
                 }
             }
-            $datas[$singleAspect] = ($tempScore / ($iteration * 4)) * 100;
-            $tempScore = 0;
-            $temp++;
+            $final_score = ($numberOfPositive > $numberOfNegative) ? $numberOfPositive - $numberOfNegative : $numberOfNegative - $numberOfPositive;
+            // dd($newCollection);
+            DB::table('scores')->insert(
+                [
+                    'user_id' => auth()->user()->id,
+                    'aspect_name' => $singleAspect,
+                    'score_positive' => ($aspectGroup[$singleAspect]['positive'] / ($numberOfPositive * 4)) * 100,
+                    'score_negative' => ($aspectGroup[$singleAspect]['negative'] / ($numberOfNegative * 4)) * 100,
+                    'final_score' => $final_score
+                ]
+            );
+            // Score::create([
+            //     'user_id' => auth()->user()->id,
+            //     'score_positive' => ($aspectGroup[$singleAspect]['positive'] / ($numberOfPositive * 4)) * 100,
+            //     'aspect_name' => $singleAspect,
+            //     'score_negative' => ($aspectGroup[$singleAspect]['negative'] / ($numberOfNegative * 4)) * 100,
+            //     'final_score' => $final_score
+            // ]);
+            // $datas[$singleAspect] = ($tempScore / ($iteration * 4)) * 100;
+            // $tempScore = 0;
+            // $temp++;
         }
-        $existingData = Score::where('user_id', auth()->user()->id);
-        if ($existingData->exists()) {
-            $existingData->update([
-                'pengendalian_impuls' => $datas['pengendalian_impuls'],
-                'regulasi_emosi' => $datas['regulasi_emosi'],
-                'optimis' => $datas['optimis'],
-                'percaya_diri' => $datas['percaya_diri'],
-                'analisis_kausal' => $datas['analisis_kausal'],
-                'empati' => $datas['empati'],
-                'reaching_out' => $datas['reaching_out']
-            ]);
-        } else {
-            Score::create([
-                'user_id' => auth()->user()->id,
-                'pengendalian_impuls' => $scores['pengendalian_impuls'],
-                'regulasi_emosi' => $scores['regulasi_emosi'],
-                'optimis' => $scores['optimis'],
-                'percaya_diri' => $scores['percaya_diri'],
-                'analisis_kausal' => $scores['analisis_kausal'],
-                'empati' => $scores['empati'],
-                'reaching_out' => $scores['reaching_out']
-            ]);
-        }
+        dd($aspectGroup);
+
+
+        // foreach ($aspectGroup as $key => $aspect) {
+        //     Score::create([
+        //         'user_id' => auth()->user()->id,
+        //         'aspect_name' => $key,
+        //         'score_positive' => ($aspect['positive'] / ())
+        //     ])
+        // }
+
+        dd($aspectGroup);
+        // $existingData = Score::where('user_id', auth()->user()->id);
+        // if ($existingData->exists()) {
+        //     $existingData->update([
+        //         'pengendalian_impuls' => $datas['pengendalian_impuls'],
+        //         'regulasi_emosi' => $datas['regulasi_emosi'],
+        //         'optimis' => $datas['optimis'],
+        //         'percaya_diri' => $datas['percaya_diri'],
+        //         'analisis_kausal' => $datas['analisis_kausal'],
+        //         'empati' => $datas['empati'],
+        //         'reaching_out' => $datas['reaching_out']
+        //     ]);
+        // } else {
+        //     Score::create([
+        //         'user_id' => auth()->user()->id,
+        //         'pengendalian_impuls' => $scores['pengendalian_impuls'],
+        //         'regulasi_emosi' => $scores['regulasi_emosi'],
+        //         'optimis' => $scores['optimis'],
+        //         'percaya_diri' => $scores['percaya_diri'],
+        //         'analisis_kausal' => $scores['analisis_kausal'],
+        //         'empati' => $scores['empati'],
+        //         'reaching_out' => $scores['reaching_out']
+        //     ]);
+        // }
     }
 }

@@ -18,8 +18,8 @@
                                         <div class="col-md-3 col-3 d-flex justify-content-center">
                                             <span class="form-radio text-center">
                                                 <input type="radio"
-                                                    name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
-                                                    id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
+                                                    name="{{ $aspectsArr[$loop->parent->index].'_'.$statement->type . '_' . $loop->index }}"
+                                                    id="{{ $aspectsArr[$loop->parent->index] .'_'.$statement->type . '_' . $loop->index }}"
                                                     value="{{ $i + 1 }}" {{ $i == 0 ? 'checked' : '' }}>
                                                 <br>
                                                 <label for="">{{ $i + 1 }}</label>

@@ -13,12 +13,14 @@ class StatementSeeder extends Seeder
      */
     public function run()
     {
+        $types = ['positive', 'negative'];
         $faker = Faker::create('ID');
         for ($i = 1; $i < 8; $i++) {
             for ($j = 0; $j < rand(7, 10); $j++) {
                 Statement::create([
                     'aspect_id' => $i,
-                    'statement' => $faker->text(50)
+                    'statement' => $faker->text(50),
+                    'type' => $types[rand(0, 1)]
                 ]);
             }
         }

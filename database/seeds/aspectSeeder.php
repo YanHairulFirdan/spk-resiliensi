@@ -27,8 +27,6 @@ class aspectSeeder extends Seeder
         foreach ($aspects as $key => $aspect) {
             Aspect::create([
                 'aspect' => $aspect,
-                'strength_suggestion' => $faker->text(100),
-                'weak_suggestion' => $faker->text(100)
             ]);
         }
     }
