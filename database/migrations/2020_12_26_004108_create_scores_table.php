@@ -16,13 +16,13 @@ class CreateScoresTable extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id');
-            $table->integer('regulasi_emosi');
-            $table->integer('pengendalian_impuls');
-            $table->integer('optimis');
-            $table->integer('percaya_diri');
-            $table->integer('analisis_kausal');
-            $table->integer('empati');
-            $table->integer('reaching_out');
+            $table->float('regulasi_emosi');
+            $table->float('pengendalian_impuls');
+            $table->float('optimis');
+            $table->float('percaya_diri');
+            $table->float('analisis_kausal');
+            $table->float('empati');
+            $table->float('reaching_out');
             $table->timestamps();
         });
     }

@@ -4,8 +4,8 @@
         <div class="card-header">
             <h3>Daftar Aspek</h3>
         </div>
-        <div class="card-body">
-            <table class="table table-hover table-responsive">
+        <div class="card-body table-responsive">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">no.</th>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="form-group">
                             <label for="statement">Pernyataan</label>
-                            <textarea class="form-control" id="statement" rows="3" name="statement">
+                            <textarea class="form-control" id="statement" rows="2" name="statement">
                             {{ old('statement') ? old('statement') : '' }}
                             </textarea>
                         </div>

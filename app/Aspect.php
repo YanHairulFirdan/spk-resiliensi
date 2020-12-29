@@ -11,4 +11,8 @@ class Aspect extends Model
     {
         return $this->hasMany(Statement::class);
     }
+    public function tips()
+    {
+        return $this->hasMany(Tip::class);
+    }
 }

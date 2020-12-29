@@ -16,8 +16,6 @@ class CreateAspectsTable extends Migration
         Schema::create('aspects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('aspect');
-            $table->text('strength_suggestion');
-            $table->text('weak_suggestion');
             $table->timestamps();
         });
     }

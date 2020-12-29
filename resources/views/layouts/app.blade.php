@@ -61,8 +61,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                 document.getElementById('logout-form').submit();">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                                                             document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -82,6 +83,11 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8">
+                        @if (Request::is('kuisioner') || Request::is('motivation') || Request::is('result'))
+                            <div class="container-fluid">
+                                @include('components.formStepper')
+                            </div>
+                        @endif
                         @yield('content')
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+// use App\Tip;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,5 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(aspectSeeder::class);
         $this->call(userSeeder::class);
         $this->call(StatementSeeder::class);
+        $this->call(userSeeder::class);
+        $this->call(TipSeeder::class);
     }
 }

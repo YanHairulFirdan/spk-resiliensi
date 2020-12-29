@@ -3,48 +3,42 @@
 
     <div class="content">
         <form method="POST" action="/kuisioner">
-            <div class="d-flex justify-content-center">
-                <div class="stepperm">
-                    <span class="stepper-point"></span>
-                    <span class="nav-label">motivasi</span>
-                    <span class="stepper-point"></span>
-                    <span class="nav-label">resiliensi</span>
-                    <span class="stepper-point"></span>
-                    <span class="nav-label">hasil</span>
-                </div>
-            </div>
             @csrf
-
             @foreach ($aspects as $aspect)
                 <div id="form-group-{{ $loop->index + 1 }}" class="my-4 input-group">
-                    {{ $aspect->aspect }}
+
                     @foreach ($aspect->statements as $statement)
                         <div class="card my-1">
                             <div class="card-header">
                                 {{ $statement->statement }}
                             </div>
-                            <div class="card-body d-flex justify-content-center">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <span class="form-radio mx-4">
-                                        <input type="radio" name="{{ $aspect->aspect . '-' . $loop->index }}"
-                                            id="{{ $aspect->aspect . '-' . $loop->index }}" value="{{ $i }}"
-                                            {{ $i == 0 ? 'checked' : '' }}>
-                                        <br>
-                                        <label for="">{{ $i + 1 }}</label>
-                                    </span>
-                                @endfor
+                            <div class="card-body">
+                                <div class="row d-flex justify-content-center">
+                                    @for ($i = 0; $i < 4; $i++)
+                                        <div class="col-md-3 col-3 d-flex justify-content-center">
+                                            <span class="form-radio text-center">
+                                                <input type="radio"
+                                                    name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
+                                                    id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
+                                                    value="{{ $i + 1 }}" {{ $i == 0 ? 'checked' : '' }}>
+                                                <br>
+                                                <label for="">{{ $i + 1 }}</label>
+                                            </span>
+                                        </div>
+                                    @endfor
+                                </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             @endforeach
+            <button class="btn btn-success btn-sm btn-large mx-4" id="submit" style="dis" type="submit">simpan</button>
         </form>
 
         <div class="button-group d-flex justify-content-center">
-            <button class="btn border-primary btn-sm btn-large m-2" id="previous"
-                onclick="previousForm()">sebelumnya</button>
-            <button class="btn btn-primary btn-sm btn-large m-2" id="next" onclick="nextForm()">selanjutnya</button>
-            <button class="btn btn-success btn-sm btn-large m-2" id="submit" style="dis" type="submit">simpan</button>
+            <button class="btn border-primary btn-sm btn-large mx-4" id="previous" onclick="previousForm()"><a
+                    href="/motivation">sebelumnya</a></button>
+            <button class="btn btn-primary btn-sm btn-large mx-4" id="next" onclick="nextForm()">selanjutnya</button>
         </div>
     @endsection
 
@@ -54,7 +48,7 @@
             const previousButton = document.getElementById('previous');
             const btnNext = document.getElementById('next');
             const submit = document.getElementById('submit');
-            previousButton.style.display = 'none';
+            // previousButton.style.display = 'none';
             submit.style.display = 'none';
 
 
@@ -80,7 +74,7 @@
 
             function toggleDisplayButton(counter) {
                 if (counter > 1) {
-                    previousButton.style.display = 'inline';
+                    previousButton.innerText = 'sebelumnya';
                     if (counter > 6) {
                         console.log(counter);
                         btnNext.style.display = 'none';
@@ -90,7 +84,7 @@
                         submit.style.display = 'none';
                     }
                 } else {
-                    previousButton.style.display = 'none';
+                    previousButton.innerHTML = '<a href = "/motivation">sebelumnya</a>';
                 }
             }
 

@@ -10930,30 +10930,31 @@ form:not(:first-child) {
     color: white;
 } */
 
-span.stepper-point {
+.stepper-point {
   display: inline-block;
-  height: 1.5em;
-  width: 1.5em;
+  height: 5em;
+  width: 5em;
   border-radius: 50%;
+  box-sizing: border-box;
   background-color: #f123f1;
   margin-right: auto;
 }
 
-span.stepper-point:not(:last-child) {
-  margin-right: 10em;
-}
+/* .stepper-point:not(:last-child) {
+    margin-right: 10em;
+}        */
 
-span.stepper-point:not(:last-child)::after {
-  content: "";
-  /* display: block; */
-  background-color: #000;
-  width: 13em;
-  height: 0.2em;
-  position: absolute;
-  top: 0.6em;
-  /* right: 0; */
-  z-index: -1;
-}
+/* .stepper-point:not(:last-child)::after{
+    content: "";
+
+    background-color: #000;
+    width: 13em;
+    height: 0.2em;
+    position: absolute;
+    top: .6em;
+
+    z-index: -1;
+} */
 
 .nav-label {
   position: absolute;

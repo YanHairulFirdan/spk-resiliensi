@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStatementsTable extends Migration
+class CreateTipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateStatementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('statements', function (Blueprint $table) {
+        Schema::create('tips', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('aspect_id');
-            $table->string('statement');
-            $table->string('type');
+            $table->text('tips');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateStatementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statements');
+        Schema::dropIfExists('tips');
     }
 }
