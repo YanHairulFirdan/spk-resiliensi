@@ -8,21 +8,17 @@
             <table class="table table-hover table-responsive">
                 <thead>
                     <tr>
-                        <th scope="col">no.</th>
-                        <th scope="col">aspek</th>
-                        <th scope="col">Kelebihan</th>
-                        <th scope="col">Kekurangan</th>
-                        <th scope="col">Aksi</th>
+                        <th scope="col" class="text-center">no.</th>
+                        <th scope="col" class="text-center">aspek</th>
+                        <th scope="col" class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($aspects as $aspect)
                         <tr>
-                            <th scope="row">{{ $loop->index + 1 }}</th>
-                            <td>{{ $aspect->aspect }}</td>
-                            <td>{{ $aspect->strength_suggestion }}</td>
-                            <td>{{ $aspect->weak_suggestion }}</td>
-                            <td>
+                            <th scope="row" class="text-center">{{ $loop->index + 1 }}</th>
+                            <td class="text-center">{{ $aspect->aspect }}</td>
+                            <td class="text-center">
                                 <a href="/aspect/{{ $aspect->id }}/edit" class="btn btn-sm btn-success">Edit</a>
                                 <form action="/aspect/{{ $aspect->id }}" style="display: inline" method="post">
                                     @csrf

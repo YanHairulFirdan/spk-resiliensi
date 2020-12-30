@@ -63,11 +63,14 @@
                                     class="col-md-4 col-form-label text-md-right">{{ __('Pilih jurusan kamu') }}</label>
 
                                 <div class="col-md-6">
-                                    <select name="department" id="department" class="form-control"
-                                        value="{{ old('department') }}" required>
-                                        <option value="IPA">IPA</option>
-                                        <option value="IPS">IPS</option>
-                                        <option value="BAHASA">BAHASA</option>
+                                    <select name="class" id="class" class="form-control" value="{{ old('class') }}"
+                                        required>
+                                        <option value="X IPA I">X IPA I </option>
+                                        <option value="X IPA II">X IPA II </option>
+                                        <option value="X IPA III">X IPA III </option>
+                                        <option value="X IPA IV">X IPA IV </option>
+                                        <option value="X IPA V">X IPA V </option>
+                                        <option value="X IPA VI">X IPA VI </option>
                                     </select>
                                     @error('department')
                                         <span class="invalid-feedback" role="alert">
