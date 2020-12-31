@@ -28,6 +28,9 @@ Route::get('/admin-test', function () {
 Route::prefix('/admin')->group(function () {
     Route::resource('aspect', 'AspectController');
     Route::post('statement/import', 'statementController@import');
+    Route::get('answear/', 'AnswearController@index');
+    Route::get('answear/downloadexcel', 'AnswearController@export');
+    Route::get('answear/test', 'AnswearController@test');
     Route::resource('statement', 'statementController');
     Route::resource('quisioner', 'QuisionerController');
 });
