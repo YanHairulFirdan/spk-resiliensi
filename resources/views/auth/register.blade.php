@@ -59,8 +59,8 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="jurusan"
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Pilih jurusan kamu') }}</label>
+                                <label for="kelas"
+                                    class="col-md-4 col-form-label text-md-right">{{ __('Pilih kelas kamu') }}</label>
 
                                 <div class="col-md-6">
                                     <select name="class" id="class" class="form-control" value="{{ old('class') }}"
@@ -72,7 +72,7 @@
                                         <option value="X IPA V">X IPA V </option>
                                         <option value="X IPA VI">X IPA VI </option>
                                     </select>
-                                    @error('department')
+                                    @error('class')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

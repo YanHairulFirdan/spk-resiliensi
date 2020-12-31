@@ -1,5 +1,23 @@
 @extends('admin.layouts')
 @section('content')
+    <div class="form">
+        <form action="/admin/statement/import" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="input-group mb-3">
+
+                <input type="file" class="form-control" placeholder="upload file excel" aria-label="Recipient's username"
+                    aria-describedby="basic-addon2" name="excel">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success" type="submit">Upload</button>
+                </div>
+            </div>
+            @error('excel')
+                <span class="alert alert-danger row" role="alert">
+                    {{ $message }}
+                </span>
+            @enderror
+        </form>
+    </div>
     <div class="card">
         <div class="card-header">
             <h3>Daftar Aspek</h3>
@@ -19,7 +37,7 @@
                         <tr>
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $statement->statement }}</td>
-                            <td>{{ $statement->aspect->aspect }}</td>
+                            <td>{{ optional($statement->aspect)->aspect }}</td>
                             <td>
                                 <a href="/admin/statement/{{ $statement->id }}/edit" class="btn btn-sm btn-success">Edit</a>
                                 <form action="/admin/statement/{{ $statement->id }}" style="display: inline" method="post">
@@ -33,7 +51,7 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $statements->links() }}
+            {{-- {{ $statements->links() }} --}}
             <div class="my-2">
                 <button class="btn btn-large btn-primary" data-toggle="modal" data-target="#tambahdata">Tambah data</button>
             </div>

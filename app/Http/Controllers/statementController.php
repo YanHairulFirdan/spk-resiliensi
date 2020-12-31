@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Aspect;
+use App\Imports\StatementImport;
 use App\Statement;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use StatementSeeder;
 
 class statementController extends Controller
@@ -17,7 +19,9 @@ class statementController extends Controller
     public function index()
     {
         $aspects = Aspect::get();
-        $statements = Statement::paginate(10);
+        $statements = Statement::with(['aspect'])->orderBy('created_at', 'DESC')->get();
+
+        // dd($statements);
         return view('admin.statement.index', compact('statements', 'aspects'));
     }
 
@@ -111,5 +115,16 @@ class statementController extends Controller
         $statement->delete();
         session()->flash('success', 'data berhasil dihapus');
         return redirect('/admin/statement');
+    }
+
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'excel' => 'required|mimes:xlsx'
+        ]);
+
+        Excel::import(new StatementImport, $request->file('excel'));
+        return back()->with('success', 'data baru berhasil diimport');
     }
 }

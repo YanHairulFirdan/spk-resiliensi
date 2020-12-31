@@ -17,7 +17,7 @@
 
 // $route  = new Route();
 
-
+// use Illuminate\Routing\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +27,7 @@ Route::get('/admin-test', function () {
 });
 Route::prefix('/admin')->group(function () {
     Route::resource('aspect', 'AspectController');
+    Route::post('statement/import', 'statementController@import');
     Route::resource('statement', 'statementController');
     Route::resource('quisioner', 'QuisionerController');
 });
