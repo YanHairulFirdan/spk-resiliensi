@@ -19,12 +19,27 @@
 
 // use Illuminate\Routing\Route;
 
+
+Route::prefix('/teacher')->group(function () {
+    Route::get('login', 'TeacherController@login')->name('teacher.login');
+    Route::get('register', 'TeacherController@register');
+    Route::post('login', 'TeacherController@postLogin');
+    Route::post('register', 'TeacherController@postRegister');
+
+    Route::middleware('auth:teacher')->group(function () {
+        Route::get('/', 'TeacherController@index');
+        Route::get('/logout', 'TeacherController@postLogout');
+
+        Route::get('download', 'TeacherController@download');
+    });
+});
 Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin-test', function () {
     return view('admin.index');
 });
+
 Route::prefix('/admin')->group(function () {
     Route::resource('aspect', 'AspectController');
     Route::post('statement/import', 'statementController@import');
@@ -40,6 +55,7 @@ Route::post('/kuisioner', 'QuizController@saveQuiz');
 Route::get('/motivation', 'QuizController@motivationForm');
 Route::post('/motivation', 'QuizController@savemotivationForm');
 Route::get('/hasil', 'QuizController@result');
+
 
 Auth::routes();
 

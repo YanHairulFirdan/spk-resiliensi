@@ -6,16 +6,24 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-primary text-light">{{ __('Login') }}</div>
-
+                    {{-- @if (error()->has('any'))
+                        --}}
+                        {{-- {{ dd(errors()) }} --}}
+                        {{-- <span class="alert alert-danger">
+                            error!!
+                        </span> --}}
+                        {{-- @endif --}}
                     <div class="card-body">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="/teacher/login">
                             @csrf
 
                             <div class="form-group">
-                                <label for="email"
+                                {{-- <label for="email" --}}
+                                    {{--
                                     class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                --}}
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="email" type="email"
                                         class="form-control input-lg @error('email') is-invalid @enderror" name="email"
                                         value="{{ old('email') }}" required autocomplete="email" autofocus
@@ -30,10 +38,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password"
+                                {{-- <label for="password" --}}
+                                    {{--
                                     class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                --}}
 
-                                <div class="col-md-6">
+                                <div class="">
                                     <input id="password" type="password"
                                         class="form-control input-lg @error('password') is-invalid @enderror"
                                         name="password" required autocomplete="current-password" placeholder="password">

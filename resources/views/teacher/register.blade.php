@@ -8,7 +8,7 @@
                     <div class="card-header bg-primary text-white text-bold">{{ __('Registrasi dulu yuk!') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register') }}">
+                        <form method="POST" action="teacher/register">
                             @csrf
 
                             <div class="form-group">
@@ -52,6 +52,19 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="">
+                                    <input id="nim" type="email"
+                                        class="form-control input-lg @error('nip') is-invalid @enderror" name="nip"
+                                        value="{{ old('nip') }}" required autocomplete="nip" placeholder="nip">
+
+                                    @error('nip')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <div class="">
@@ -73,11 +86,11 @@
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    <input id="phoneNumber" type="text"
-                                        class="form-control input-lg @error('phone number') is-invalid @enderror"
-                                        name="phoneNumber" required placeholder="nomor HP">
+                                    <input id="subject" type="text"
+                                        class="form-control input-lg @error('subject') is-invalid @enderror" name="subject"
+                                        required placeholder="mata pelajran yang diampu">
 
-                                    @error('phoneNumber')
+                                    @error('subject')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

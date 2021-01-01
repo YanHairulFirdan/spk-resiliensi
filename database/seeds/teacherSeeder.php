@@ -22,17 +22,31 @@ class teacherSeeder extends Seeder
             'X IPA V',
             'X IPA VI',
         ];
+        $password = '';
         $faker = Factory::create();
         foreach ($classArr as $key => $arr) {
-            Teacher::create([
-                'name' => $faker->name(),
-                'username' => $faker->userName,
-                'email' => $faker->email,
-                'nip' => $faker->word(),
-                'class' => $arr,
-                'subject' => $faker->word(),
-                'password' => $faker->password()
-            ]);
+            if ($key == 0) {
+
+                Teacher::create([
+                    'name' => $faker->name(),
+                    'username' => $faker->userName,
+                    'email' => 'teacher@mail.com',
+                    'nip' => $faker->word(),
+                    'class' => $arr,
+                    'subject' => $faker->word(),
+                    'password' => Hash::make('password1234')
+                ]);
+            } else {
+                Teacher::create([
+                    'name' => $faker->name(),
+                    'username' => $faker->userName,
+                    'email' => $faker->email,
+                    'nip' => $faker->word(),
+                    'class' => $arr,
+                    'subject' => $faker->word(),
+                    'password' => $faker->password()
+                ]);
+            }
         }
     }
 }
