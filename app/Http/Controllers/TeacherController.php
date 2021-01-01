@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 // use Auth;
+
+use App\Score;
 use App\Teacher;
+use App\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +25,9 @@ class TeacherController extends Controller
     }
     public function index()
     {
-        return view('teacher.index');
+        $teacher = Auth()->user();
+        $dataScores = User::with('score')->where('class', $teacher->class)->get();
+        return view('teacher.index', compact('dataScores'));
         // dd('ini index');
     }
     protected function guard()
@@ -72,7 +78,11 @@ class TeacherController extends Controller
 
     public function download()
     {
-        dd('ini download');
+        // set_time_limit(80);
+        $teacher = Auth()->user();
+        $dataScores = User::with('score')->where('class', $teacher->class)->get();
+        $pdf = PDF::loadview('teacher.download', ['dataScores' => $dataScores]);
+        return $pdf->download('laporan-skor-test.pdf');
     }
 
     public function postLogout()
