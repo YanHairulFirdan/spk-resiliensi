@@ -46,7 +46,9 @@ Route::prefix('/admin')->group(function () {
     Route::get('answear/downloadexcel', 'AnswearController@export');
     Route::get('answear/test', 'AnswearController@test');
     Route::post('tip/import', 'TipController@uploadExcel');
+    Route::post('link/import', 'LinkController@import');
     Route::resource('statement', 'statementController');
+    Route::resource('link', 'LinkController');
     Route::resource('quisioner', 'QuisionerController');
     Route::resource('/tip', 'TipController');
 });

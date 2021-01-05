@@ -178,6 +178,26 @@
                                     </li>
                                 </div>
                             </ul>
+                            <ul class="collapse" id="app" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="/admin/tip">
+                                            <span class="nav-text">Daftar saran</span>
+
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
+                            <ul class="collapse" id="app" data-parent="#sidebar-menu">
+                                <div class="sub-menu">
+                                    <li>
+                                        <a class="sidenav-item-link" href="/admin/tip">
+                                            <span class="nav-text">Daftar link</span>
+
+                                        </a>
+                                    </li>
+                                </div>
+                            </ul>
                         </li>
 
 
