@@ -29,7 +29,6 @@ Route::prefix('/teacher')->group(function () {
     Route::middleware('auth:teacher')->group(function () {
         Route::get('/', 'TeacherController@index');
         Route::get('/logout', 'TeacherController@postLogout');
-
         Route::get('download', 'TeacherController@download');
     });
 });
@@ -46,8 +45,10 @@ Route::prefix('/admin')->group(function () {
     Route::get('answear/', 'AnswearController@index');
     Route::get('answear/downloadexcel', 'AnswearController@export');
     Route::get('answear/test', 'AnswearController@test');
+    Route::post('tip/import', 'TipController@uploadExcel');
     Route::resource('statement', 'statementController');
     Route::resource('quisioner', 'QuisionerController');
+    Route::resource('/tip', 'TipController');
 });
 // Route::get('/aspect', 'AspectController@index');
 Route::get('/kuisioner', 'QuizController@index');
