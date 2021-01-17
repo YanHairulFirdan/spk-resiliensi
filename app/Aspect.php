@@ -9,7 +9,7 @@ class Aspect extends Model
     protected $fillable = ['aspect', 'strength_suggestion', 'weak_suggestion'];
     public function statements()
     {
-        return $this->hasMany(Statement::class, 'statement_id');
+        return $this->hasMany(Statement::class);
     }
     public function tips()
     {

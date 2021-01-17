@@ -16,6 +16,7 @@ class Score extends Model
         'percaya_diri',
         'analisis_kausal',
         'empati',
-        'reaching_out'
+        'reaching_out',
+        'final_score',
     ];
 }

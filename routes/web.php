@@ -40,17 +40,19 @@ Route::get('/admin-test', function () {
 });
 
 Route::prefix('/admin')->group(function () {
-    Route::resource('aspect', 'AspectController');
-    Route::post('statement/import', 'statementController@import');
-    Route::get('answear/', 'AnswearController@index');
-    Route::get('answear/downloadexcel', 'AnswearController@export');
-    Route::get('answear/test', 'AnswearController@test');
-    Route::post('tip/import', 'TipController@uploadExcel');
-    Route::post('link/import', 'LinkController@import');
-    Route::resource('statement', 'statementController');
-    Route::resource('link', 'LinkController');
-    Route::resource('quisioner', 'QuisionerController');
-    Route::resource('/tip', 'TipController');
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::resource('aspect', 'AspectController');
+        Route::post('statement/import', 'statementController@import');
+        Route::get('answear/', 'AnswearController@index');
+        Route::get('answear/downloadexcel', 'AnswearController@export');
+        Route::get('answear/test', 'AnswearController@test');
+        Route::post('tip/import', 'TipController@uploadExcel');
+        Route::post('link/import', 'LinkController@import');
+        Route::resource('statement', 'statementController');
+        Route::resource('link', 'LinkController');
+        Route::resource('quisioner', 'QuisionerController');
+        Route::resource('/tip', 'TipController');
+    });
 });
 // Route::get('/aspect', 'AspectController@index');
 Route::get('/kuisioner', 'QuizController@index');
