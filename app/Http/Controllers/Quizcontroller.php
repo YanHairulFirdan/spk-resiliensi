@@ -68,31 +68,28 @@ class Quizcontroller extends Controller
             }
         }
         $scores = collect($scores);
-        // dd($scores);
-
-
         return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
     }
 
     public function scoreCalculation($request)
     {
-        $types = ['positive', 'negative'];
-        $datas = [];
-        $scores = [];
-        // $aspects = Aspect::with(['statements'])->get();
         $aspectGroup = [];
         $final_score = 0;
 
         foreach ($this->aspectsArr as $key => $singleAspect) {
             foreach ($request as $parentkey => $inputvalue) {
                 if (preg_match('/' . $singleAspect . '/', $parentkey)) {
-                    $final_score  += $inputvalue;
+                    if (!isset($aspectGroup[$singleAspect])) {
+                        $aspectGroup[$singleAspect] = 0;
+                    }
+                    $aspectGroup[$singleAspect] += $inputvalue;
+                    // echo $inputvalue . "<br>";
                 }
             }
             // += $aspectGroup[$singleAspect];
         }
+        // dd($aspectGroup);
         $final_score = ($final_score / count($request)) * 100;
-        dd($final_score);
         $existingData = Score::where('user_id', auth()->user()->id);
         if ($existingData->exists()) {
             $existingData->update([

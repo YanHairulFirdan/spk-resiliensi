@@ -7,16 +7,20 @@
             {{-- {{ dd($aspects) }} --}}
             @foreach ($aspects as $aspect)
                 <div id="form-group-{{ $loop->index + 1 }}" class="my-4 input-group">
-
+                    @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
+                        <div class="rounded d-flex justify-content-center">
+                            <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset="" class="img-fluid">
+                        </div>
+                    @endif
                     @foreach ($aspect->statements as $statement)
                         <div class="card my-1">
-                            <div class="card-header">
+                            <div class="card-header" style="">
                                 {{ $statement->statement }}
                             </div>
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
-                                    @for ($i = 0; $i < 4; $i++)
-                                        <div class="col-md-3 col-3 d-flex justify-content-center">
+                                    @for ($i = 0; $i < 5; $i++)
+                                        <div class="col-md-2 col-2 d-flex justify-content-center">
                                             <span class="form-radio text-center">
                                                 <input type="radio"
                                                     name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
@@ -59,6 +63,8 @@
                 counter++;
                 toggleDisplayButton(counter);
                 showForm(counter);
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
                 console.log('next');
                 console.log(typeof(counter));
                 console.log('form ke-' + counter);

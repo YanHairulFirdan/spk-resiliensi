@@ -10,24 +10,37 @@
                 <canvas id="canvas">
                 </canvas>
             </div>
-            @foreach ($labels as $label)
-                {{-- {{ dd(gettype($label)) }} --}}
+            <div id="accordion">
                 <div class="row my-4 justify-content-center">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>{{ $label->aspect }}</h4>
+                    @foreach ($labels as $label)
+                        {{-- {{ dd(gettype($label)) }} --}}
+                        <div class="card col-12">
+                            <div class="card-header" id="{{ $loop->index }}heading">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse"
+                                        data-target="#collapse_{{ $loop->index }}"
+                                        aria-expanded="{{ $loop->index <= 0 ? 'true' : 'false' }}"
+                                        aria-controls="collapse_{{ $loop->index }}">
+                                        <h4 class="text-bold">
+                                            {{ $label->aspect }}
+                                        </h4>
+                                    </button>
+                                </h5>
                             </div>
-                            <div class="card-body">
-                                <h3>ini tips untuk kamu</h3>
-                                @foreach ($label->tips as $tip)
-                                    <p>{{ $tip->tips }}</p>
-                                @endforeach
+
+                            <div id="collapse_{{ $loop->index }}" class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
+                                aria-labelledby="{{ $loop->index }}heading" data-parent="#accordion">
+                                <div class="card-body">
+                                    <h3>ini tips untuk kamu</h3>
+                                    @foreach ($label->tips as $tip)
+                                        <p>{{ $tip->tips }}</p>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-            @endforeach
+            </div>
         </div>
     </div>
 
