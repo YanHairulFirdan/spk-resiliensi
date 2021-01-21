@@ -26,7 +26,6 @@ class teacherSeeder extends Seeder
         $faker = Factory::create();
         foreach ($classArr as $key => $arr) {
             if ($key == 0) {
-
                 Teacher::create([
                     'name' => $faker->name(),
                     'username' => $faker->userName,

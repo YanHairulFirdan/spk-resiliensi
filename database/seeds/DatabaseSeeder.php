@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(aspectSeeder::class);
         $this->call(userSeeder::class);
-        $this->call(StatementSeeder::class);
+        // $this->call(StatementSeeder::class);
         // $this->call(userSeeder::class);
         $this->call(TipSeeder::class);
     }
