@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\QuisionerImport;
 use App\Quisioner;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class QuisionerController extends Controller
 {
@@ -91,5 +93,15 @@ class QuisionerController extends Controller
     {
         $quisioner->delete();
         return redirect('/admin/quisioner')->with('success', 'Data kuisioner berhasil dihapus');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'excel' => 'required|mimes:xlsx'
+        ]);
+
+        Excel::import(new QuisionerImport, $request->file('excel'));
+        return back()->with('success', 'data baru berhasil diimport');
     }
 }

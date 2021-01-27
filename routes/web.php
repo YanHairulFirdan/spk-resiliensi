@@ -43,6 +43,7 @@ Route::prefix('/admin')->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('aspect', 'AspectController');
         Route::post('statement/import', 'statementController@import');
+        Route::post('question/import', 'QuisionerController@import');
         Route::get('answear/', 'AnswearController@index');
         Route::get('answear/downloadexcel', 'AnswearController@export');
         Route::get('answear/test', 'AnswearController@test');
@@ -51,7 +52,7 @@ Route::prefix('/admin')->group(function () {
         Route::resource('statement', 'statementController');
         Route::resource('link', 'LinkController');
         Route::resource('quisioner', 'QuisionerController');
-        Route::resource('/tip', 'TipController');
+        Route::resource('tip', 'TipController');
     });
 });
 // Route::get('/aspect', 'AspectController@index');

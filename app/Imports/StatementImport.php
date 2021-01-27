@@ -4,8 +4,9 @@ namespace App\Imports;
 
 use App\Statement;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class StatementImport implements ToModel
+class StatementImport implements ToModel, WithHeadingRow
 {
     /**
      * @param array @$row
@@ -14,16 +15,20 @@ class StatementImport implements ToModel
      */
     public function model(array $row)
     {
-        // $statement = new Statement([
-        //     'aspect_id' => $row['aspect_id'],
-        //     'statement' => $row['statement'],
-        //     'type' => $row['type']
-        // ]);
-        // dd($statement);
+        $aspects = [
+            "regulasi emosi",
+            "pengendalian impuls",
+            "optimisme",
+            "percaya diri",
+            "analisis kausal",
+            "empati",
+            "reaching out"
+        ];
+        // dd($row);
         return new Statement([
-            'aspect_id' => (int)$row[1],
-            'statement' =>  $row[2],
-            'type' => $row[3],
+            'statement' =>  $row['statement'],
+            'aspect_id' => (int)array_search($row['aspek'], $aspects) + 1,
+            'type' => (string)$row['type'],
         ]);
     }
 }

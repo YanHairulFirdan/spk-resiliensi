@@ -1,5 +1,21 @@
 @extends('admin.layouts')
 @section('content')
+    <form action="/admin/question/import" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="input-group mb-3">
+
+            <input type="file" class="form-control" placeholder="upload file excel" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" name="excel">
+            <div class="input-group-append">
+                <button class="btn btn-outline-success" type="submit">Upload</button>
+            </div>
+        </div>
+        @error('excel')
+            <span class="alert alert-danger row" role="alert">
+                {{ $message }}
+            </span>
+        @enderror
+    </form>
     <div class="card">
         <div class="card-header">
             <h3>Daftar Aspek</h3>

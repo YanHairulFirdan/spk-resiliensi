@@ -19,7 +19,7 @@ class statementController extends Controller
     public function index()
     {
         $aspects = Aspect::get();
-        $statements = Statement::with(['aspect'])->orderBy('created_at', 'DESC')->get();
+        $statements = Statement::with(['aspect'])->get();
 
         // dd($statements);
         return view('admin.statement.index', compact('statements', 'aspects'));

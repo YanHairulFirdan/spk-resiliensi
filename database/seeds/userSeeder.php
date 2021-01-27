@@ -62,30 +62,6 @@ class userSeeder extends Seeder
                 ]);
             }
         }
-        // $classArr = [
-        //     'X IPA I',
-        //     'X IPA II',
-        //     'X IPA III',
-        //     'X IPA IV',
-        //     'X IPA V',
-        //     'X IPA VI',
-        // ];
-
-        // $faker = Factory::create();
-        // for ($i = 0; $i < 5; $i++) {
-        //     for ($j = 0; $j < 30; $j++) {
-        //         User::create([
-        //             'name' => $faker->name,
-        //             'username' => $faker->unique()->userName,
-        //             'email' => $faker->unique()->safeEmail,
-        //             'class' => $classArr[$i],
-        //             'email_verified_at' => now(),
-        //             'phoneNumber' => $faker->phoneNumber,
-        //             'password' => Hash::make($faker->password), // password
-        //             'remember_token' => Str::random(10),
-        //         ]);
-        //     }
-        // }
         User::create([
             'username' => 'admin',
             "password" => Hash::make('admin123pass'),

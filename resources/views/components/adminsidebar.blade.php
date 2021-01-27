@@ -93,7 +93,7 @@
                     <ul class="collapse" id="app" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li>
-                                <a class="sidenav-item-link" href="/admin/tip">
+                                <a class="sidenav-item-link" href="/admin/link">
                                     <span class="nav-text">Daftar link</span>
 
                                 </a>

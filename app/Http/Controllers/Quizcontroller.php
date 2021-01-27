@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Aspect;
 use App\CustomClass\ScoreCalculation;
+use App\Quisioner;
 use App\Score;
 use App\Statement;
 use App\Tip;
@@ -49,7 +50,8 @@ class Quizcontroller extends Controller
     }
     public function motivationForm()
     {
-        return view('kuisioners.motivasi');
+        $questions = Quisioner::get();
+        return view('kuisioners.motivasi', compact('questions'));
     }
     public function savemotivationForm()
     {
