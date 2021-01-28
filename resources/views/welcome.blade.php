@@ -1,115 +1,118 @@
 @extends('layouts.app')
 @section('content')
-    <div class="flex-center position-ref full-height">
-        {{-- @if (Route::has('login'))
-            <div class="top-right links">
-                @auth
-                <a href="{{ url('/home') }}">Home</a>
-                @else
-                <a href="{{ route('login') }}">Login</a>
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-                @endauth
+    <div class="content">
+        <div class="justify-content-center align-items-center">
+            <h3 class="font-weight-bold text-center text-primary">
+                Halo, selamat datang di website kami.
+            </h3>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-4 col-12 my-2">
+                <img src="/img/images/guess.jpg" class="image-thumbnail" width="100%" alt="">
             </div>
-        @endif --}}
-
-        <div class="content">
-            <div class="container">
-                <div class="justify-content-center">
-                    <h3 class="text-bold tex-center">
-                        Tes Resiliensi online
-                    </h3>
-                </div>
-                <div id="accordion">
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                    aria-expanded="true" aria-controls="collapseOne">
-                                    <h4 class="text-bold">
-                                        Apa itu resiliensi?
-                                    </h4>
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                                probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    <h4 class="text-bold">
-                                        Apa itu resiliensi?
-                                    </h4>
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                                probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
-                                    aria-expanded="false" aria-controls="collapseThree">
-                                    <h4 class="text-bold">
-                                        Apa itu resiliensi?
-                                    </h4>
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
-                                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
-                                lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
-                                probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center my-4">
-                <button class="btn btn-lg btn-primary">
-                    @if (!Auth::user())
-                        <span data-button="auth" onclick="authForm" data-toggle="modal" data-target="#exampleModal">
-                            Mulai tes
-                        </span>
-                    @else
-                        <a href="/motivation" class="text-light">Mulai tes</a>
-                    @endif
-                </button>
+            <div class="col-md-1 col-12 my-2"></div>
+            <div class="col-md-5 col-12 my-2">
+                <h4 class="font-weight-bold text-primary">
+                    Apa itu resilience?
+                </h4>
+                <p class="text-primary">
+                    Resiliensi adalah keberhasilan individu dalam beradaptasi dengan kondisi yang tidak menyenangkan
+                    / buruk dalam mengatasi, melalui, dan kembali pada kondisi semula untuk mempertahankan
+                    stabilitas psikologis dalam menghadapi stres.
+                </p>
             </div>
         </div>
+        <h4 class="text-center font-weight-bold text-primary">
+            Apa saja aspek resilience?
+        </h4>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+                            aria-controls="collapseOne">
+                            <h5 class="font-weight-bold">
+                                Regulasi Emosi
+                            </h5>
+                        </button>
+                    </h5>
+                </div>
 
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                        beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+                        lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
+                        probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                            aria-expanded="false" aria-controls="collapseTwo">
+                            <h5 class="font-weight-bold">
+                                Empati
+                            </h5>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                        beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+                        lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
+                        probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
+                            aria-expanded="false" aria-controls="collapseThree">
+                            <h5 class="font-weight-bold">
+                                Optimis
+                            </h5>
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                    <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                        squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa
+                        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                        beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+                        lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you
+                        probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center my-4">
+        <button class="btn btn-lg btn-primary">
+            @if (!Auth::user())
+                <span data-button="auth" onclick="authForm" data-toggle="modal" data-target="#exampleModal">
+                    Mulai tes
+                </span>
+            @else
+                <a href="/motivation" class="text-light">Mulai tes</a>
+            @endif
+        </button>
     </div>
     </div>
+    {{--
+    </div>
+    </div> --}}
 
     {{-- start login form --}}
     <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">

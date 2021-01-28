@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white text-bold" href="{{ url('/') }}">
-                    {{ config('app.name', 'Resilience') }}
+                    {{ config('Resilience', 'Resilience') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -81,7 +81,30 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container-fluid">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    @for ($i = 0; $i < 3; $i++)
+                        <div class="carousel-item {{ $i <= 0 ? 'active' : '' }}">
+                            <img class="d-block w-100" src="img/images/banner{{ $i }}.jpg" alt="First slide">
+                        </div>
+                    @endfor
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
         <main class="py-4">
             <div class="container">
                 <div class="row justify-content-center">
@@ -91,9 +114,9 @@
                                 @include('components.formStepper')
                             </div>
                         @endif
-                        @yield('content')
                     </div>
                 </div>
+                @yield('content')
             </div>
         </main>
     </div>
