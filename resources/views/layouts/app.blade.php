@@ -29,7 +29,7 @@
                 <a class="navbar-brand text-white text-bold" href="{{ url('/') }}">
                     {{ config('Resilience', 'Resilience') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -81,7 +81,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid">
+        <div class="container-fluid" style="padding: 0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -105,121 +105,61 @@
                 </a>
             </div>
         </div>
-        <main class="py-4">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        @if (Request::is('kuisioner') || Request::is('motivation') || Request::is('result'))
-                            <div class="container-fluid">
-                                @include('components.formStepper')
-                            </div>
-                        @endif
+        <main class="py-4" style="background-color: #FFF">
+            @if (!Request::is('/'))
+                <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            @if (Request::is('kuisioner') || Request::is('motivation') || Request::is('result'))
+                                <div class="container-fluid">
+                                    @include('components.formStepper')
+                                </div>
+                            @endif
+                        </div>
                     </div>
+                    @yield('content')
                 </div>
+            @else
                 @yield('content')
-            </div>
+            @endif
+
         </main>
     </div>
-
-    <script>
-        document.addEventListener('click', function(event) {
-            // console.log('clicked anywhere :D');
-
-        });
-
-        var flag = [];
-
-        function init() {
-            var elementGroups = Array.from(document.querySelectorAll('.input-group'));
-            for (let index = 0; index < elementGroups.length; index++) {
-                flag[index] = false;
-
-            }
-        }
-        // init();
-        window.onload = function() {
-            // console.log('ok');
-            var elementGroups = Array.from(document.querySelectorAll('.input-group'));
-            var checkboxes = Array.from(document.querySelectorAll('input[type=radio]'));
-            elementGroups.forEach(element => element.style.display = 'none');
-            checkboxes.forEach(checkboxe => checkboxe.addEventListener('click', flagChange));
-            document.getElementById('form-group-1').style.display = 'block';
-            // var btn = document.getElementById('button');
-            // console.log(btn);
-            var buttons = Array.from(document.querySelectorAll('.page-number'));
-            buttons.forEach(button => button.addEventListener('click', showForm))
-        }
-
-
-
-        function flagChange(event) {
-
-            //listen for event change occurs
-            var element = event.target;
-            let uncheck = 0;
-            //get the id of event's parent
-            var parentId = element.parentElement.parentElement.id;
-            //get the last index of the id e.x 1
-            var indexOfId = parentId[parentId.length - 1];
-            var btn = document.getElementById('button');
-            console.log(btn);
-            console.log(indexOfId)
-            var flagCheck = 0;
-            //get all of input element from the current form input group
-            var checkboxes = Array.from(document.querySelectorAll("#" + parentId + " input"));
-
-            //check if the there  or some input were checked set flag i to true
-            if (!element.checked) {
-                // console.log("checked false");
-                checkboxes.forEach(checkbox => console.log(checkbox.checked))
-                check = checkboxes.forEach(checkbox => {
-                    if (!checkbox.checked) {
-                        uncheck++;
-                    }
-                })
-                console.log("amount of uncheck form= " + uncheck)
-                if (uncheck != checkboxes.length) {
-                    // console.log("all input has checked")
-                    flag[indexOfId - 1] = true;
-                } else {
-                    flag[indexOfId - 1] = false;
-                }
-            } else if (element.checked) {
-                if (uncheck > 0) uncheck--;
-                else if (uncheck == 0) flag[indexOfId - 1] = true;
-            }
-            console.log(flag);
-
-            //else if none of them were checked set flag i to false
-
-
-
-            //if all of flag is true set button of submit to enable
-
-            flag.forEach(singleFlag => {
-                if (singleFlag) flagCheck++;
-                else if (!singleFlag) {
-                    if (flagCheck > 0) flagCheck--;
-                }
-            });
-            console.log('jumlah flag check = ' + flagCheck);
-            if (flagCheck == 7) btn.style.display = "block";
-            else btn.style.display = "none";
-
-        }
-
-
-        // document.getElementById('test-button').addEventListener('click', function (event) {
-        //     console.log('okkkk');
-        //     var element = event.target;
-        //     if (element.classList.contains('active')) {
-        //         element.classList.remove('active')
-        //     } else {
-        //         element.classList.add('active')
-        //     }
-        // })
-
-    </script>
+    <footer class="container-fluid py-4" style="background-color: #0799D6">
+        <div class="container my-4">
+            <div class="row justify-content-center text-white">
+                <div class="col-md-3">
+                    <h4 class="font-weight-bold">Kontak saya</h4>
+                    <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
+                        <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
+                        <div class=""><span>Facebook</span></div>
+                    </div>
+                    <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
+                        <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
+                        <div class=""><span>linkedIn</span></div>
+                    </div>
+                    <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
+                        <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
+                        <div class=""><span>Instagaram</span></div>
+                    </div>
+                    <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
+                        <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
+                        <div class=""><span>Twitter</span></div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+                    <h4 class="font-weight-bold">Partner : </h4>
+                    <div class="bg-white" style="height: 130px; width: 130px; border-radius: 50%;"></div>
+                    <h5 class="my-3">SMA Negeri 1 Kota Bima</h5>
+                    <span>jln. Soekarno-Hatta no.x Kota Bima NTB</span>
+                </div>
+            </div>
+        </div>
+        <p class="text-white text-center" style="margin: 0">
+            <span class="text-small">dikembangkan oleh : YanHF.dev</span>
+        </p>
+    </footer>
     @stack('javascript')
 </body>
 

@@ -4,7 +4,7 @@
     <div class="content">
         <form method="POST" action="/kuisioner">
             @csrf
-            {{-- {{ dd($aspects) }} --}}
+
             @foreach ($aspects as $aspect)
                 <div id="form-group-{{ $loop->index + 1 }}" class="my-4 input-group">
                     @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
@@ -14,8 +14,10 @@
                     @endif
                     @foreach ($aspect->statements as $statement)
                         <div class="card my-1">
-                            <div class="card-header" style="">
-                                {{ $statement->statement }}
+                            <div class="card-header bg-primary" style="">
+                                <span class="text-white">
+                                    {{ $statement->statement }}
+                                </span>
                             </div>
                             <div class="card-body">
                                 <div class="row d-flex justify-content-center">
@@ -105,7 +107,7 @@
             }
 
             /*
-                function for check whether  all of input were select?
+                function for check whether  all of input were selected?
                 get the input from current section
                 looping each input and check for if there any input section does not have check/select
                 if all input section has been selected show button submit

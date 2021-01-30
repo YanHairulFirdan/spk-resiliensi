@@ -3,9 +3,21 @@
 @section('content')
     <div class="container">
 
-        <h3><b>Hai {{ auth()->user()->name }}, ini hasil test kamu</b></h3>
-        <p>berdasarkan hasil test kamu telah memiliki beberapa karakter</p>
-        <div class="row">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <h3 class="text-center text-primary"><b>Selamat {{ auth()->user()->name }}, kamu berhasil menyelesaikan test
+                        ini</b></h3>
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <img src="/img/images/congrats.jpg" alt="" srcset="" width="100%" height="100%">
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
             <div class="col-md-10">
                 <canvas id="canvas">
                 </canvas>
@@ -14,7 +26,7 @@
                 <div class="row my-4 justify-content-center">
                     @foreach ($labels as $label)
                         {{-- {{ dd(gettype($label)) }} --}}
-                        <div class="card col-12">
+                        <div class="card col-10">
                             <div class="card-header" id="{{ $loop->index }}heading">
                                 <h5 class="mb-0">
                                     <button class="btn btn-link" data-toggle="collapse"

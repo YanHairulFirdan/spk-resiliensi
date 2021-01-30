@@ -32,9 +32,7 @@ Route::prefix('/teacher')->group(function () {
         Route::get('download', 'TeacherController@download');
     });
 });
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
 Route::get('/admin-test', function () {
     return view('admin.index');
 });

@@ -14,7 +14,7 @@
                             <div class="form-group">
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <input id="username" type="text"
                                         class="form-control input-lg @error('username') is-invalid @enderror"
                                         name="username" value="{{ old('username') }}" required autocomplete="username"
@@ -29,7 +29,7 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <input id="password" type="password"
                                         class="form-control input-lg @error('password') is-invalid @enderror"
                                         name="password" required autocomplete="current-password" placeholder="password">
