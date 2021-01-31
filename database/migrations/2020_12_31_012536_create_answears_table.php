@@ -22,7 +22,6 @@ class CreateAnswearsTable extends Migration
             $table->text('answear_4');
             $table->text('answear_5');
             $table->text('answear_6');
-            $table->text('answear_7');
             $table->timestamps();
         });
     }

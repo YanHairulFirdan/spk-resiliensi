@@ -16,6 +16,8 @@ class CreateAspectsTable extends Migration
         Schema::create('aspects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('aspect');
+            $table->text('descriptions')->nullable();
+            $table->text('quote')->nullable();
             $table->timestamps();
         });
     }

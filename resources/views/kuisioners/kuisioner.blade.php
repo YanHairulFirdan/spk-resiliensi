@@ -4,7 +4,7 @@
     <div class="content">
         <form method="POST" action="/kuisioner">
             @csrf
-
+            {{-- {{ dd($aspects) }} --}}
             @foreach ($aspects as $aspect)
                 <div id="form-group-{{ $loop->index + 1 }}" class="my-4 input-group">
                     @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))

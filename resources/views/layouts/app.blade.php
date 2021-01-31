@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                         document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -160,6 +160,100 @@
             <span class="text-small">dikembangkan oleh : YanHF.dev</span>
         </p>
     </footer>
+    <script>
+        var flag = [];
+
+        function init() {
+            var elementGroups = Array.from(document.querySelectorAll('.input-group'));
+            for (let index = 0; index < elementGroups.length; index++) {
+                flag[index] = false;
+
+            }
+        }
+        // init();
+        window.onload = function() {
+            // console.log('ok');
+            var elementGroups = Array.from(document.querySelectorAll('.input-group'));
+            var checkboxes = Array.from(document.querySelectorAll('input[type=radio]'));
+            elementGroups.forEach(element => element.style.display = 'none');
+            checkboxes.forEach(checkboxe => checkboxe.addEventListener('click', flagChange));
+            document.getElementById('form-group-1').style.display = 'block';
+            // var btn = document.getElementById('button');
+            // console.log(btn);
+            var buttons = Array.from(document.querySelectorAll('.page-number'));
+            buttons.forEach(button => button.addEventListener('click', showForm))
+        }
+
+
+
+        function flagChange(event) {
+
+            //listen for event change occurs
+            var element = event.target;
+            let uncheck = 0;
+            //get the id of event's parent
+            var parentId = element.parentElement.parentElement.id;
+            //get the last index of the id e.x 1
+            var indexOfId = parentId[parentId.length - 1];
+            var btn = document.getElementById('button');
+            console.log(btn);
+            console.log(indexOfId)
+            var flagCheck = 0;
+            //get all of input element from the current form input group
+            var checkboxes = Array.from(document.querySelectorAll("#" + parentId + " input"));
+
+            //check if the there  or some input were checked set flag i to true
+            if (!element.checked) {
+                // console.log("checked false");
+                checkboxes.forEach(checkbox => console.log(checkbox.checked))
+                check = checkboxes.forEach(checkbox => {
+                    if (!checkbox.checked) {
+                        uncheck++;
+                    }
+                })
+                console.log("amount of uncheck form= " + uncheck)
+                if (uncheck != checkboxes.length) {
+                    // console.log("all input has checked")
+                    flag[indexOfId - 1] = true;
+                } else {
+                    flag[indexOfId - 1] = false;
+                }
+            } else if (element.checked) {
+                if (uncheck > 0) uncheck--;
+                else if (uncheck == 0) flag[indexOfId - 1] = true;
+            }
+            console.log(flag);
+
+            //else if none of them were checked set flag i to false
+
+
+
+            //if all of flag is true set button of submit to enable
+
+            flag.forEach(singleFlag => {
+                if (singleFlag) flagCheck++;
+                else if (!singleFlag) {
+                    if (flagCheck > 0) flagCheck--;
+                }
+            });
+            console.log('jumlah flag check = ' + flagCheck);
+            if (flagCheck == 7) btn.style.display = "block";
+            else btn.style.display = "none";
+
+        }
+
+
+        // document.getElementById('test-button').addEventListener('click', function (event) {
+        //     console.log('okkkk');
+        //     var element = event.target;
+        //     if (element.classList.contains('active')) {
+        //         element.classList.remove('active')
+        //     } else {
+        //         element.classList.add('active')
+        //     }
+        // })
+
+    </script>
     @stack('javascript')
 </body>
 

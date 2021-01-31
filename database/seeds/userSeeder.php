@@ -57,8 +57,7 @@ class userSeeder extends Seeder
                     'answear_3' => $this->faker->realText(),
                     'answear_4' => $this->faker->realText(),
                     'answear_5' => $this->faker->realText(),
-                    'answear_6' => $this->faker->realText(),
-                    'answear_7' => $this->faker->realText(),
+                    'answear_6' => $this->faker->realText()
                 ]);
             }
         }
