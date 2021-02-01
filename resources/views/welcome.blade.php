@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('content')
-    @if (isset($errors)))
-        <div class="container alert alert-danger">
-            <ul class="">
-                @foreach ($errors->all() as $item)
-                    <li class="text-white">
-                        {{ $item }}
-                    </li>
-                @endforeach
-            </ul>
+
+    @if (count($errors) > 0)
+        <div class="container-fluid">
+            <div class="container d-flex justify-content-center alert alert-danger">
+                <span>upps, you got some errors</span>
+                <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{ $item }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
         </div>
     @endif
-
     <div class="content">
         <div class="justify-content-center align-items-center">
             <h3 class="font-weight-bold text-center text-primary">
@@ -288,10 +290,6 @@
         </button>
     </div>
     </div>
-    {{--
-    </div>
-    </div> --}}
-
     {{-- start login form --}}
     <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog">
@@ -330,12 +328,11 @@
             </div>
         </div>
     </div>
-
     {{-- end register form --}}
 @endsection
 
 @push('javascript')
-    <script>
+    <script type="text/javascript">
         function toggleForm(openedModal) {
             if (openedModal == 'login') {
                 $('#exampleModal').modal('hide');
