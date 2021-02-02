@@ -17,6 +17,7 @@ class CreateTipsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('aspect_id');
             $table->text('tips');
+            $table->string('tipe'); //todo or suggestion
             $table->timestamps();
         });
     }
