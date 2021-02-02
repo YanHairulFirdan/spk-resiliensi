@@ -19,7 +19,7 @@
                             <th scope="row" class="text-center">{{ $loop->index + 1 }}</th>
                             <td class="text-center">{{ $aspect->aspect }}</td>
                             <td class="text-center">
-                                <a href="/aspect/{{ $aspect->id }}/edit" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/admin/aspect/{{ $aspect->id }}/edit" class="btn btn-sm btn-success">Edit</a>
                                 <form action="/aspect/{{ $aspect->id }}" style="display: inline" method="post">
                                     @csrf
                                     @method('DELETE')
