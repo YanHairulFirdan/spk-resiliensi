@@ -51,6 +51,8 @@ Route::prefix('/admin')->group(function () {
         Route::resource('link', 'LinkController');
         Route::resource('quisioner', 'QuisionerController');
         Route::resource('tip', 'TipController');
+        Route::get('student', 'studentController@index')->name('admin.student');
+        Route::get('student/download', 'studentController@download')->name('admin.student');
     });
 });
 // Route::get('/aspect', 'AspectController@index');

@@ -182,7 +182,7 @@
                     <ul class="collapse" id="icons" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li>
-                                <a class="sidenav-item-link" href="material-icon.html">
+                                <a class="sidenav-item-link" href="/admin/student">
                                     <span class="nav-text">Lihat Data Siswa</span>
 
                                 </a>
