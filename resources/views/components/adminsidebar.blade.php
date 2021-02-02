@@ -173,12 +173,23 @@
                     </ul>
                 </li>
 
+                <li class="has-sub">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
+                        aria-expanded="false" aria-controls="icons">
+                        <i class="mdi mdi-diamond-stone"></i>
+                        <span class="nav-text">Data Siswa</span> <b class="caret"></b>
+                    </a>
+                    <ul class="collapse" id="icons" data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li>
+                                <a class="sidenav-item-link" href="material-icon.html">
+                                    <span class="nav-text">Lihat Data Siswa</span>
 
-
-
-
-
-
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
+                </li>
             </ul>
 
         </div>
