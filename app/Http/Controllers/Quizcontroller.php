@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Answear;
 use App\Aspect;
-use App\CustomClass\ScoreCalculation;
 use App\Quisioner;
 use App\Score;
-use App\Statement;
 use App\Tip;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator as FacadesValidator;
+
 
 class Quizcontroller extends Controller
 {
@@ -53,8 +52,26 @@ class Quizcontroller extends Controller
         $questions = Quisioner::get();
         return view('kuisioners.motivasi', compact('questions'));
     }
-    public function savemotivationForm()
+    public function savemotivationForm(Request $request)
     {
+        // dd($request->except('_token'));
+        $answearValidator = FacadesValidator::make(
+            $request->except('_token'),
+            [
+                'answear_1' => 'required|min:8',
+                'answear_2' => 'required|min:8',
+                'answear_3' => 'required|min:8',
+                'answear_4' => 'required|min:8',
+                'answear_5' => 'required|min:8',
+                'answear_6' => 'required|min:8',
+            ],
+            [
+                'required' => 'harap isi bidang ini',
+                'min' => 'jawaban anda terlalu pendek, jumlah minimal karakter untuk jawaban ini adalah 8 karakter'
+            ]
+        )->validate();
+        Answear::updateOrCreate(['user_id' => (int)auth()->user()->id], $request->except('_token'));
+
         return redirect('/kuisioner');
     }
 
@@ -85,12 +102,9 @@ class Quizcontroller extends Controller
                         $aspectGroup[$singleAspect] = 0;
                     }
                     $aspectGroup[$singleAspect] += $inputvalue;
-                    // echo $inputvalue . "<br>";
                 }
             }
-            // += $aspectGroup[$singleAspect];
         }
-        // dd($aspectGroup);
         $final_score = ($final_score / count($request)) * 100;
         $existingData = Score::where('user_id', auth()->user()->id);
         if ($existingData->exists()) {

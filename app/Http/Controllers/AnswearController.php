@@ -16,9 +16,21 @@ class AnswearController extends Controller
         return view('admin.answear.index', compact('answears'));
     }
 
+    public function saveNaswear(Request $request)
+    {
+    }
     public function export()
     {
         return Excel::download(new AnswearExport, 'jawaban kuisioner.xlsx');
     }
-
+    protected function checkOldAnswear($user_id)
+    {
+        $answears = Answear::where('user_id', '=', $user_id)->get();
+        if ($answears) {
+            $answears->delete();
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
