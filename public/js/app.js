@@ -37216,6 +37216,79 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./public/js/form.js":
+/*!***************************!*\
+  !*** ./public/js/form.js ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+window.onload = function (event) {
+  var elementGroups = Array.from(document.getElementsByClassName('input-group'));
+  console.log(_typeof(elementGroups));
+  elementGroups.forEach(function (element) {
+    element.style.display = 'none';
+  });
+}; // document.getElementById('form-group-1').style.display = 'block';
+
+
+var previousButton = document.getElementById('previous');
+var btnNext = document.getElementById('next');
+var submit = document.getElementById('submit'); // previousButton.style.display = 'none';
+
+submit.style.display = 'none';
+var counter = 1;
+
+function nextForm() {
+  counter++;
+  toggleDisplayButton(counter);
+  showForm(counter);
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  console.log('next');
+  console.log(_typeof(counter));
+  console.log('form ke-' + counter);
+}
+
+function previousForm() {
+  counter--;
+  toggleDisplayButton(counter);
+  console.log(_typeof(counter));
+  showForm(counter);
+  console.log('form ke-' + counter);
+  console.log('previous');
+}
+
+function toggleDisplayButton(counter) {
+  if (counter > 1) {
+    previousButton.innerText = 'sebelumnya';
+
+    if (counter > 6) {
+      console.log(counter);
+      btnNext.style.display = 'none';
+      submit.style.display = 'inline';
+    } else {
+      btnNext.style.display = 'inline';
+      submit.style.display = 'none';
+    }
+  } else {
+    previousButton.innerHTML = '<a href = "/motivation">sebelumnya</a>';
+  }
+}
+
+function showForm(counter) {
+  var inputElement = Array.from(document.getElementsByClassName("input-group"));
+  inputElement.forEach(function (input) {
+    input.style.display = 'none';
+  });
+  var showform = document.getElementById("form-group-" + counter);
+  showform.style.display = 'block';
+}
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -37245,8 +37318,9 @@ try {
   window.Popper = __webpack_require__(/*! popper.js */ "./node_modules/popper.js/dist/esm/popper.js")["default"];
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
-  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js"); // require('../../public/js/form');
+  __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
 
+  __webpack_require__(/*! ../../public/js/form */ "./public/js/form.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

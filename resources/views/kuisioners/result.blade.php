@@ -25,7 +25,6 @@
             <div id="accordion">
                 <div class="row my-4 justify-content-center">
                     @foreach ($labels as $label)
-                        {{-- {{ dd(gettype($label)) }} --}}
                         <div class="card col-10">
                             <div class="card-header" id="{{ $loop->index }}heading">
                                 <h5 class="mb-0">
@@ -43,10 +42,24 @@
                             <div id="collapse_{{ $loop->index }}" class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
                                 aria-labelledby="{{ $loop->index }}heading" data-parent="#accordion">
                                 <div class="card-body">
-                                    <h3>ini tips untuk kamu</h3>
-                                    @foreach ($label->tips as $tip)
-                                        <p>{{ $tip->tips }}</p>
-                                    @endforeach
+                                    <div class="todos">
+                                        <h4>Hal yang bisa kamu lakukan untuk meningkat kan aspek
+                                            <strong>{{ $label->aspect }}</strong>
+                                        </h4>
+                                        @foreach ($label->tips as $tip)
+                                            @if ($tip->tipe === 'todo')
+                                                <p>{{ $tip->tips }}</p>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    <div class="todos">
+                                        <h4>selain itu kamu disarankan untuk melakukan hal-hal di bawah ini:</h4>
+                                        @foreach ($label->tips as $tip)
+                                            @if ($tip->tipe === 'suggestion')
+                                                <p>{{ $tip->tips }}</p>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>

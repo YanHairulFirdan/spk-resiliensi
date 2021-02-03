@@ -6,14 +6,20 @@
             @csrf
             {{-- {{ dd($aspects) }} --}}
             @foreach ($aspects as $aspect)
-                <div id="form-group-{{ $loop->index + 1 }}" class="my-4 input-group">
+                <div id="form-group-{{ $loop->iteration }}" class="my-4 input-group d-flex justify-content-center">
                     @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
-                        <div class="rounded d-flex justify-content-center">
-                            <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset="" class="img-fluid">
+                        <div class="row d-flex justify-content-center">
+                            {{-- <div class="col-md-8"> --}}
+                                <div class="rounded">
+                                    <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset="" class="img-fluid"
+                                        height="564px" width="564px">
+                                </div>
+                                {{--
+                            </div> --}}
                         </div>
                     @endif
                     @foreach ($aspect->statements as $statement)
-                        <div class="card my-1">
+                        <div class="card my-1 col-md-8">
                             <div class="card-header bg-primary" style="">
                                 <span class="text-white">
                                     {{ $statement->statement }}
@@ -46,77 +52,24 @@
             <button class="btn border-primary btn-sm btn-large mx-4" id="previous" onclick="previousForm()"><a
                     href="/motivation">sebelumnya</a></button>
             <button class="btn btn-primary btn-sm btn-large mx-4" id="next" onclick="nextForm()">selanjutnya</button>
+            <button class="btn btn-primary btn-sm btn-large mx-4" id="next" onclick="test()">test</button>
         </div>
+        <script>
+            /*
+                                                        function for check whether  all of input were selected?
+                                                        get the input from current section
+                                                        looping each input and check for if there any input section does not have check/select
+                                                        if all input section has been selected show button submit
+                                                    */
+            function test() {
+                document.getElementById('form-group-1').style.display = 'none';
+                console.log('ok');
+            }
+
+        </script>
     @endsection
 
 
     @push('javascript')
-        <script>
-            const previousButton = document.getElementById('previous');
-            const btnNext = document.getElementById('next');
-            const submit = document.getElementById('submit');
-            // previousButton.style.display = 'none';
-            submit.style.display = 'none';
 
-
-            var counter = 1;
-
-            function nextForm() {
-                counter++;
-                toggleDisplayButton(counter);
-                showForm(counter);
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-                console.log('next');
-                console.log(typeof(counter));
-                console.log('form ke-' + counter);
-            }
-
-            function previousForm() {
-                counter--;
-                toggleDisplayButton(counter);
-                console.log(typeof(counter));
-                showForm(counter);
-                console.log('form ke-' + counter);
-                console.log('previous');
-            }
-
-            function toggleDisplayButton(counter) {
-                if (counter > 1) {
-                    previousButton.innerText = 'sebelumnya';
-                    if (counter > 6) {
-                        console.log(counter);
-                        btnNext.style.display = 'none';
-                        submit.style.display = 'inline';
-                    } else {
-                        btnNext.style.display = 'inline';
-                        submit.style.display = 'none';
-                    }
-                } else {
-                    previousButton.innerHTML = '<a href = "/motivation">sebelumnya</a>';
-                }
-            }
-
-            function showForm(counter) {
-                var inputElement = Array.from(document.getElementsByClassName("input-group"));
-                inputElement.forEach(input => {
-                    input.style.display = 'none';
-                })
-                var showform = document.getElementById("form-group-" + counter)
-                showform.style.display = 'block'
-            }
-
-            /*
-                function for check whether  all of input were selected?
-                get the input from current section
-                looping each input and check for if there any input section does not have check/select
-                if all input section has been selected show button submit
-            */
-
-            function activate(counter) {
-                let inputGroup = Array.from(document.querySelectorAll('form-group-' + counter + 'input[radio]'));
-                inputGroup.filter(input => input.checked == 'false')
-            }
-
-        </script>
     @endpush

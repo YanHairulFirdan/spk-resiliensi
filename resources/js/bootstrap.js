@@ -11,7 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-    // require('../../public/js/form');
+    require('../../public/js/form');
 } catch (e) { }
 
 /**

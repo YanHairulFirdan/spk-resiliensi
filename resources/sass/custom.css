@@ -4,9 +4,7 @@ input[type=checkbox]{
     height: calc(1.6em + 0.75rem + 1px);
 }
 
-form:not(:first-child){
-    display: none;
-}
+
 
 /* .active{
     background-color: --blue;
@@ -43,4 +41,8 @@ form:not(:first-child){
 .form-radio{
     display: inline-block;
     margin: 0 auto;
+}
+
+form .input-group{
+    display: none;
 }
