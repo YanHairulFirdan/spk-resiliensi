@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -132,19 +132,19 @@
                     <h4 class="font-weight-bold">Kontak saya</h4>
                     <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
                         <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
-                        <div class=""><span>Facebook</span></div>
+                        <div class="my-auto"><span>Facebook</span></div>
                     </div>
                     <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
                         <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
-                        <div class=""><span>linkedIn</span></div>
+                        <div class="my-auto"><span>linkedIn</span></div>
                     </div>
                     <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
                         <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
-                        <div class=""><span>Instagaram</span></div>
+                        <div class="my-auto"><span>Instagaram</span></div>
                     </div>
                     <div class="contact-wrapper row my-2" style="display: flex; flex-direction: row">
                         <div class="mx-2 bg-white" style="height: 38px; width: 38px; border-radius: 50%;"></div>
-                        <div class=""><span>Twitter</span></div>
+                        <div class="my-auto"><span>Twitter</span></div>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
@@ -161,16 +161,6 @@
         </p>
     </footer>
     <script>
-        var flag = [];
-
-        function init() {
-            var elementGroups = Array.from(document.querySelectorAll('.input-group'));
-            for (let index = 0; index < elementGroups.length; index++) {
-                flag[index] = false;
-
-            }
-        }
-        init();
         // window.onload = function() {
         //     // console.log('ok');
         //     var checkboxes = Array.from(document.querySelectorAll('input[type=radio]'));

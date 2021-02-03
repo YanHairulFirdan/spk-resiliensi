@@ -98,13 +98,12 @@
 
 
 
-        <div class="container-fluid w-100 my-1"
-            style="height: 1709.88px; background-image: url(img/images/top-bg.svg); padding: 0">
+        <div class="container-fluid w-100 my-1 top-info">
             <div class="container">
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-4 my-3">
-                        <div class="card text-primary" style="background-color: #FFF">
-                            <div class="card-header text-center" style="border-bottom-color: #0799d6">
+                        <div class="card text-primary background-color-white">
+                            <div class="card-header text-center border-bottom-color-primary">
                                 <h4 class="text-responsive">
                                     Problematika Apa Saja Yang Dialami Oleh Remaja?
                                 </h4>
@@ -121,8 +120,8 @@
                         </div>
                     </div>
                     <div class="col-md-4 my-3">
-                        <div class="card text-primary" style="background-color: #FFF">
-                            <div class="card-header text-center" style="border-bottom-color: #0799d6">
+                        <div class="card text-primary background-color-white">
+                            <div class="card-header text-center border-bottom-color-primary">
                                 <h4 class="text-responsive">Bagaimana Kondisi Kehidupan Remaja</h4>
                             </div>
                             <div class="card-body">
@@ -186,8 +185,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid text-white"
-            style="background-image: url('/img/images/bottom-bg.svg'); height: 100%; padding-top: 20rem">
+        <div class="container-fluid text-white footer-info">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-12">
@@ -211,7 +209,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-7 my-3">
-                                <div class="card text-primary" style="border-bottom-color: #0799D6 background-color: #FFF">
+                                <div class="card text-primary border-bottom-color-primary background-color-white">
                                     <div class="card-header">
                                         <h3 class="text-center font-weight-bold">kenapa kesehatan mental remaja itu penting?
                                         </h3>
@@ -243,7 +241,7 @@
                                 </div>
                             </div>
                             <div class="col-md-5 my-3">
-                                <div class="card text-primary" style="border-bottom-color: #0799D6 background-color: #FFF">
+                                <div class="card text-primary border-bottom-color-primary background-color-white">
                                     <div class="card-header">
                                         <h3 class="text-center font-weight-bold">Faktor-faktor Kesehatan Mental</h3>
                                     </div>

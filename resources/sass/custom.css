@@ -43,6 +43,22 @@ input[type=checkbox]{
     margin: 0 auto;
 }
 
-form .input-group{
-    display: none;
+
+
+.footer-info{
+    background-image: url('/img/images/bottom-bg.svg'); 
+    height: 100%; 
+    padding-top: 20rem
+}
+.top-info{
+    height: 1709.88px; 
+    background-image: url('/img/images/top-bg.svg'); 
+    padding: 0
+}
+.border-bottom-color-primary{
+    border-bottom-color: #0799d6;
+}
+
+.background-color-white{
+    background-color: #FFF;
 }

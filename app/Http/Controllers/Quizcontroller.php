@@ -33,14 +33,18 @@ class Quizcontroller extends Controller
         $aspectsArr = $this->aspectsArr;
         $aspects =  Aspect::get();
         $options = [
-            'sangat tidak setuju',
-            'tidak setuju',
-            'setuju',
-            'sangat setuju'
+            'Sangat setuju',
+            'Setuju',
+            'Netral',
+            'Tidak setuju',
+            'Sangat tidak setuju',
         ];
-
+        $skor = [
+            'positif' => [5, 4, 3, 2, 1],
+            'negatif' => [1, 2, 3, 4, 5]
+        ];
         // dd($aspects);
-        return view('kuisioners.kuisioner', compact(['aspects', 'aspectsArr', 'options']));
+        return view('kuisioners.kuisioner', compact(['aspects', 'aspectsArr', 'options', 'skor']));
     }
     public function saveQuiz(Request $request)
     {
@@ -77,24 +81,34 @@ class Quizcontroller extends Controller
 
     public function result()
     {
-        $labels = Aspect::with(['tips'])->get();
-        $labelChart = Aspect::with(['tips'])->get()->pluck('aspect');
+        $labelChart = Aspect::get()->pluck('aspect');
         $scores = [];
         $score =  Score::where('user_id', auth()->user()->id)->get()->toArray();
+        $show = false;
         foreach ($this->aspectsArr as $key => $aspect) {
             if (array_key_exists($aspect, $score[0])) {
+                if ($score[0][$aspect] <= 50) {
+                    $show = true;
+                }
                 $scores[$key] = $score[0][$aspect];
             }
         }
         $scores = collect($scores);
-        return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
+        // dd($labelChart);
+        if ($show) {
+            $labels = Aspect::with(['tips'])->get();
+            return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
+        } else {
+            return view('kuisioners.result', compact(['scores', 'labelChart']));
+        }
     }
 
     public function scoreCalculation($request)
     {
         $aspectGroup = [];
         $final_score = 0;
-
+        $count = 0;
+        // dd($request);
         foreach ($this->aspectsArr as $key => $singleAspect) {
             foreach ($request as $parentkey => $inputvalue) {
                 if (preg_match('/' . $singleAspect . '/', $parentkey)) {
@@ -102,8 +116,13 @@ class Quizcontroller extends Controller
                         $aspectGroup[$singleAspect] = 0;
                     }
                     $aspectGroup[$singleAspect] += $inputvalue;
+                    $count++;
                 }
             }
+            // dd($aspectGroup[$singleAspect]);
+            $totalAspect = 5 * $count;
+            $aspectGroup[$singleAspect] = ($aspectGroup[$singleAspect] / $totalAspect) * 100;
+            $count = 0;
         }
         $final_score = ($final_score / count($request)) * 100;
         $existingData = Score::where('user_id', auth()->user()->id);

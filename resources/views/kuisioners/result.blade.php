@@ -22,50 +22,52 @@
                 <canvas id="canvas">
                 </canvas>
             </div>
-            <div id="accordion">
-                <div class="row my-4 justify-content-center">
-                    @foreach ($labels as $label)
-                        <div class="card col-10">
-                            <div class="card-header" id="{{ $loop->index }}heading">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" data-toggle="collapse"
-                                        data-target="#collapse_{{ $loop->index }}"
-                                        aria-expanded="{{ $loop->index <= 0 ? 'true' : 'false' }}"
-                                        aria-controls="collapse_{{ $loop->index }}">
-                                        <h4 class="text-bold">
-                                            {{ $label->aspect }}
-                                        </h4>
-                                    </button>
-                                </h5>
-                            </div>
+            @isset($labels)
+                <div id="accordion">
+                    <div class="row my-4 justify-content-center">
+                        @foreach ($labels as $label)
+                            <div class="card col-10">
+                                <div class="card-header bg-primary" id="{{ $loop->index }}heading">
+                                    <h5 class="mb-0 ">
+                                        <button class="btn btn-link" data-toggle="collapse"
+                                            data-target="#collapse_{{ $loop->index }}"
+                                            aria-expanded="{{ $loop->index <= 0 ? 'true' : 'false' }}"
+                                            aria-controls="collapse_{{ $loop->index }}">
+                                            <h4 class="text-bold text-white">
+                                                {{ $label->aspect }}
+                                            </h4>
+                                        </button>
+                                    </h5>
+                                </div>
 
-                            <div id="collapse_{{ $loop->index }}" class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
-                                aria-labelledby="{{ $loop->index }}heading" data-parent="#accordion">
-                                <div class="card-body">
-                                    <div class="todos">
-                                        <h4>Hal yang bisa kamu lakukan untuk meningkat kan aspek
-                                            <strong>{{ $label->aspect }}</strong>
-                                        </h4>
-                                        @foreach ($label->tips as $tip)
-                                            @if ($tip->tipe === 'todo')
-                                                <p>{{ $tip->tips }}</p>
-                                            @endif
-                                        @endforeach
-                                    </div>
-                                    <div class="todos">
-                                        <h4>selain itu kamu disarankan untuk melakukan hal-hal di bawah ini:</h4>
-                                        @foreach ($label->tips as $tip)
-                                            @if ($tip->tipe === 'suggestion')
-                                                <p>{{ $tip->tips }}</p>
-                                            @endif
-                                        @endforeach
+                                <div id="collapse_{{ $loop->index }}" class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
+                                    aria-labelledby="{{ $loop->index }}heading" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <div class="todos">
+                                            <h5>Hal yang bisa kamu lakukan untuk meningkat kan aspek
+                                                <strong>{{ $label->aspect }}</strong>
+                                            </h5>
+                                            @foreach ($label->tips as $tip)
+                                                @if ($tip->tipe === 'todo')
+                                                    <li class="list-group-item">{{ $tip->tips }}</li>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="todos my-2">
+                                            <h5>selain itu kamu disarankan untuk melakukan hal-hal di bawah ini:</h5>
+                                            @foreach ($label->tips as $tip)
+                                                @if ($tip->tipe === 'suggestion')
+                                                    <li class="list-group-item">{{ $tip->tips }}</li>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endisset
         </div>
     </div>
 
