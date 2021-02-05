@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -77,6 +77,9 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/teacher">{{ __('Guru') }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -91,7 +94,7 @@
                 <div class="carousel-inner">
                     @for ($i = 0; $i < 3; $i++)
                         <div class="carousel-item {{ $i <= 0 ? 'active' : '' }}">
-                            <img class="d-block w-100" src="img/images/banner{{ $i }}.jpg" alt="First slide">
+                            <img class="d-block w-100" src="/img/images/banner{{ $i }}.jpg" alt="First slide">
                         </div>
                     @endfor
                 </div>

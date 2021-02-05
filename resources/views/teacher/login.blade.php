@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (count($errors) > 1)
+
+    @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -24,12 +27,12 @@
                                 --}}
 
                                 <div class="">
-                                    <input id="email" type="email"
-                                        class="form-control input-lg @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus
-                                        placeholder="email">
+                                    <input id="username" type="text"
+                                        class="form-control input-lg @error('username') is-invalid @enderror"
+                                        name="username" value="{{ old('username') }}" required autocomplete="username"
+                                        autofocus placeholder="username">
 
-                                    @error('email')
+                                    @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -76,8 +79,8 @@
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                        <a class="btn btn-link" href="/teacher/register">
+                                            {{ __('belum punya akun?') }}
                                         </a>
                                     @endif
                                 </div>

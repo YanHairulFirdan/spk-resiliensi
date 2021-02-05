@@ -47,16 +47,16 @@ class TeacherController extends Controller
     {
         // dd($request);
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required|min:8',
         ]);
 
-        if (auth()->guard('teacher')->attempt($request->only(['email', 'password']))) {
+        if (auth()->guard('teacher')->attempt($request->only(['username', 'password']))) {
             $request->session()->regenerate();
             // dd('ok');
             return redirect('/teacher');
         } else {
-            return redirect()->back()->withErrors(['email atau password anda salah']);
+            return redirect()->back()->withErrors(['username atau password anda salah']);
         }
     }
 
@@ -68,7 +68,7 @@ class TeacherController extends Controller
             'username' => 'required|min:5',
             'nip' => 'required|min:8',
             'class' => 'required',
-            'subject' => 'required|min:8',
+            'subject' => 'required|min:6',
             'password' => 'required|min:8',
         ]);
         $teacher = Teacher::create($request->except(['_token']));
@@ -88,6 +88,10 @@ class TeacherController extends Controller
     public function postLogout()
     {
         Auth::guard('teacher')->logout();
-        return redirect('teacher.login');
+        return redirect('/teacher');
+    }
+    protected function username()
+    {
+        return 'username';
     }
 }

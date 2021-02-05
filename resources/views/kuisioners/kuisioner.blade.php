@@ -13,8 +13,13 @@
                             <div class="row d-flex justify-content-center">
                                 {{-- <div class="col-md-8"> --}}
                                     <div class="rounded">
-                                        <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
-                                            class="img-fluid" height="564px" width="564px">
+                                        <div class="container" style="width: fit-content">
+                                            <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
+                                                class="img-fluid" height="564px" width="564px">
+                                        </div>
+                                        <div style="">
+                                            <span><small><i><b>{{ $aspect->quote }}</b></i></small></span>
+                                        </div>
                                     </div>
                                     {{--
                                 </div> --}}
@@ -36,29 +41,13 @@
                                                         <input type="radio"
                                                             name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
                                                             id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
-                                                            value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
-                                                            {{ $i == 2 ? 'checked' : '' }}>
+                                                            value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}">
                                                         <br>
                                                         <label
                                                             for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
                                                     </span>
                                                 </div>
                                             @endfor
-                                            {{-- @else --}}
-                                            {{-- @for ($i = 4; $i >= 0; $i--)
-                                                <div class="col-md-2 col-12">
-                                                    <span class="form-radio">
-                                                        <input type="radio"
-                                                            name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
-                                                            id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
-                                                            value="{{ $i + 1 }}" {{ $i == 0 ? 'checked' : '' }}>
-                                                        <br>
-                                                        <label
-                                                            for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
-                                                    </span>
-                                                </div>
-                                            @endfor
-                                        @endif --}}
                                     </div>
                                 </div>
                             </div>

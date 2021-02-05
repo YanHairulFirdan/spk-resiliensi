@@ -1,14 +1,12 @@
 @extends('layouts.app')
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-primary text-white text-bold">{{ __('Registrasi dulu yuk!') }}</div>
-
                     <div class="card-body">
-                        <form method="POST" action="teacher/register">
+                        <form method="POST" action="{{ route('teacher.register') }}">
                             @csrf
 
                             <div class="form-group">
@@ -54,9 +52,9 @@
                             </div>
                             <div class="form-group">
                                 <div class="">
-                                    <input id="nim" type="email"
+                                    <input id="nip" type="text"
                                         class="form-control input-lg @error('nip') is-invalid @enderror" name="nip"
-                                        value="{{ old('nip') }}" required autocomplete="nip" placeholder="nip">
+                                        value="{{ old('nip') }}" required placeholder="nip">
 
                                     @error('nip')
                                         <span class="invalid-feedback" role="alert">

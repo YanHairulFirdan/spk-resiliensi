@@ -24,7 +24,7 @@ Route::prefix('/teacher')->group(function () {
     Route::get('login', 'TeacherController@login')->name('teacher.login');
     Route::get('register', 'TeacherController@register');
     Route::post('login', 'TeacherController@postLogin');
-    Route::post('register', 'TeacherController@postRegister');
+    Route::post('register', 'TeacherController@postRegister')->name('teacher.register');
 
     Route::middleware('auth:teacher')->group(function () {
         Route::get('/', 'TeacherController@index');
