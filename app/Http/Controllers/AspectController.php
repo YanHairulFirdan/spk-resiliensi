@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aspect;
-use App\Imports\StatementImport;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 
 class AspectController extends Controller
 {
@@ -23,11 +21,9 @@ class AspectController extends Controller
     {
         $request->validate([
             'aspect' => 'required|min:5',
-            'strength_suggestion'  => 'required|min:20',
-            'weak_suggestion'  => 'required|min:20',
         ]);
 
-        $aspect->update($request->only(['aspect', 'strength_suggestion', 'weak_suggestion']));
+        $aspect->update($request->only(['aspect']));
 
         return redirect('/aspect')->with('success', 'aspek' . $aspect->aspect . ' telah diperbaharui');
     }

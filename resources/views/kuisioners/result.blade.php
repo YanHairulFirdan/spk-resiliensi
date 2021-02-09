@@ -5,7 +5,8 @@
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <h3 class="text-center text-primary"><b>Selamat {{ auth()->user()->name }}, kamu berhasil menyelesaikan test
+                <h3 class="text-center text-primary"><b>Selamat {{ auth()->user()->name }}, kamu berhasil menyelesaikan
+                        test
                         ini</b></h3>
             </div>
         </div>
@@ -40,7 +41,8 @@
                                     </h5>
                                 </div>
 
-                                <div id="collapse_{{ $loop->index }}" class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
+                                <div id="collapse_{{ $loop->index }}"
+                                    class="collapse  {{ $loop->index <= 0 ? 'show' : '' }}"
                                     aria-labelledby="{{ $loop->index }}heading" data-parent="#accordion">
                                     <div class="card-body">
                                         <div class="todos">
@@ -59,6 +61,13 @@
                                                 @if ($tip->tipe === 'suggestion')
                                                     <li class="list-group-item">{{ $tip->tips }}</li>
                                                 @endif
+                                            @endforeach
+                                        </div>
+                                        <div class="my-2">
+                                            <h5>berikut link video atau artikel yang bisa kamu pelajari:</h5>
+                                            @foreach ($label->links as $link)
+                                                <li class="list-group-item"><a
+                                                        href="{{ $link->links }}">{{ $link->judul }}</a></li>
                                             @endforeach
                                         </div>
                                     </div>

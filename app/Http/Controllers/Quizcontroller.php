@@ -96,7 +96,7 @@ class Quizcontroller extends Controller
         $scores = collect($scores);
         // dd($labelChart);
         if ($show) {
-            $labels = Aspect::with(['tips'])->get();
+            $labels = Aspect::with(['tips', 'links'])->get();
             return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
         } else {
             return view('kuisioners.result', compact(['scores', 'labelChart']));

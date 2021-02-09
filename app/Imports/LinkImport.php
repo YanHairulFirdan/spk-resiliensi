@@ -14,9 +14,20 @@ class LinkImport implements ToModel
      */
     public function model(array $row)
     {
+        $aspects = [
+            '',
+            'regulasi emosi',
+            'pengendalian impuls',
+            'optimisme',
+            'self efficacy',
+            'analisis kausal',
+            'empati',
+            'reaching out',
+        ];
         return new Link([
-            'aspect_id' => (int)$row[1],
-            'link' => $row[2]
+            'aspect_id' => (int) array_search($row[1], $aspects),
+            'link' => $row[2],
+            'judul' => $row[3]
         ]);
     }
 }

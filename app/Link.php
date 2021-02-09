@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
-    protected $fillable = ['aspect_id', 'link'];
+    protected $fillable = ['aspect_id', 'link', 'judul'];
 
     public function aspect()
     {

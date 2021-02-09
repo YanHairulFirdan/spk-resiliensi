@@ -20,7 +20,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3>Daftar Aspek</h3>
+            <h3>Daftar link</h3>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -29,16 +29,17 @@
                         {{-- <th scope="col">no.</th> --}}
                         <th scope="col">aspek</th>
                         <th scope="col">link</th>
+                        <th scope="col">judul</th>
                         <th scope="col">aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($links as $link)
                         <tr>
-                            {{-- <td>{{ $index + 1 }}</td>
-                            --}}
+                            {{-- <td>{{ $index + 1 }}</td> --}}
+                            <td>{{ $link->aspect->aspect }}</td>
                             <td><a href="{{ $link->link }}">{{ $link->link }}</a></td>
-                            <td>{{ $link->link }}</td>
+                            <td>{{ $link->judul }}</td>
                             <td>
                                 <a href="/admin/link/{{ $link->id }}/edit" class="btn btn-sm btn-success">Edit</a>
                                 <form action="/admin/link/{{ $link->id }}" style="display: inline" method="post">
@@ -92,8 +93,8 @@
                         <div class="form-group">
                             <label for="link">links</label>
                             <textarea class="form-control" id="link" rows="2" name="link">
-                            {{ old('link') ? old('link') : '' }}
-                            </textarea>
+                                    {{ old('link') ? old('link') : '' }}
+                                    </textarea>
                         </div>
                         @error('link')
                             <span class="invalid-feedback" role="alert">
