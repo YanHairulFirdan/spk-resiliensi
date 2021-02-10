@@ -43,7 +43,9 @@ Route::prefix('/admin')->group(function () {
         Route::post('statement/import', 'statementController@import');
         Route::post('question/import', 'QuisionerController@import');
         Route::get('answear/', 'AnswearController@index');
+        Route::get('answear/score', 'AnswearController@score');
         Route::get('answear/downloadexcel', 'AnswearController@export');
+        Route::get('answear/scoresexcel', 'AnswearController@exportscore');
         Route::get('answear/test', 'AnswearController@test');
         Route::post('tip/import', 'TipController@uploadExcel');
         Route::post('link/import', 'LinkController@import');

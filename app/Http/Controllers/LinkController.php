@@ -46,13 +46,15 @@ class LinkController extends Controller
         $request->validate([
             'aspect_id' => 'required',
             'link' => 'required|min:25',
+            'judul' => 'required:min:10'
         ]);
         // dd($request);
 
         $id = (int)$request->aspect_id;
         Link::create([
             'aspect_id' => $id,
-            'link' => $request->link
+            'link' => $request->link,
+            'judul' => $request->judul
         ]);
         session()->flash('success', 'link berhasil ditambah');
         return redirect('/admin/link');
@@ -92,12 +94,14 @@ class LinkController extends Controller
     {
         $request->validate([
             'aspect_id' => 'required',
-            'statement' => 'required|min:25',
+            'link' => 'required|min:25',
+            'judul' => 'required:min:10'
         ]);
         $id = (int)$request->aspect_id;
         $link->update([
             'aspect_id' => $id,
-            'link' => $request->link
+            'link' => $request->link,
+            'judul' => $request->judul
         ]);
         session()->flash('success', 'link berhasil diperbaharui');
         return redirect('/admin/link');

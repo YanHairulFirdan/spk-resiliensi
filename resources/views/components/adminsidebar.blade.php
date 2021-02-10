@@ -121,7 +121,13 @@
 
 
                             <li>
-                                <a class="sidenav-item-link" href="basic-input.html">
+                                <a class="sidenav-item-link" href="/admin/answear">
+                                    <span class="nav-text">Data kuisioner</span>
+
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidenav-item-link" href="/admin/answear">
                                     <span class="nav-text">Data kuisioner</span>
 
                                 </a>
@@ -131,12 +137,12 @@
                 </li>
 
                 <li class="has-sub">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#icons"
-                        aria-expanded="false" aria-controls="icons">
-                        <i class="mdi mdi-diamond-stone"></i>
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
+                        aria-expanded="false" aria-controls="pages">
+                        <i class="mdi mdi-image-filter-none"></i>
                         <span class="nav-text">Data Siswa</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse" id="icons" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="pages" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li>
                                 <a class="sidenav-item-link" href="/admin/student">

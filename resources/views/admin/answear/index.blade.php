@@ -20,7 +20,6 @@
                         <th scope="col" class="text-center">Jawaban 4</th>
                         <th scope="col" class="text-center">Jawaban 5</th>
                         <th scope="col" class="text-center">Jawaban 6</th>
-                        <th scope="col" class="text-center">Jawaban 7</th>
                     </tr>
                 </thead>
                 <tbody>

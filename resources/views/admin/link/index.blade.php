@@ -92,11 +92,20 @@
                         </div>
                         <div class="form-group">
                             <label for="link">links</label>
-                            <textarea class="form-control" id="link" rows="2" name="link">
-                                    {{ old('link') ? old('link') : '' }}
-                                    </textarea>
+                            <input class="form-control" id="link" rows="2" name="link"
+                                value="{{ old('link') ? old('link') : '' }}">
                         </div>
                         @error('link')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <div class="form-group">
+                            <label for="judul">judul</label>
+                            <input class="form-control" id="judul" rows="3" name="judul" value="{{ old('judul') }}">
+
+                        </div>
+                        @error('judul')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

@@ -5,11 +5,8 @@
             <div class="card">
                 <div class="card-header">Perbaharui data pernyataan</div>
                 <div class="card-body">
-                    <form action="/admin/tip/{{ $link->id }}" class="form" method="POST">
+                    <form action="/admin/link" class="form" method="POST">
                         @csrf
-                        @if ($errors->has('any'))
-                            {{ dd($errors) }}
-                        @endif
                         @method('PUT')
                         <div class="form-group">
                             <label for="aspect_id">kategori aspek</label>
@@ -28,12 +25,22 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="statement">Tips</label>
-                            <textarea class="form-control" id="link" rows="3" name="link">
-                            {{ old('link') ? old('link') : $link->link }}
-                            </textarea>
+                            <label for="link">links</label>
+                            <input class="form-control" id="link" rows="2" name="link"
+                                value="{{ old('link') ? old('link') : $link->link }}">
                         </div>
                         @error('link')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <div class="form-group">
+                            <label for="judul">judul</label>
+                            <input class="form-control" id="judul" rows="3" name="judul"
+                                value="{{ old('judul') ? old('judul') : $link->judul }}">
+
+                        </div>
+                        @error('judul')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

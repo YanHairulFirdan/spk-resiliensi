@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Answear;
+use App\Aspect;
 use App\Exports\AnswearExport;
+use App\Exports\scoreExport;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,21 +19,19 @@ class AnswearController extends Controller
         return view('admin.answear.index', compact('answears'));
     }
 
-    public function saveNaswear(Request $request)
-    {
-    }
     public function export()
     {
         return Excel::download(new AnswearExport, 'jawaban kuisioner.xlsx');
     }
-    protected function checkOldAnswear($user_id)
+    public function exportscore()
     {
-        $answears = Answear::where('user_id', '=', $user_id)->get();
-        if ($answears) {
-            $answears->delete();
-            return true;
-        } else {
-            return false;
-        }
+        return Excel::download(new scoreExport, 'skor resiliensi.xlsx');
+    }
+    public function score()
+    {
+        $aspects = Aspect::get()->pluck('aspect');
+        $users = User::with('score')->get();
+        // dd($users);
+        return view('admin.answear.score', compact('aspects', 'users'));
     }
 }

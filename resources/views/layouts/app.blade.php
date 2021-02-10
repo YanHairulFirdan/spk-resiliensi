@@ -170,9 +170,6 @@
                 </div>
             </div>
         </div>
-        <p class="text-white text-center" style="margin: 0">
-            <span class="text-small">dikembangkan oleh : YanHF.dev</span>
-        </p>
     </footer>
     <script>
 

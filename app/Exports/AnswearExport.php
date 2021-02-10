@@ -14,12 +14,12 @@ class AnswearExport implements FromCollection, WithHeadings
      */
     public function headings(): array
     {
-        return ['nama', 'kelas', 'jawaban 1', 'jawaban 2', 'jawaban 3', 'jawaban 4', 'jawaban 5', 'jawaban 6', 'jawaban 7'];
+        return ['nama', 'kelas', 'jawaban 1', 'jawaban 2', 'jawaban 3', 'jawaban 4', 'jawaban 5', 'jawaban 6'];
     }
     public function collection()
     {
         $data = DB::table('users')->join('answears', 'users.id', '=', 'answears.user_id')
-            ->select('users.name', 'users.class', 'answears.answear_1', 'answears.answear_2', 'answears.answear_3', 'answears.answear_4', 'answears.answear_5', 'answears.answear_6', 'answears.answear_7')->get();
+            ->select('users.name', 'users.class', 'answears.answear_1', 'answears.answear_2', 'answears.answear_3', 'answears.answear_4', 'answears.answear_5', 'answears.answear_6')->get();
         return $data;
     }
 }
