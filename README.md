@@ -3,7 +3,7 @@ client's project
 please follow this instructions for installing this project locally on your computer :
 1. go to current directory where you will put this project 
 2. open gitbash
-3. paste this command git clone https://github.com/YanHairulFirdan/spk-resiliensi.
+3. paste this command git clone https://github.com/YanHairulFirdan/spk-resiliensi.git
 5. after clone process finish, run this command composer install.
 6. run command npm install.
 7. run command copy .env.example .env.
