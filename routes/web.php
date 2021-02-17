@@ -44,6 +44,12 @@ Route::prefix('/admin')->group(function () {
         Route::post('question/import', 'QuisionerController@import');
         Route::get('answear/', 'AnswearController@index');
         Route::get('answear/score', 'AnswearController@score');
+        Route::get('user/{user}/edit', 'studentController@edit');
+        Route::get('teacher', 'teacherManagement@index');
+        Route::get('teacher/{teacher}/edit', 'teacherManagement@edit');
+        Route::get('teacher/{teacher}', 'teacherManagement@update');
+        Route::put('user/{user}', 'studentController@update');
+        Route::put('teacher/{teacher}', 'teacherManagement@update');
         Route::get('answear/downloadexcel', 'AnswearController@export');
         Route::get('answear/scoresexcel', 'AnswearController@exportscore');
         Route::get('answear/test', 'AnswearController@test');

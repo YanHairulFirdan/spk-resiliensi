@@ -117,15 +117,6 @@
                     </a>
                     <ul class="collapse" id="forms" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-
-
-
-                            <li>
-                                <a class="sidenav-item-link" href="/admin/answear">
-                                    <span class="nav-text">Data kuisioner</span>
-
-                                </a>
-                            </li>
                             <li>
                                 <a class="sidenav-item-link" href="/admin/answear">
                                     <span class="nav-text">Data kuisioner</span>
@@ -140,13 +131,21 @@
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
                         aria-expanded="false" aria-controls="pages">
                         <i class="mdi mdi-image-filter-none"></i>
-                        <span class="nav-text">Data Siswa</span> <b class="caret"></b>
+                        <span class="nav-text">Data Pengguna</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="pages" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li>
+                                <a class="sidenav-item-link" href="/admin/teacher">
+                                    <span class="nav-text">Data Guru</span>
+
+                                </a>
+                            </li>
+                        </div>
+                        <div class="sub-menu">
+                            <li>
                                 <a class="sidenav-item-link" href="/admin/student">
-                                    <span class="nav-text">Lihat Data Siswa</span>
+                                    <span class="nav-text">Data Siswa</span>
 
                                 </a>
                             </li>

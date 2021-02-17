@@ -12,9 +12,7 @@
                         <div class="form-group my-5 col-md-8">
                             <label for="answear_{{ $loop->iteration }}">{{ $question->question }}</label>
                             <textarea name="answear_{{ $loop->iteration }}" class="form-control"
-                                id="answear_{{ $loop->iteration }}" placeholder="Jawaban kamu...">
-                            {{ old('answear_' . $loop->iteration) ? old('answear_' . $loop->iteration) : '' }}
-                            </textarea>
+                                id="answear_{{ $loop->iteration }}" placeholder="Jawaban kamu...">{{ old('answear_' . $loop->iteration) ? old('answear_' . $loop->iteration) : '' }}</textarea>
 
                             @php
                             $error = 'answear_' . $loop->iteration;

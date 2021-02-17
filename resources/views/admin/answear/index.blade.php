@@ -23,9 +23,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = ($answears->currentpage() - 1) * $answears->perpage() + 1;
+                    @endphp
+
                     @foreach ($answears as $answear)
                         <tr>
-                            <th scope="row" class="text-center">{{ $loop->index + 1 }}</th>
+                            <th scope="row" class="text-center">{{ $i }}</th>
                             <td class="text-center">{{ $answear->user->name }}</td>
                             <td class="text-center">{{ $answear->user->class }}</td>
                             <td class="text-center">{{ $answear->answear_1 }}</td>
@@ -36,6 +40,9 @@
                             <td class="text-center">{{ $answear->answear_6 }}</td>
                             <td class="text-center">{{ $answear->answear_7 }}</td>
                         </tr>
+                        @php
+                            $i++;
+                        @endphp
                     @endforeach
                 </tbody>
             </table>

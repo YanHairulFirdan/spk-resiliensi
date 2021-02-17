@@ -12,17 +12,18 @@
                         @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
                             <div class="row d-flex justify-content-center">
                                 {{-- <div class="col-md-8"> --}}
-                                    <div class="rounded">
-                                        <div class="container" style="width: fit-content">
-                                            <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
-                                                class="img-fluid" height="564px" width="564px">
-                                        </div>
-                                        <div style="">
-                                            <span><small><i><b>{{ $aspect->quote }}</b></i></small></span>
+                                <div class="rounded col-md-6">
+                                    <div class="container" style="width: fit-content">
+                                        <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
+                                            class="img-fluid" height="564px" width="564px">
+                                        <div class="text-center">
+                                            <span
+                                                style="text-align: center !important; font-size: small; font-style: italic"
+                                                class="font-weight-bold text-italic">"{{ $aspect->quote }}"</span>
                                         </div>
                                     </div>
-                                    {{--
-                                </div> --}}
+                                </div>
+                                {{-- </div> --}}
                             </div>
                         @endif
                         @foreach ($aspect->statements as $statement)
@@ -35,19 +36,20 @@
                                 <div class="card-body">
                                     <div class="row d-flex justify-content-center">
                                         {{-- @if ($statement->type === 'positif') --}}
-                                            @for ($i = 0; $i < 5; $i++)
-                                                <div class="col-md-2 col-12">
-                                                    <span class="form-radio">
-                                                        <input type="radio"
-                                                            name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
-                                                            id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
-                                                            value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}">
-                                                        <br>
-                                                        <label
-                                                            for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
-                                                    </span>
-                                                </div>
-                                            @endfor
+                                        @for ($i = 0; $i < 5; $i++)
+                                            <div class="col-md-2 col-12">
+                                                <span class="form-radio">
+                                                    <input type="radio"
+                                                        name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
+                                                        id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
+                                                        value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
+                                                        {{ $i == 2 ? 'checked' : '' }}>
+                                                    <br>
+                                                    <label
+                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
+                                                </span>
+                                            </div>
+                                        @endfor
                                     </div>
                                 </div>
                             </div>
@@ -55,13 +57,17 @@
                     </div>
                 </div>
             @endforeach
-            <button class="btn btn-success btn-sm btn-large mx-4" id="submit" style="dis" type="submit">simpan</button>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success btn-lg mx-4" id="submit" style="dis"
+                    type="submit">simpan</button>
+            </div>
         </form>
 
         <div class="button-group d-flex justify-content-center">
-            <button class="btn border-primary btn-sm btn-large mx-4" id="previous" onclick="previousForm()"><a
+            <button type="button" class="btn border-primary btn-sm btn-lg mx-4" id="previous" onclick="previousForm()"><a
                     href="/motivation">sebelumnya</a></button>
-            <button class="btn btn-primary btn-sm btn-large mx-4" id="next" onclick="nextForm()">selanjutnya</button>
+            <button type="button" class="btn btn-primary btn-sm btn-lg mx-4" id="next"
+                onclick="nextForm()">selanjutnya</button>
         </div>
     @endsection
 

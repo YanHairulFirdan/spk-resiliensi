@@ -169,6 +169,13 @@
                                 </span>
                             </div>
                         @endif
+                        @if (Session::has('error'))
+                            <div class="alert alert-error">
+                                <span class="">
+                                    {{ Session::get('error') }}
+                                </span>
+                            </div>
+                        @endif
                     </div>
                     <!-- Top Statistics -->
                     @yield('content')
