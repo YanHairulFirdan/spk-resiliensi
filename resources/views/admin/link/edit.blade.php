@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">Perbaharui data pernyataan</div>
                 <div class="card-body">
-                    <form action="/admin/link" class="form" method="POST">
+                    <form action="/admin/link/{{ $link->id }}" class="form" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -13,7 +13,7 @@
                             <select name="aspect_id" id="aspect_id" class="form-control">
                                 @foreach ($aspects as $aspect)
                                     <option value="{{ $aspect->id }}"
-                                        {{ $aspect->id == $tip->aspect_id ? 'selected' : '' }}>
+                                        {{ $aspect->id == $link->aspect_id ? 'selected' : '' }}>
                                         {{ $aspect->aspect }}
                                     </option>
                                 @endforeach

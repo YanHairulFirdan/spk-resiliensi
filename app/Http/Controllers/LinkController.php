@@ -104,7 +104,7 @@ class LinkController extends Controller
             'judul' => $request->judul
         ]);
         session()->flash('success', 'link berhasil diperbaharui');
-        return redirect('/admin/link');
+        return redirect('/admin/link')->with('success', 'link berhasil diperbaharui');
     }
 
     /**

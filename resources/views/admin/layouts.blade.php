@@ -58,6 +58,21 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
     <script src="{{ asset('admin/assets/plugins/nprogress/nprogress.js') }}"></script>
+    <style>
+        body::first-letter,
+        span::first-letter,
+        div::first-letter,
+        p::first-letter,
+        th::first-letter,
+        td::first-letter {
+            text-transform: capitalize;
+        }
+
+        textarea {
+            padding: .1rem;
+        }
+
+    </style>
 </head>
 
 

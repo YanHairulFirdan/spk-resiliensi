@@ -10,7 +10,7 @@ class teacherManagement extends Controller
     public function index()
     {
         $teachers = Teacher::paginate(10);
-        // dd($teachers);s
+        // dd($teachers);
         return view('admin.teacher.index', compact('teachers'));
     }
     public function edit(Teacher $teacher)

@@ -29,9 +29,8 @@
                         </div>
                         <div class="form-group">
                             <label for="statement">Pernyataan</label>
-                            <textarea class="form-control" id="statement" rows="3" name="statement">
-                            {{ old('statement') ? old('statement') : $statement->statement }}
-                            </textarea>
+                            <textarea class="form-control" id="statement" rows="3"
+                                name="statement">{{ old('statement') ? old('statement') : $statement->statement }}</textarea>
                         </div>
                         @error('statement')
                             <span class="invalid-feedback" role="alert">

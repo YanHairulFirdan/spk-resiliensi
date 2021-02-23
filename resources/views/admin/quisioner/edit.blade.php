@@ -10,9 +10,8 @@
                         @method('PUT')
                         <div class="form-group">
                             <label for="question">pertanyaan</label>
-                            <textarea class="form-control" rows="3" name="question">
-                            {{ old('question') ? old('question') : $quisioner->question }}
-                            </textarea>
+                            <textarea class="form-control" rows="3"
+                                name="question">{{ old('question') ? old('question') : $quisioner->question }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-large btn-primary">Perbaharui</button>
                     </form>
