@@ -6,12 +6,12 @@
             @csrf
             {{-- {{ dd($options) }} --}}
             @foreach ($aspects as $aspect)
-                <div id="form-group-{{ $loop->iteration }}" class="my-4 input-group ">
+                <div id="form-group-{{ $loop->iteration }}" class="my-4 input-group" class="form-wrapper"
+                    data-length="{{ $aspect->statements()->count() }}" data-aspect="{{ $aspect->aspect }}">
 
                     <div class="row justify-content-center">
                         @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
                             <div class="row d-flex justify-content-center">
-                                {{-- <div class="col-md-8"> --}}
                                 <div class="rounded col-md-6">
                                     <div class="container" style="width: fit-content">
                                         <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
@@ -23,7 +23,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- </div> --}}
                             </div>
                         @endif
                         @foreach ($aspect->statements as $statement)
@@ -43,10 +42,12 @@
                                                         name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
                                                         id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
                                                         value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
-                                                        {{ $i == 2 ? 'checked' : '' }}>
+                                                        data-aspectname="{{ $aspect->aspect }}"
+                                                        onclick="handleSelectingOption()" class="container">
                                                     <br>
                                                     <label
-                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
+                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
+                                                        class="text-center">{{ $options[$i] }}</label>
                                                 </span>
                                             </div>
                                         @endfor
@@ -57,61 +58,77 @@
                     </div>
                 </div>
             @endforeach
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success btn-lg mx-4" id="submit" style="dis"
-                    type="submit">simpan</button>
+            <div class="container">
+
+                <div class="row d-flex justify-content-end">
+                    <button class="btn btn-success btn-lg mr-4" id="submit" type="submit">simpan</button>
+                </div>
+
             </div>
         </form>
 
         <div class="button-group d-flex justify-content-center">
             <button type="button" class="btn border-primary btn-sm btn-lg mx-4" id="previous" onclick="previousForm()"><a
                     href="/motivation">sebelumnya</a></button>
-            <button type="button" class="btn btn-primary btn-sm btn-lg mx-4" id="next"
+            <button type="button" class="btn btn-primary btn-sm btn-lg mx-4" id="next" disabled
                 onclick="nextForm()">selanjutnya</button>
         </div>
+        @php
+            
+        @endphp
     @endsection
 
 
     @push('javascript')
         <script>
-            var elementGroups = Array.from(document.getElementsByClassName('input-group'));
-            console.log(typeof(elementGroups));
-            elementGroups.forEach(element => {
-                element.style.display = 'none'
-            })
-            document.getElementById('form-group-1').style.display = 'block';
+            const init = () => {
+                // get all of form group
+                const submit = document.getElementById('submit');
+                submit.style.display = 'none';
+                var elementGroups = Array.from(document.getElementsByClassName('input-group'));
+                // set form group display none
+                // console.log(typeof(elementGroups));
+                elementGroups.forEach((element, index) => {
+                    element.style.display = (index == 0) ? 'block' : 'none';
+                })
+            }
+
+            init();
+            // set form group 1 display block
+
+            // global variables
 
             const previousButton = document.getElementById('previous');
             const btnNext = document.getElementById('next');
-            const submit = document.getElementById('submit');
-            // previousButton.style.display = 'none';
-            submit.style.display = 'none';
-
-
-
             var counter = 1;
+            // end of global variables
 
+
+            // previousButton.style.display = 'none';
+
+            // global variable for counting form
+            // function for move next form
             function nextForm() {
                 counter++;
                 toggleDisplayButton(counter);
                 showForm(counter);
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-                console.log('next');
-                console.log(typeof(counter));
-                console.log('form ke-' + counter);
-            }
+                // btnNext.disabled = true;
 
+            }
+            // function for move previous form
             function previousForm() {
                 counter--;
                 toggleDisplayButton(counter);
                 console.log(typeof(counter));
                 showForm(counter);
-                console.log('form ke-' + counter);
-                console.log('previous');
+                // handleSelectingOption()
             }
 
+            // change button to link if form group is the first one
             function toggleDisplayButton(counter) {
+                const submit = document.getElementById('submit');
                 if (counter > 1) {
                     previousButton.innerText = 'sebelumnya';
                     if (counter > 6) {
@@ -127,13 +144,39 @@
                 }
             }
 
+
+            // function for showing form
             function showForm(counter) {
                 var inputElement = Array.from(document.getElementsByClassName("input-group"));
                 inputElement.forEach(input => {
                     input.style.display = 'none';
                 })
                 var showform = document.getElementById("form-group-" + counter)
-                showform.style.display = 'block'
+                showform.style.display = 'block';
+                handleSelectingOption();
+            }
+
+            const handleSelectingOption = () => {
+                let elementWrappers = Array.from(document.getElementsByClassName('input-group'));
+                let currentForm = elementWrappers.find(element => {
+                    return element.style.display == 'block'
+                });
+
+                console.log(currentForm.id);
+                let formLength = parseInt(currentForm.dataset.length);
+
+                let currentAspect = currentForm.dataset.aspect;
+                console.log(`aspect ${currentAspect} has ${formLength} statements`);
+                let inputs = Array.from(document.querySelectorAll(`[data-aspectname='${currentAspect}']`));
+                let inputLength = inputs.length;
+                let uncheckedInput = inputs.filter(input => input.checked == false);
+                console.log(inputLength - uncheckedInput.length);
+                if (currentForm.id == 'form-group-7') {
+                    const submit = document.getElementById('submit');
+                    submit.disabled = (inputLength - uncheckedInput.length === formLength) ? false : true;
+                }
+                btnNext.disabled = (inputLength - uncheckedInput.length === formLength) ? false : true;
+                console.log(`button disable = ${btnNext.disabled}`);
             }
 
         </script>

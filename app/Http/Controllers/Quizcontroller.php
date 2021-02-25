@@ -31,7 +31,10 @@ class Quizcontroller extends Controller
     public function index()
     {
         $aspectsArr = $this->aspectsArr;
-        $aspects =  Aspect::get();
+        $aspects =  Aspect::with(['statements'])->get();
+
+        // json_encode($aspect_lengths);
+        // dd($aspect_lengths);
         $options = [
             'Sangat setuju',
             'Setuju',
@@ -94,7 +97,7 @@ class Quizcontroller extends Controller
             }
         }
         $scores = collect($scores);
-        // dd($labelChart);
+        // dd($scores);
         if ($show) {
             $labels = Aspect::with(['tips', 'links'])->get();
             return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
