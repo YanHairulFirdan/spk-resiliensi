@@ -37,18 +37,22 @@
                                         {{-- @if ($statement->type === 'positif') --}}
                                         @for ($i = 0; $i < 5; $i++)
                                             <div class="col-md-2 col-12">
-                                                <span class="form-radio">
-                                                    <input type="radio"
+                                                <div class="form-check">
+
+
+                                                    <input type="radio" class="form-check-input"
                                                         name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
                                                         id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
                                                         value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
                                                         data-aspectname="{{ $aspect->aspect }}"
-                                                        onclick="handleSelectingOption()" class="container">
-                                                    <br>
-                                                    <label
-                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
-                                                        class="text-center">{{ $options[$i] }}</label>
-                                                </span>
+                                                        onclick="handleSelectingOption()">
+
+
+
+                                                    <label class="form-check-label"
+                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
+
+                                                </div>
                                             </div>
                                         @endfor
                                     </div>
