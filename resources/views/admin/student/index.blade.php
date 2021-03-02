@@ -27,8 +27,7 @@
                             <td>{{ $student->username }}</td>
                             <td>{{ $student->class }}</td>
                             <td>{{ $student->phoneNumber }}</td>
-                            <td><a href="/admin/student/{{ $student->id }}/edit"
-                                    class="btn btn-warning text-white">Edit</a>
+                            <td><a href="/admin/user/{{ $student->id }}/edit" class="btn btn-warning text-white">Edit</a>
                             </td>
                         </tr>
                         @php

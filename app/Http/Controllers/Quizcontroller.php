@@ -87,23 +87,16 @@ class Quizcontroller extends Controller
         $labelChart = Aspect::get()->pluck('aspect');
         $scores = [];
         $score =  Score::where('user_id', auth()->user()->id)->get()->toArray();
-        $show = false;
+        $show = true;
         foreach ($this->aspectsArr as $key => $aspect) {
             if (array_key_exists($aspect, $score[0])) {
-                if ($score[0][$aspect] <= 50) {
-                    $show = true;
-                }
                 $scores[$key] = $score[0][$aspect];
             }
         }
         $scores = collect($scores);
-        // dd($scores);
-        if ($show) {
-            $labels = Aspect::with(['tips', 'links'])->get();
-            return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
-        } else {
-            return view('kuisioners.result', compact(['scores', 'labelChart']));
-        }
+
+        $labels = Aspect::with(['tips', 'links'])->get();
+        return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
     }
 
     public function scoreCalculation($request)

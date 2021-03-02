@@ -61,7 +61,7 @@ body {
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
-body::first-letter, span::first-letter, div::first-letter, p::first-letter, th::first-letter, td::first-letter{
+span::first-letter, div::first-letter, p::first-letter, th::first-letter, td::first-letter{
     text-transform: capitalize;  
 }
 hr {

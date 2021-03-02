@@ -84,7 +84,7 @@
     <script>
         const ctx = document.getElementById('canvas');
         var myChart = new Chart(ctx, {
-            type: 'radar',
+            type: 'bar',
             data: {
                 labels: <?php echo $labelChart; ?> ,
                 datasets: [{
@@ -108,6 +108,19 @@
                         'rgba(255, 159, 64, 1)'
                     ],
                 }]
+            },
+            "options": {
+                "legend": {
+                    "position": "bottom"
+                },
+                "scales": {
+                    "xAxes": [{
+                        "beginAtZero": true,
+                        "ticks": {
+                            "autoSkip": false
+                        }
+                    }]
+                }
             }
         })
 

@@ -25,6 +25,6 @@ class AspectController extends Controller
 
         $aspect->update($request->only(['aspect']));
 
-        return redirect('/aspect')->with('success', 'aspek' . $aspect->aspect . ' telah diperbaharui');
+        return redirect('/admin/aspect')->with('success', 'aspek ' . $aspect->aspect . ' telah diperbaharui');
     }
 }

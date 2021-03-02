@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-header">Perbaharui data aspek {{ $aspect->aspect }}</div>
                 <div class="card-body">
-                    <form action="/aspect/{{ $aspect->id }}" class="form" method="POST">
+                    <form action="/admin/aspect/{{ $aspect->id }}" class="form" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
