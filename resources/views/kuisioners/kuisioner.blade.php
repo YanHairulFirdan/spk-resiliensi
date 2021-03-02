@@ -43,7 +43,7 @@
                                                     <input type="radio" class="form-check-input"
                                                         name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
                                                         id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
-                                                        value="{{ $statement->type === 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
+                                                        value="{{ $statement->type == 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
                                                         data-aspectname="{{ $aspect->aspect }}"
                                                         onclick="handleSelectingOption()">
 

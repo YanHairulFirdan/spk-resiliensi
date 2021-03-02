@@ -29,6 +29,7 @@
                         <th scope="col">no.</th>
                         <th scope="col">pernyataan</th>
                         <th scope="col">aspek</th>
+                        <th scope="col">tipe</th>
                         <th scope="col">aksi</th>
                     </tr>
                 </thead>
@@ -38,9 +39,12 @@
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $statement->statement }}</td>
                             <td>{{ optional($statement->aspect)->aspect }}</td>
+                            <td>{{ $statement->type }}</td>
                             <td>
-                                <a href="/admin/statement/{{ $statement->id }}/edit" class="btn btn-sm btn-success">Edit</a>
-                                <form action="/admin/statement/{{ $statement->id }}" style="display: inline" method="post">
+                                <a href="/admin/statement/{{ $statement->id }}/edit"
+                                    class="btn btn-sm btn-success">Edit</a>
+                                <form action="/admin/statement/{{ $statement->id }}" style="display: inline"
+                                    method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"
@@ -89,8 +93,8 @@
                         <div class="form-group">
                             <label for="statement">Pernyataan</label>
                             <textarea class="form-control" id="statement" rows="2" name="statement">
-                            {{ old('statement') ? old('statement') : '' }}
-                            </textarea>
+                                {{ old('statement') ? old('statement') : '' }}
+                                </textarea>
                         </div>
                         @error('statement')
                             <span class="invalid-feedback" role="alert">

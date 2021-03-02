@@ -101,6 +101,7 @@ class Quizcontroller extends Controller
 
     public function scoreCalculation($request)
     {
+        // dd($request);
         $aspectGroup = [];
         $final_score = 0;
         $count = 0;
@@ -146,5 +147,6 @@ class Quizcontroller extends Controller
                 'final_score' => $final_score
             ]);
         }
+        dd($aspectGroup);
     }
 }
