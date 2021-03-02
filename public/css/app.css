@@ -75,7 +75,7 @@ body {
   background-color: #f8fafc;
 }
 
-span::first-letter,  p::first-letter, th::first-letter, td::first-letter{
+.card-header::first-letter, span::first-letter,  p::first-letter, th::first-letter, td::first-letter{
   text-transform: capitalize;  
 }
 [tabindex="-1"]:focus:not(:focus-visible) {
