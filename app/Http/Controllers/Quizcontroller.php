@@ -122,31 +122,42 @@ class Quizcontroller extends Controller
             $count = 0;
         }
         $final_score = ($final_score / count($request)) * 100;
-        $existingData = Score::where('user_id', auth()->user()->id);
-        if ($existingData->exists()) {
-            $existingData->update([
-                'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
-                'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
-                'optimis' => $aspectGroup['optimis'],
-                'percaya_diri' => $aspectGroup['percaya_diri'],
-                'analisis_kausal' => $aspectGroup['analisis_kausal'],
-                'empati' => $aspectGroup['empati'],
-                'reaching_out' => $aspectGroup['reaching_out'],
-                'final_score' => $final_score
-            ]);
-        } else {
-            Score::create([
-                'user_id' => auth()->user()->id,
-                'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
-                'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
-                'optimis' => $aspectGroup['optimis'],
-                'percaya_diri' => $aspectGroup['percaya_diri'],
-                'analisis_kausal' => $aspectGroup['analisis_kausal'],
-                'empati' => $aspectGroup['empati'],
-                'reaching_out' => $aspectGroup['reaching_out'],
-                'final_score' => $final_score
-            ]);
-        }
-        dd($aspectGroup);
+        // $existingData = Score::where('user_id', auth()->user()->id);
+
+        Score::updateOrCreate(['user_id' => auth()->id()], [
+            'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
+            'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
+            'optimis' => $aspectGroup['optimis'],
+            'percaya_diri' => $aspectGroup['percaya_diri'],
+            'analisis_kausal' => $aspectGroup['analisis_kausal'],
+            'empati' => $aspectGroup['empati'],
+            'reaching_out' => $aspectGroup['reaching_out'],
+            'final_score' => $final_score
+        ]);
+        // if ($existingData->exists()) {
+        //     $existingData->update([
+        //         'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
+        //         'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
+        //         'optimis' => $aspectGroup['optimis'],
+        //         'percaya_diri' => $aspectGroup['percaya_diri'],
+        //         'analisis_kausal' => $aspectGroup['analisis_kausal'],
+        //         'empati' => $aspectGroup['empati'],
+        //         'reaching_out' => $aspectGroup['reaching_out'],
+        //         'final_score' => $final_score
+        //     ]);
+        // } else {
+        //     Score::create([
+        //         'user_id' => auth()->user()->id,
+        //         'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
+        //         'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
+        //         'optimis' => $aspectGroup['optimis'],
+        //         'percaya_diri' => $aspectGroup['percaya_diri'],
+        //         'analisis_kausal' => $aspectGroup['analisis_kausal'],
+        //         'empati' => $aspectGroup['empati'],
+        //         'reaching_out' => $aspectGroup['reaching_out'],
+        //         'final_score' => $final_score
+        //     ]);
+        // }
+        // dd($aspectGroup);
     }
 }

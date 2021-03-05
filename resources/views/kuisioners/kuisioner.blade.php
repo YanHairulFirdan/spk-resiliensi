@@ -64,17 +64,17 @@
             @endforeach
             <div class="container">
 
-                <div class="row d-flex justify-content-end">
-                    <button class="btn btn-success btn-lg mr-4" id="submit" type="submit">simpan</button>
+                <div class="row d-flex justify-content-end pr-2">
+                    <button class="btn btn-success btn-lg mr-5" id="submit" type="submit">simpan</button>
                 </div>
 
             </div>
         </form>
 
         <div class="button-group d-flex justify-content-center">
-            <button type="button" class="btn border-primary btn-sm btn-lg mx-4" id="previous" onclick="previousForm()"><a
+            <button type="button" class="btn border-primary btn-lg mx-4" id="previous" onclick="previousForm()"><a
                     href="/motivation">sebelumnya</a></button>
-            <button type="button" class="btn btn-primary btn-sm btn-lg mx-4" id="next" disabled
+            <button type="button" class="btn btn-primary btn-lg mx-4" id="next" disabled
                 onclick="nextForm()">selanjutnya</button>
         </div>
         @php

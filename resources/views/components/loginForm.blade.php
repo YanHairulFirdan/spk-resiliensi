@@ -6,7 +6,7 @@
 
         <div class="col-md-12">
             <input id="username" type="text" class="form-control input-lg @error('username') is-invalid @enderror"
-                name="username" required autofocus autocapitalize="off" placeholder="username">
+                name="username" required autofocus autocapitalize="off" placeholder="Username">
 
             @error('username')
                 <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
     <div class="form-group">
         <div class="col-md-12">
             <input id="password" type="password" class="form-control input-lg @error('password') is-invalid @enderror"
-                name="password" required placeholder="password">
+                name="password" required placeholder="Password">
 
             @error('password')
                 <span class="invalid-feedback" role="alert">

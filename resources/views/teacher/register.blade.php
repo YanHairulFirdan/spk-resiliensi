@@ -13,7 +13,7 @@
                                 <div class="">
                                     <input type=" text" class="form-control input-lg @error('name') is-invalid @enderror"
                                         name="name" value="{{ old('name') }}" required autocomplete="name" autofocus
-                                        placeholder="nama">
+                                        placeholder="Nama">
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                                     <input id="username" type="text"
                                         class="form-control input-lg @error('username') is-invalid @enderror"
                                         name="username" value="{{ old('username') }}" required autocomplete="username"
-                                        autofocus placeholder="username">
+                                        autofocus placeholder="Username">
 
                                     @error('username')
                                         <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
                                 <div class="">
                                     <input id="email" type="email"
                                         class="form-control input-lg @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+                                        value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
                                     @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                                 <div class="">
                                     <input id="nip" type="text"
                                         class="form-control input-lg @error('nip') is-invalid @enderror" name="nip"
-                                        value="{{ old('nip') }}" required placeholder="nip">
+                                        value="{{ old('nip') }}" required placeholder="NIP">
 
                                     @error('nip')
                                         <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                                 <div class="">
                                     <input id="subject" type="text"
                                         class="form-control input-lg @error('subject') is-invalid @enderror" name="subject"
-                                        required placeholder="mata pelajran yang diampu">
+                                        required placeholder="Mata pelajaran yang diampu">
 
                                     @error('subject')
                                         <span class="invalid-feedback" role="alert">
@@ -99,7 +99,7 @@
                                 <div class="">
                                     <input id="password" type="password"
                                         class="form-control input-lg @error('password') is-invalid @enderror"
-                                        name="password" required autocomplete="new-password" placeholder="password">
+                                        name="password" required autocomplete="new-password" placeholder="Password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -113,7 +113,7 @@
                                 <div class="">
                                     <input id="password-confirm" type="password" class="form-control"
                                         name="password_confirmation" required autocomplete="new-password"
-                                        placeholder="konfirmasi password">
+                                        placeholder="Konfirmasi password">
                                 </div>
                             </div>
 

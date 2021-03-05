@@ -19,7 +19,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-12" style="height: fit-content">
                 <canvas id="canvas">
                 </canvas>
             </div>
@@ -90,6 +90,8 @@
                 datasets: [{
                     label: 'hasil test kamu',
                     data: <?php echo $scores; ?> ,
+                    barThickness: 'flex',
+                    maxBarThickness: 6,
                     borderWidth: 1,
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
@@ -109,15 +111,28 @@
                     ],
                 }]
             },
-            "options": {
-                "legend": {
-                    "position": "bottom"
+            options: {
+
+                legend: {
+                    position: "bottom"
                 },
-                "scales": {
-                    "xAxes": [{
-                        "beginAtZero": true,
-                        "ticks": {
-                            "autoSkip": false
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true
+                    },
+                    xAxes: [{
+                        beginAtZero: true,
+                        ticks: {
+                            autoSkip: false
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        ticks: {
+                            suggestedMin: 0
                         }
                     }]
                 }
