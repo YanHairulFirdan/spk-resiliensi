@@ -9,28 +9,25 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-primary text-light">{{ __('Login') }}</div>
-                    {{-- @if (error()->has('any'))
-                        --}}
-                        {{-- {{ dd(errors()) }} --}}
-                        {{-- <span class="alert alert-danger">
+                    {{-- @if (error()->has('any')) --}}
+                    {{-- {{ dd(errors()) }} --}}
+                    {{-- <span class="alert alert-danger">
                             error!!
                         </span> --}}
-                        {{-- @endif --}}
+                    {{-- @endif --}}
                     <div class="card-body">
                         <form method="POST" action="/teacher/login">
                             @csrf
 
                             <div class="form-group">
                                 {{-- <label for="email" --}}
-                                    {{--
-                                    class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-                                --}}
+                                {{-- class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
 
                                 <div class="">
                                     <input id="username" type="text"
                                         class="form-control input-lg @error('username') is-invalid @enderror"
                                         name="username" value="{{ old('username') }}" required autocomplete="username"
-                                        autofocus placeholder="username">
+                                        autofocus placeholder="Username">
 
                                     @error('username')
                                         <span class="invalid-feedback" role="alert">
@@ -42,14 +39,12 @@
 
                             <div class="form-group">
                                 {{-- <label for="password" --}}
-                                    {{--
-                                    class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                                --}}
+                                {{-- class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
                                 <div class="">
                                     <input id="password" type="password"
                                         class="form-control input-lg @error('password') is-invalid @enderror"
-                                        name="password" required autocomplete="current-password" placeholder="password">
+                                        name="password" required autocomplete="current-password" placeholder="Password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">

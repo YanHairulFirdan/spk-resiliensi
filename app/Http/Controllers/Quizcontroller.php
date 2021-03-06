@@ -6,7 +6,6 @@ use App\Answear;
 use App\Aspect;
 use App\Quisioner;
 use App\Score;
-use App\Tip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator as FacadesValidator;
 
@@ -32,9 +31,6 @@ class Quizcontroller extends Controller
     {
         $aspectsArr = $this->aspectsArr;
         $aspects =  Aspect::with(['statements'])->get();
-
-        // json_encode($aspect_lengths);
-        // dd($aspect_lengths);
         $options = [
             'Sangat setuju',
             'Setuju',
@@ -46,7 +42,6 @@ class Quizcontroller extends Controller
             'positif' => [5, 4, 3, 2, 1],
             'negatif' => [1, 2, 3, 4, 5]
         ];
-        // dd($aspects);
         return view('kuisioners.kuisioner', compact(['aspects', 'aspectsArr', 'options', 'skor']));
     }
     public function saveQuiz(Request $request)
@@ -101,11 +96,9 @@ class Quizcontroller extends Controller
 
     public function scoreCalculation($request)
     {
-        // dd($request);
         $aspectGroup = [];
         $final_score = 0;
         $count = 0;
-        // dd($request);
         foreach ($this->aspectsArr as $key => $singleAspect) {
             foreach ($request as $parentkey => $inputvalue) {
                 if (preg_match('/' . $singleAspect . '/', $parentkey)) {
@@ -116,13 +109,11 @@ class Quizcontroller extends Controller
                     $count++;
                 }
             }
-            // dd($aspectGroup[$singleAspect]);
             $totalAspect = 5 * $count;
             $aspectGroup[$singleAspect] = ($aspectGroup[$singleAspect] / $totalAspect) * 100;
             $count = 0;
         }
         $final_score = ($final_score / count($request)) * 100;
-        // $existingData = Score::where('user_id', auth()->user()->id);
 
         Score::updateOrCreate(['user_id' => auth()->id()], [
             'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
@@ -134,30 +125,5 @@ class Quizcontroller extends Controller
             'reaching_out' => $aspectGroup['reaching_out'],
             'final_score' => $final_score
         ]);
-        // if ($existingData->exists()) {
-        //     $existingData->update([
-        //         'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
-        //         'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
-        //         'optimis' => $aspectGroup['optimis'],
-        //         'percaya_diri' => $aspectGroup['percaya_diri'],
-        //         'analisis_kausal' => $aspectGroup['analisis_kausal'],
-        //         'empati' => $aspectGroup['empati'],
-        //         'reaching_out' => $aspectGroup['reaching_out'],
-        //         'final_score' => $final_score
-        //     ]);
-        // } else {
-        //     Score::create([
-        //         'user_id' => auth()->user()->id,
-        //         'pengendalian_impuls' => $aspectGroup['pengendalian_impuls'],
-        //         'regulasi_emosi' => $aspectGroup['regulasi_emosi'],
-        //         'optimis' => $aspectGroup['optimis'],
-        //         'percaya_diri' => $aspectGroup['percaya_diri'],
-        //         'analisis_kausal' => $aspectGroup['analisis_kausal'],
-        //         'empati' => $aspectGroup['empati'],
-        //         'reaching_out' => $aspectGroup['reaching_out'],
-        //         'final_score' => $final_score
-        //     ]);
-        // }
-        // dd($aspectGroup);
     }
 }

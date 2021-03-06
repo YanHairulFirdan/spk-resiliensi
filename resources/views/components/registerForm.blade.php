@@ -3,7 +3,7 @@
 
     <div class="form-group">
         <div class="">
-            <input type=" text" class="form-control input-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="nama">
+            <input type=" text" class="form-control input-lg @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Nama">
 
             @error('name')
             <span class="invalid-feedback" role="alert">
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
         <div class="">
-            <input id="username" type="text" class="form-control input-lg @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="username">
+            <input id="username" type="text" class="form-control input-lg @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Username">
 
             @error('username')
             <span class="invalid-feedback" role="alert">
@@ -26,7 +26,7 @@
 
     <div class="form-group">
         <div class="">
-            <input id="email" type="email" class="form-control input-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+            <input id="email" type="email" class="form-control input-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
 
             @error('email')
             <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
     </div>
     <div class="form-group">
         <div class="">
-            <input id="phoneNumber" type="text" class="form-control input-lg @error('phone number') is-invalid @enderror" name="phoneNumber" required placeholder="nomor HP">
+            <input id="phoneNumber" type="text" class="form-control input-lg @error('phone number') is-invalid @enderror" name="phoneNumber" required placeholder="Nomor HP">
 
             @error('phoneNumber')
             <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
     </div>
     <div class="form-group">
         <div class="">
-            <input id="password" type="password" class="form-control input-lg @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+            <input id="password" type="password" class="form-control input-lg @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
 
             @error('password')
             <span class="invalid-feedback" role="alert">
@@ -78,7 +78,7 @@
 
     <div class="form-group">
         <div class="">
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="konfirmasi password">
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Konfirmasi Password">
         </div>
     </div>
 

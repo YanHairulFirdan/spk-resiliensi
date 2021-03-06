@@ -56,7 +56,7 @@
                                             @endforeach
                                         </div>
                                         <div class="todos my-2">
-                                            <h5>selain itu kamu disarankan untuk melakukan hal-hal di bawah ini:</h5>
+                                            <h5>Selain itu kamu disarankan untuk melakukan hal-hal di bawah ini:</h5>
                                             @foreach ($label->tips as $tip)
                                                 @if ($tip->tipe === 'suggestion')
                                                     <li class="list-group-item">{{ $tip->tips }}</li>
@@ -64,7 +64,7 @@
                                             @endforeach
                                         </div>
                                         <div class="my-2">
-                                            <h5>berikut link video atau artikel yang bisa kamu pelajari:</h5>
+                                            <h5>Berikut link video atau artikel yang bisa kamu pelajari:</h5>
                                             @foreach ($label->links as $link)
                                                 <li class="list-group-item"><a
                                                         href="{{ $link->links }}">{{ $link->judul }}</a></li>
