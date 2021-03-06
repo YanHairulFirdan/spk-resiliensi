@@ -41,7 +41,7 @@
                         <div class="sub-menu">
                             <li>
                                 <a class="sidenav-item-link" href="/admin/tip">
-                                    <span class="nav-text">Daftar saran</span>
+                                    <span class="nav-text">Daftar Saran</span>
 
                                 </a>
                             </li>
@@ -51,7 +51,7 @@
                         <div class="sub-menu">
                             <li>
                                 <a class="sidenav-item-link" href="/admin/link">
-                                    <span class="nav-text">Daftar link</span>
+                                    <span class="nav-text">Daftar Link</span>
 
                                 </a>
                             </li>
@@ -98,7 +98,7 @@
 
                             <li>
                                 <a class="sidenav-item-link" href="/admin/quisioner">
-                                    <span class="nav-text">daftar pertayaan kuisioner</span>
+                                    <span class="nav-text">Daftar Pertayaan Kuisioner</span>
 
                                 </a>
                             </li>
