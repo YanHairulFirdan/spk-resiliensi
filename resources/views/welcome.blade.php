@@ -61,7 +61,8 @@
                                         </button>
                                     </h5>
                                 </div>
-                                <div id="collapse{{ $loop->index }}" class="collapse {{ $loop->index <= 0 ? 'show' : '' }}"
+                                <div id="collapse{{ $loop->index }}"
+                                    class="collapse {{ $loop->index <= 0 ? 'show' : '' }}"
                                     aria-labelledby="heading{{ $loop->index }}" data-parent="#accordion">
                                     <div class="card-body">
                                         {{ $aspect->descriptions }}
@@ -211,7 +212,7 @@
                             <div class="col-md-7 my-3">
                                 <div class="card text-primary border-bottom-color-primary background-color-white">
                                     <div class="card-header">
-                                        <h3 class="text-center font-weight-bold">kenapa kesehatan mental remaja itu penting?
+                                        <h3 class="text-center font-weight-bold">Kenapa kesehatan mental remaja itu penting?
                                         </h3>
                                     </div>
                                     <div class="card-body">
