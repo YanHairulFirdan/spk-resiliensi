@@ -17,7 +17,7 @@ class TipController extends Controller
      */
     public function index()
     {
-        $aspects = Aspect::with(['tips'])->get();
+        $aspects = Aspect::with(['tips'])->orderBy('created_at', 'DESC')->get();
         $index = 0;
         // $tips = Tip::with(['aspect'])->get();
         return view('admin.tip.index', compact('aspects', 'index'));
@@ -45,13 +45,15 @@ class TipController extends Controller
         $request->validate([
             'aspect_id' => 'required',
             'tips' => 'required|min:15',
+            'tipe' => 'required'
         ]);
-        // dd(gettype((int)$request->aspect_id));
+        // dd(geip((int)$request->aspect_id));
         $aspect_id = (int)$request->aspect_id;
         // dd($aspect_id);
         Tip::create([
             'aspect_id' => $aspect_id,
             'tips' => $request->tips,
+            'tipe' => $request->tipe
         ]);
 
         return redirect('admin/tip')->withSuccess('data berhasil ditambahkan');
@@ -95,7 +97,8 @@ class TipController extends Controller
         ]);
         $tip->update([
             'aspect_id' => (int)$request->aspect_id,
-            'tips' => $request->tips
+            'tips' => $request->tips,
+            'type' => $request->type
         ]);
 
         return redirect('admin/tip')->withSuccess('data berhasil diperbarui');

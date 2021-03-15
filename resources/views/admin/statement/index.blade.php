@@ -20,7 +20,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3>Daftar Aspek</h3>
+            <h3>Daftar Pernyataan</h3>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-hover">

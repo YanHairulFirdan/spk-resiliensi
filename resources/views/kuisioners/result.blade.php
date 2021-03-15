@@ -67,7 +67,7 @@
                                             <h5>Berikut link video atau artikel yang bisa kamu pelajari:</h5>
                                             @foreach ($label->links as $link)
                                                 <li class="list-group-item"><a
-                                                        href="{{ $link->links }}">{{ $link->judul }}</a></li>
+                                                        href="{{ $link->link }}">{{ $link->judul }}</a></li>
                                             @endforeach
                                         </div>
                                     </div>

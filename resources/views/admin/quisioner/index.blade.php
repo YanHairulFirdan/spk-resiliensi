@@ -18,7 +18,7 @@
     </form>
     <div class="card">
         <div class="card-header">
-            <h3>Daftar Aspek</h3>
+            <h3>Daftar Kuisioner</h3>
         </div>
         <div class="card-body">
             <table class="table table-hover table-responsive">
@@ -35,8 +35,10 @@
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $quisioner->question }}</td>
                             <td>
-                                <a href="/admin/quisioner/{{ $quisioner->id }}/edit" class="btn btn-sm btn-success">Edit</a>
-                                <form action="/admin/quisioner/{{ $quisioner->id }}" style="display: inline" method="post">
+                                <a href="/admin/quisioner/{{ $quisioner->id }}/edit"
+                                    class="btn btn-sm btn-success">Edit</a>
+                                <form action="/admin/quisioner/{{ $quisioner->id }}" style="display: inline"
+                                    method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"
@@ -47,6 +49,7 @@
                     @endforeach
                 </tbody>
             </table>
+            <button class="btn btn-primary btn-lg">Tambah Data</button>
         </div>
     </div>
 @endsection

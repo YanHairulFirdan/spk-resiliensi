@@ -20,7 +20,7 @@
     </div>
     <div class="card">
         <div class="card-header">
-            <h3>Daftar Aspek</h3>
+            <h3>Daftar Tips</h3>
         </div>
         <div class="card-body table-responsive">
             <table class="table table-hover">
@@ -36,8 +36,7 @@
                     @foreach ($aspects as $aspect)
                         @foreach ($aspect->tips as $tip)
                             <tr>
-                                {{-- <td>{{ $index + 1 }}</td>
-                                --}}
+                                {{-- <td>{{ $index + 1 }}</td> --}}
                                 <td>{{ $aspect->aspect }}</td>
                                 <td>{{ $tip->tips }}</td>
                                 <td>
@@ -91,11 +90,22 @@
                         </div>
                         <div class="form-group">
                             <label for="tip">Tips</label>
-                            <textarea class="form-control" id="tip" rows="2" name="tips">
-                            {{ old('tip') ? old('tip') : '' }}
-                            </textarea>
+                            <textarea class="form-control" id="tip" rows="2"
+                                name="tips">{{ old('tip') ? old('tip') : '' }}</textarea>
                         </div>
                         @error('tip')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        <div class="form-group">
+                            <label for="tipe">tipe</label>
+                            <select name="tipe" id="tipe" class="form-control">
+                                <option value="todo">Hal yang dilakukan</option>
+                                <option value="suggestion">Saran</option>
+                            </select>
+                        </div>
+                        @error('tipe')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
