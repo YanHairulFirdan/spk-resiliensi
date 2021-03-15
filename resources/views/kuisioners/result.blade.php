@@ -14,7 +14,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <img src="/img/images/congrats.jpg" alt="" srcset="" width="100%" height="100%">
+                <img src="/img/images/congrats.jpg" alt="" srcset="" width="100%" height="100%" id="congrats">
             </div>
         </div>
 

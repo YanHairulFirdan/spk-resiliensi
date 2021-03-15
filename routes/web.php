@@ -48,10 +48,14 @@ Route::prefix('/admin')->group(function () {
         Route::get('teacher', 'teacherManagement@index');
         Route::get('teacher/{teacher}/edit', 'teacherManagement@edit');
         Route::get('teacher/{teacher}', 'teacherManagement@update');
+        Route::delete('teacher/{teacher}', 'teacherManagement@destroy');
         Route::put('user/{user}', 'studentController@update');
         Route::put('teacher/{teacher}', 'teacherManagement@update');
         Route::get('answear/downloadexcel', 'AnswearController@export');
         Route::get('answear/scoresexcel', 'AnswearController@exportscore');
+        Route::get('student', 'studentController@index')->name('admin.student');
+        Route::delete('student/{user}', 'studentController@destroy');
+        Route::get('student/download', 'studentController@download')->name('admin.student');
         Route::get('answear/test', 'AnswearController@test');
         Route::post('tip/import', 'TipController@uploadExcel');
         Route::post('link/import', 'LinkController@import');
@@ -59,8 +63,6 @@ Route::prefix('/admin')->group(function () {
         Route::resource('link', 'LinkController');
         Route::resource('quisioner', 'QuisionerController');
         Route::resource('tip', 'TipController');
-        Route::get('student', 'studentController@index')->name('admin.student');
-        Route::get('student/download', 'studentController@download')->name('admin.student');
     });
 });
 // Route::get('/aspect', 'AspectController@index');

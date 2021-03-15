@@ -74,6 +74,11 @@ class studentController extends Controller
         $user->save();
         return redirect('/admin/student')->with('success', 'data siswa berhasil diubah');
     }
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect('admin/student')->withSuccess('data berhasil dihapus');
+    }
     public function download()
     {
         return Excel::download(new UserExport, 'data siswa.xlsx');

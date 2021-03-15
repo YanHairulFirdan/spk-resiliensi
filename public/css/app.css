@@ -10989,3 +10989,14 @@ input[type=checkbox] {
 input.form-control{
   text-transform: lowercase;
 } */
+
+#congrats{
+  animation: animationImage 4s ease;
+}
+
+@keyframes animationImage{
+  0%{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}

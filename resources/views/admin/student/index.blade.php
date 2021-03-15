@@ -27,8 +27,17 @@
                             <td>{{ $student->username }}</td>
                             <td>{{ $student->class }}</td>
                             <td>{{ $student->phoneNumber }}</td>
-                            <td><a href="/admin/user/{{ $student->id }}/edit" class="btn btn-warning text-white">Edit</a>
+                            <td>
+                                <a href="/admin/user/{{ $student->id }}/edit" class="btn btn-sm btn-success">Edit</a>
+                                <form action="/admin/student/{{ $student->id }}" style="display: inline" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                        onclick="return confirm('apakah anda yakin ingin menghapus data ini?')">Hapus</button>
+                                </form>
                             </td>
+                            {{-- <td><a href="/admin/user/{{ $student->id }}/edit" class="btn btn-warning text-white">Edit</a> --}}
+                            {{-- </td> --}}
                         </tr>
                         @php
                             $i++;

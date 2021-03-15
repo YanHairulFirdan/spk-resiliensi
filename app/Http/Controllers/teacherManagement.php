@@ -46,4 +46,9 @@ class teacherManagement extends Controller
         $teacher->save();
         return redirect('/admin/teacher')->with('success', 'data guru berhasil diubah');
     }
+    public function destroy(Teacher $teacher)
+    {
+        $teacher->delete();
+        return redirect('/admin/teacher')->with('success', 'data guru berhasil dihapus');
+    }
 }

@@ -38,6 +38,7 @@ class Quizcontroller extends Controller
             'Tidak setuju',
             'Sangat tidak setuju',
         ];
+
         $skor = [
             'positif' => [5, 4, 3, 2, 1],
             'negatif' => [1, 2, 3, 4, 5]

@@ -74,7 +74,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -172,7 +172,7 @@
                             alt="" srcset="">
                     </div>
                     <h5 class="my-3 font-weight-bold">SMA Negeri 1 Kota Bima</h5>
-                    <span>jln. Soekarno-Hatta Kota Bima NTB</span>
+                    <span>Jln. Soekarno-Hatta Kota Bima NTB</span>
                 </div>
             </div>
         </div>
