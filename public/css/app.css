@@ -66,13 +66,15 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: "Roboto","Nunito", sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
   text-align: left;
   background-color: #f8fafc;
+  box-sizing: border-box;
+
 }
 
 .card-header::first-letter, span::first-letter,  p::first-letter, th::first-letter, td::first-letter{
@@ -2055,6 +2057,12 @@ pre code {
   background-color: rgba(255, 255, 255, 0.075);
 }
 
+.intro {
+  background: url("/img/images/Union 30.svg") no-repeat;
+  background-size: 100% auto; 
+  height: 40em;
+}
+
 @media (max-width: 575.98px) {
   .table-responsive-sm {
     display: block;
@@ -2079,6 +2087,11 @@ pre code {
   .table-responsive-md > .table-bordered {
     border: 0;
   }
+  .intro{
+    background: url("/img/images/Union 31@2x.png") no-repeat;
+    background-size: contain;
+    height: 55em;
+  }
 }
 
 @media (max-width: 991.98px) {
@@ -2087,6 +2100,7 @@ pre code {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    background-position: center center;
   }
 
   .table-responsive-lg > .table-bordered {
@@ -10966,15 +10980,16 @@ input[type=checkbox] {
   margin: 0 auto;
 }
 
+
 .footer-info {
-  background-image: url("/img/images/bottom-bg.svg");
+  background: url("/img/images/bottom-bg.svg") no-repeat;
   height: 100%;
   padding-top: 20rem;
 }
 
 .top-info {
   height: 1709.88px;
-  background-image: url("/img/images/top-bg.svg");
+  background: url("/img/images/top-bg.svg") no-repeat;
   padding: 0;
 }
 
@@ -11000,3 +11015,5 @@ input.form-control{
     transform: translateY(10px);
   }
 }
+
+
