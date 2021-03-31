@@ -90,9 +90,15 @@ class Quizcontroller extends Controller
             }
         }
         $scores = collect($scores);
+        $icons = collect([
+            'low' => 'far fa-frown-open fa-2x',
+            'good' => 'far fa-grin-alt fa-2x',
+            'great' => 'far fa-grin-hearts fa-2x'
+
+        ]);
 
         $labels = Aspect::with(['tips', 'links'])->get();
-        return view('kuisioners.result', compact(['scores', 'labels', 'labelChart']));
+        return view('kuisioners.result', compact(['scores', 'icons', 'labels', 'labelChart']));
     }
 
     public function scoreCalculation($request)

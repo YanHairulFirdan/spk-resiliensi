@@ -11017,3 +11017,22 @@ input.form-control{
 }
 
 
+.score{
+  opacity: 0;
+}
+
+.show-icon{
+  animation: showicon 2s ease;
+
+}
+
+@keyframes showicon{
+  0%{
+    transform: translateY(.8em);
+    transform: scale(0);
+  }
+  100%{
+    transform: translateY(0);
+    transform: scale(1);
+  }
+}
