@@ -11,9 +11,9 @@
 
                     <div class="row justify-content-center">
                         @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
-                            <div class="row d-flex justify-content-center">
-                                <div class="rounded col-md-6">
-                                    <div class="container" style="width: fit-content">
+                            <div class="container" style="width: fit-content">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="rounded col-md-6">
                                         <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
                                             class="img-fluid" height="564px" width="564px">
                                         <div class="text-center">
@@ -62,12 +62,10 @@
                     </div>
                 </div>
             @endforeach
-            <div class="container">
-
-                <div class="row d-flex justify-content-end pr-2">
-                    <button class="btn btn-success btn-lg mr-5" id="submit" type="submit">simpan</button>
+            <div class="container mb-3">
+                <div class="row d-flex justify-content-center">
+                    <button class="btn btn-success btn-lg" id="submit" type="submit">simpan</button>
                 </div>
-
             </div>
         </form>
 
@@ -91,7 +89,6 @@
                 submit.style.display = 'none';
                 var elementGroups = Array.from(document.getElementsByClassName('input-group'));
                 // set form group display none
-                // console.log(typeof(elementGroups));
                 elementGroups.forEach((element, index) => {
                     element.style.display = (index == 0) ? 'block' : 'none';
                 })
@@ -125,7 +122,6 @@
             function previousForm() {
                 counter--;
                 toggleDisplayButton(counter);
-                console.log(typeof(counter));
                 showForm(counter);
                 // handleSelectingOption()
             }
@@ -136,7 +132,6 @@
                 if (counter > 1) {
                     previousButton.innerText = 'sebelumnya';
                     if (counter > 6) {
-                        console.log(counter);
                         btnNext.style.display = 'none';
                         submit.style.display = 'inline';
                     } else {
@@ -166,21 +161,17 @@
                     return element.style.display == 'block'
                 });
 
-                console.log(currentForm.id);
                 let formLength = parseInt(currentForm.dataset.length);
 
                 let currentAspect = currentForm.dataset.aspect;
-                console.log(`aspect ${currentAspect} has ${formLength} statements`);
                 let inputs = Array.from(document.querySelectorAll(`[data-aspectname='${currentAspect}']`));
                 let inputLength = inputs.length;
                 let uncheckedInput = inputs.filter(input => input.checked == false);
-                console.log(inputLength - uncheckedInput.length);
                 if (currentForm.id == 'form-group-7') {
                     const submit = document.getElementById('submit');
                     submit.disabled = (inputLength - uncheckedInput.length === formLength) ? false : true;
                 }
                 btnNext.disabled = (inputLength - uncheckedInput.length === formLength) ? false : true;
-                console.log(`button disable = ${btnNext.disabled}`);
             }
 
         </script>

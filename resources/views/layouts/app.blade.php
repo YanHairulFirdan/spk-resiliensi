@@ -75,7 +75,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             document.getElementById('logout-form').submit();">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -93,6 +93,15 @@
                 </div>
             </div>
         </nav>
+        @if (Request::is('kuisioner'))
+            @php
+                $index = 3;
+            @endphp
+        @else
+            @php
+                $index = 0;
+            @endphp
+        @endif
         <div class="container-fluid" style="padding: 0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -103,7 +112,7 @@
                 <div class="carousel-inner">
                     @for ($i = 0; $i < 3; $i++)
                         <div class="carousel-item {{ $i <= 0 ? 'active' : '' }}">
-                            <img class="d-block w-100" src="/img/images/banner{{ $i }}.jpg"
+                            <img class="d-block w-100" src="/img/images/banner{{ $i + $index }}.jpg"
                                 alt="First slide">
                         </div>
                     @endfor

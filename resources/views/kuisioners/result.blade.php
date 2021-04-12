@@ -19,19 +19,16 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-md-12" style="height: fit-content">
-                <canvas id="canvas">
-                </canvas>
-            </div>
             <div class="container">
                 @foreach ($scores as $score)
                     <div class="row justify-content-center">
-                        <div class="col-8">
-                            <div>
+                        <div class="col-10">
+                            <div class="font-weight-bold text-primary">
                                 <label for="" class="font-weight-bold">
                                     {{ $labelChart[$loop->index] }} :
                                 </label>
                                 <span class="score"></span>
+                                <span>%</span>
                             </div>
                             <div class="row">
                                 <div class="col-10">
@@ -51,7 +48,7 @@
         <div id="accordion">
             <div class="row my-4 justify-content-center">
                 @foreach ($labels as $label)
-                    <div class="card col-10">
+                    <div class="card col-12">
                         <div class="card-header bg-primary" id="{{ $loop->index }}heading">
                             <h5 class="mb-0 ">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{ $loop->index }}"
@@ -104,46 +101,49 @@
 
     <script src="{{ URL::asset('admin/assets/plugins/charts/Chart.min.js') }}"></script>
     <script>
-        const ctx = document.getElementById('canvas');
+        // const ctx = document.getElementById('canvas');
         var data = <?php echo $scores; ?> ; // get scores
         var icons = <?php echo $icons; ?> ; // get icons
-        var meters = document.querySelectorAll(".meter");
+        var meters = Array.from(document.querySelectorAll(".meter"));
 
         var iconElements = document.querySelectorAll(".icon");
         var scores = document.querySelectorAll(".score");
 
-        meters.forEach((meter, index) => {
-            let meterValue = data[index];
-            let iconClass = ''
-            console.log(`index outside setinterval = ${index}`);
+
+        async function showMeter() {
+            for (const [index, meter] of meters.entries()) {
+                let resolveResult = await animateMeter(meter, index, data[index])
+            }
+        }
 
 
-            let setMeterValue = setInterval(() => {
-                console.log(`index inside setinterval= ${index}`);
-                meter.value += 10;
-                scores[index].innerText = meter.value;
-                meterValue -= 10;
+        function animateMeter(meterElement, index, meterValue) {
+            let iconClass = '';
+            console.log(meterElement);
+            return new Promise((resolve, reject) => {
+                let interval = setInterval(() => {
+                    meterElement.value += 1;
+                    scores[index].innerText = meterElement.value;
+                    meterValue -= 1;
 
-                if (meterValue < 10 && meterValue !== 0) {
-                    meter.value += meterValue;
-                    scores[index].innerText = parseFloat(scores[index].innerText) + meterValue;
-                    meterValue -= meterValue;
-                }
+                    if (meterValue <= 0) {
+                        clearInterval(interval)
+                        if (Number(meterElement.value) < 60) {
+                            iconClass = icons['low']
+                        } else if (Number(meterElement.value) >= 60 && Number(meterElement.value) < 80) {
+                            iconClass = icons['good']
+                        } else iconClass = icons['great'];
+                        iconElements[index].insertAdjacentHTML('afterbegin',
+                            `<i class="${iconClass}"></i>`
+                        );
+                        resolve("done");
+                    }
+                }, 70);
 
-                if (meterValue <= 0) {
-                    clearInterval(setMeterValue);
-                    if (Number(meter.value) < 60) {
-                        iconClass = icons['low']
-                    } else if (Number(meter.value) >= 60 && Number(meter.value) < 80) {
-                        iconClass = icons['good']
-                    } else iconClass = icons['great'];
-                    iconElements[index].insertAdjacentHTML('afterbegin',
-                        `<i class="${iconClass}"></i>`
-                    )
+            })
+        }
 
-                }
-            }, 800)
-        });
+        showMeter()
 
 
 

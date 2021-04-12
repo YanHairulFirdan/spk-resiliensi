@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="container-fluid intro w-100 mt-3">
+    <div class="container-fluid intro w-100 mt-3 bg-primary text-white">
         <div class="container justify-content-center mb-2">
             <div class="row justify-content-center mt-1">
                 <div class="col-md-10 mt-2">
@@ -45,7 +45,7 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid goals w-100 pb-5 bg-primary">
+    <div class="container-fluid goals w-100 pb-5 bg-primary text-white mb-5">
         <div class="container mt-5">
             <div class="row justify-content-center pb-5">
                 <div class="col-md-10 mt-5 pb-5">
@@ -75,10 +75,20 @@
             </div>
         </div>
     </div>
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 container">
+                <iframe src="https://www.youtube.com//embed/jBCMmJ8eDrw?autoplay=1" frameborder="0" allowfullscreen
+                    width="100%" height="400px"></iframe>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row benefits">
-            <div class="col-md-6 col-12 mx-auto">
+            <div class="col-md-6 col-12 order-md-2">
+                <img src="/img/images/cuteanimated-43.jpg" class="image-thumbnail" width="100%" alt="">
+            </div>
+            <div class="col-md-6 col-12 mx-auto text-white bg-primary pt-3 order-md-1">
                 <h4 class="font-weight-bold text-center">
                     Bagi Guru
                 </h4>
@@ -96,12 +106,13 @@
                     </li>
                 </ol>
             </div>
-            <div class="col-md-6 col-12">
-                <img src="/img/images/cuteanimated-43.jpg" class="image-thumbnail" width="100%" alt="">
-            </div>
+
         </div>
         <div class="row benefits">
             <div class="col-md-6 col-12">
+                <img src="/img/images/5293.jpg" class="image-thumbnail" width="100%" alt="">
+            </div>
+            <div class="col-md-6 col-12 text-white bg-primary pt-3">
                 <h4 class="font-weight-bold text-center">
                     Bagi Peserta Didik
                 </h4>
@@ -117,9 +128,7 @@
                         Motivasi siswa menjadi pribadi yang resilien. </li>
                 </ol>
             </div>
-            <div class="col-md-6 col-12">
-                <img src="/img/images/5293.jpg" class="image-thumbnail" width="100%" alt="">
-            </div>
+
         </div>
     </div>
 

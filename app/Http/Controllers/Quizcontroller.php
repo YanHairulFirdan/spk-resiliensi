@@ -83,6 +83,9 @@ class Quizcontroller extends Controller
         $labelChart = Aspect::get()->pluck('aspect');
         $scores = [];
         $score =  Score::where('user_id', auth()->user()->id)->get()->toArray();
+        if (!$score) {
+            return redirect('/');
+        }
         $show = true;
         foreach ($this->aspectsArr as $key => $aspect) {
             if (array_key_exists($aspect, $score[0])) {
