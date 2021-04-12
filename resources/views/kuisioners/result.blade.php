@@ -48,9 +48,9 @@
         <div id="accordion">
             <div class="row my-4 justify-content-center">
                 @foreach ($labels as $label)
-                    <div class="card col-12">
+                    <div class="card col-12 col-md-10">
                         <div class="card-header bg-primary" id="{{ $loop->index }}heading">
-                            <h5 class="mb-0 ">
+                            <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{ $loop->index }}"
                                     aria-expanded="{{ $loop->index <= 0 ? 'true' : 'false' }}"
                                     aria-controls="collapse_{{ $loop->index }}">
@@ -119,7 +119,7 @@
 
         function animateMeter(meterElement, index, meterValue) {
             let iconClass = '';
-            console.log(meterElement);
+
             return new Promise((resolve, reject) => {
                 let interval = setInterval(() => {
                     meterElement.value += 1;
