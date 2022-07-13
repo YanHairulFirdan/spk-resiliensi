@@ -14,9 +14,19 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <style>
-        /* input[type=text] {
-            text-transform: lowercase !important;
-        } */
+        .carousel-inner, .carousel-item {
+            height: 50em  !important;
+        }
+
+        .carousel-item img {
+            margin: 0 auto; /* this will align the image to center. */
+            width: auto; /* for those images which don't have a width specified, but has a max-height will be auto adjusted */
+        }
+
+        .carousel-item > image {
+            max-width: 100%;
+            max-height: 100%;
+        }
 
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -35,7 +45,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white text-bold" href="{{ url('/') }}">
-                    {{ config('Resilience', 'Resilience') }}
+                    <b>{{ config('Resilience', 'Resilience') }}</b>
                 </a>
                 <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -102,20 +112,26 @@
                 $index = 0;
             @endphp
         @endif
-        <div class="container-fluid" style="padding: 0">
+        <div class="container" style="padding: 0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner">
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="carousel-item {{ $i <= 0 ? 'active' : '' }}">
-                            <img class="d-block w-100" src="/img/images/banner{{ $i + $index }}.jpg"
-                                alt="First slide">
-                        </div>
-                    @endfor
+                <div class="carousel-inner h-50">
+                    <div class="carousel-item h-25 active">
+                        <img class="d-block w-100" src="{{ asset("img/images/banner-0.jpg") }}"
+                            alt="First slide">
+                    </div>
+                    <div class="carousel-item h-25">
+                        <img class="d-block w-100" src="{{ asset("img/images/banner-1.png") }}"
+                            alt="First slide">
+                    </div>
+                    <div class="carousel-item h-25">
+                        <img class="d-block w-100" src="{{ asset("img/images/banner-2.png") }}"
+                            alt="First slide">
+                    </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -147,7 +163,7 @@
 
         </main>
     </div>
-    <footer class="container-fluid py-4" style="background-color: #0799D6">
+    <footer class="container-fluid py-4 bg-primary">
         <div class="container my-4">
             <div class="row justify-content-center text-white">
                 <div class="col-md-3">
