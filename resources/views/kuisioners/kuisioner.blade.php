@@ -26,15 +26,14 @@
                             </div>
                         @endif
                         @foreach ($aspect->statements as $statement)
-                            <div class="card my-1 col-md-8">
+                            <div class="card my-1 col-md-8 px-0">
                                 <div class="card-header bg-primary" style="">
                                     <span class="text-white">
                                         {{ $statement->statement }}
                                     </span>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body px-0">
                                     <div class="row d-flex justify-content-center">
-                                        {{-- @if ($statement->type === 'positif') --}}
                                         @for ($i = 0; $i < 5; $i++)
                                             <div class="col-md-2 col-12">
                                                 <div class="form-check">
