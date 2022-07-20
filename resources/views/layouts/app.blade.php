@@ -12,22 +12,29 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 
     <style>
         .carousel-inner, .carousel-item {
             height: 50em  !important;
         }
+        
+        @media (max-width: 768px) { 
+            .carousel-item img {
+                margin: 0 auto; /* this will align the image to center. */
+                width: auto; /* for those images which don't have a width specified, but has a max-height will be auto adjusted */
+                height: 15em !important;
+            }
+    
+            /* .carousel-item > image {
+                max-width: 100%;
+                max-height: 100%;
+            } */
+         }
 
-        .carousel-item img {
-            margin: 0 auto; /* this will align the image to center. */
-            width: auto; /* for those images which don't have a width specified, but has a max-height will be auto adjusted */
+        body{
+            font-family: "Concert One", Arial, Helvetica, sans-serif !important;
         }
-
-        .carousel-item > image {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Fonts -->
@@ -112,7 +119,7 @@
                 $index = 0;
             @endphp
         @endif
-        <div class="container" style="padding: 0">
+        <div class="" style="padding: 0">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -121,15 +128,15 @@
                 </ol>
                 <div class="carousel-inner h-50">
                     <div class="carousel-item h-25 active">
-                        <img class="d-block w-100" src="{{ asset("img/images/banner-0.jpg") }}"
+                        <img class="d-block w-100" src="{{ asset("img/images/banners/banner-0.jpg") }}"
                             alt="First slide">
                     </div>
                     <div class="carousel-item h-25">
-                        <img class="d-block w-100" src="{{ asset("img/images/banner-1.png") }}"
+                        <img class="d-block w-100" src="{{ asset("img/images/banners/banner-1.jpg") }}"
                             alt="First slide">
                     </div>
                     <div class="carousel-item h-25">
-                        <img class="d-block w-100" src="{{ asset("img/images/banner-2.png") }}"
+                        <img class="d-block w-100" src="{{ asset("img/images/banners/banner-2.jpg") }}"
                             alt="First slide">
                     </div>
                 </div>
