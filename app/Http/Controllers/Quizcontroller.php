@@ -94,9 +94,9 @@ class Quizcontroller extends Controller
         }
         $scores = collect($scores);
         $icons = collect([
-            'low' => 'far fa-frown-open fa-2x',
-            'good' => 'far fa-grin-alt fa-2x',
-            'great' => 'far fa-grin-hearts fa-2x'
+            'low' => 'far fa-frown-open fa-2x text-danger',
+            'good' => 'far fa-grin-alt fa-2x text-primary',
+            'great' => 'far fa-grin-hearts fa-2x text-primary'
 
         ]);
 
