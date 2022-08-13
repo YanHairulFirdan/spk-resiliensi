@@ -19,15 +19,15 @@ class StatementImport implements ToModel, WithHeadingRow
             "regulasi emosi",
             "pengendalian impuls",
             "optimisme",
-            "percaya diri",
+            "self efficiacy",
             "analisis kausal",
             "empati",
             "reaching out"
         ];
-        // dd($row);
+
         return new Statement([
             'statement' =>  $row['statement'],
-            'aspect_id' => (int)array_search($row['aspek'], $aspects) + 1,
+            'aspect_id' => (int)array_search(strtolower($row['aspek']), $aspects) + 1,
             'type' => (string)$row['type'],
         ]);
     }
