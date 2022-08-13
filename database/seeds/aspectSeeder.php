@@ -18,7 +18,7 @@ class aspectSeeder extends Seeder
             "regulasi emosi",
             "pengendalian impuls",
             "optimis",
-            "percaya diri",
+            "self efficiacy",
             "analisis kausal",
             "empati",
             "reaching out"
