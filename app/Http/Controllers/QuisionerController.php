@@ -98,7 +98,7 @@ class QuisionerController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'excel' => 'required|mimes:xlsx'
+            'excel' => 'required'
         ]);
 
         Excel::import(new QuisionerImport, $request->file('excel'));
