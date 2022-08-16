@@ -70,11 +70,11 @@ Route::prefix('/admin')->group(function () {
     });
 });
 // Route::get('/aspect', 'AspectController@index');
-Route::get('/kuisioner', 'QuizController@index')->name('user.quiz.index');
-Route::post('/kuisioner', 'QuizController@saveQuiz')->name('user.quiz.post');
-// Route::get('/motivation', 'QuizController@motivationForm')->name('user.motivation.index');
-// Route::post('/motivation', 'QuizController@savemotivationForm')->name('user.motivation.post');
-Route::get('/hasil', 'QuizController@result')->name('user.quiz.result');
+Route::get('/kuisioner', 'Quizcontroller@index')->name('user.quiz.index');
+Route::post('/kuisioner', 'Quizcontroller@saveQuiz')->name('user.quiz.post');
+// Route::get('/motivation', 'Quizcontroller@motivationForm')->name('user.motivation.index');
+// Route::post('/motivation', 'Quizcontroller@savemotivationForm')->name('user.motivation.post');
+Route::get('/hasil', 'Quizcontroller@result')->name('user.quiz.result');
 
 
 Auth::routes();
