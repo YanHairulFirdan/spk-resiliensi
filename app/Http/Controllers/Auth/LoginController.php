@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -22,20 +23,19 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/motivation';
     protected function redirectTo()
     {
-        if (Auth::user()->role == '' || auth()->user()->role == '') {
-            return '/motivation';
-        } else {
-            return '/admin/aspect';
-        }
+        $targetRoute = '';
 
+        if (Auth::user()->role == '' || auth()->user()->role == '') {
+            $targetRoute = session('target-route')[0] ?? '/';
+        } else {
+            $targetRoute = '/admin/aspect';
+        }
+        // dd($targetRoute);
+        Session::remove('target-route');
+
+        return $targetRoute;
         // return (Auth::user()->role == '')? '/motivation' : '/admin/aspect';
     }
     /**
@@ -46,6 +46,18 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        Session::push('target-route', request()->getSession()->get('_previous')['url']);
+
+        return view('auth.login');
     }
 
     protected function username()
