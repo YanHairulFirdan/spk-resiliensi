@@ -17,12 +17,12 @@ class StatementImport implements ToModel, WithHeadingRow
     {
         $aspects = [
             "regulasi emosi",
-            "pengendalian impuls",
-            "optimisme",
             "self efficiacy",
+            "optimis",
+            "reaching out",
             "analisis kausal",
             "empati",
-            "reaching out"
+            "pengendalian impuls",
         ];
 
         return new Statement([

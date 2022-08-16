@@ -16,12 +16,12 @@ class aspectSeeder extends Seeder
     {
         $aspects = [
             "regulasi emosi",
-            "pengendalian impuls",
-            "optimis",
             "self efficiacy",
+            "optimis",
+            "reaching out",
             "analisis kausal",
             "empati",
-            "reaching out"
+            "pengendalian impuls",
         ];
         $description = [
             "Mampu mengontrol emosi, atensi, dan perilaku, dan mampu tetap tenang dibawah kondisi yang menekan.",
