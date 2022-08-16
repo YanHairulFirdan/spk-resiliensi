@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
             }
         } else {
             if (Auth::guard($guard)->check()) {
-                return redirect('/motivation');
+                return redirect('/');
             }
         }
         return $next($request);
