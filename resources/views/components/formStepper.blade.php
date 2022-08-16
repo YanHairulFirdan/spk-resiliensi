@@ -3,8 +3,6 @@
         <div class="row">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item {{ Request::is('motivation') ? 'text-primary' : '' }}">Motivasi
-                        Belajar</li>
                     <li class="breadcrumb-item {{ Request::is('kuisioner') ? 'text-primary' : '' }}">Tes
                         Resiliensi
                     </li>
