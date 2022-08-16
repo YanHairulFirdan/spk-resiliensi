@@ -110,11 +110,13 @@
                         </ol>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="text-center">
-            <a href="{{route('user.quiz.index')}}"></a>
+                <div class="d-flex justify-content-center mt-5">
+                    <a href="{{route('user.quiz.index')}}" class="btn btn-lg btn-outline-primary" style="text-transform: initial">
+                        <span>Yuk cek tingkat resiliensi kamu!</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
