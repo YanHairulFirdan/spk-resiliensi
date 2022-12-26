@@ -28,12 +28,12 @@
     <div class="container-fluid goals w-100 bg-primary text-white my-3">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-10 py-5">
+                <div class="col-md-10 py-5 text-justify">
                     <h4 class="text-white font-weight-bold text-center">
                         Apa itu resiliensi ? 
                     </h4>
                     <p class="introduction">
-                        Resiliensi adalah keberhasilan individu dalam beradaptasi dengan kondisi yang tidak menyenangkan/buruk dalam mengatasi, melalui, dan kembali pada kondisi semula untuk mempertahankan stabilitas psikologis dalam menghadapi stres
+                        Resiliensi adalah keberhasilan individu dalam beradaptasi dengan kondisi yang tidak menyenangkan/buruk dalam mengatasi, melalui, dan kembali pada kondisi semula untuk mempertahankan stabilitas psikologis dalam menghadapi stres.
                     </p>
                     <p>
                         Keseluruhan daya penggerak di dalam diri remaja yang tetap berusaha untuk tetap bertahan dalam pembelajaran selama pandemi Covid-19 menimbulkan adanya resiliensi dalam diri mereka sebagai siswa di sekolah. Mencontohkan sifat-sifat yang mencerminkan resiliensi seperti berfokus kepada hal-hal yang pasti dan menunjukan banyak alternatif dalam menyelesaikan suatu permasalahan dapat membantu anak mengembangkan resiliensi pelajar. Remaja sebagai pelajar yang dengan resiliensi tinggi dapat memikirkan berbagai alternatif untuk tetap menjaga keterampilan dan interaksi sosial nya agar tetap terasah.
@@ -48,8 +48,13 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 container">
-                <iframe src="https://www.youtube.com//embed/jBCMmJ8eDrw?autoplay=1" frameborder="0" allowfullscreen
-                    width="100%" height="400px"></iframe>
+                <iframe 
+                    src="https://www.youtube.com/embed/ueEIrvDRKGM" 
+                    frameborder="0" allowfullscreen
+                    width="100%" height="400px"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                >
+                </iframe>
             </div>
         </div>
     </div>
@@ -57,7 +62,7 @@
         <div class="row d-flex justify-content-center benefits">
             <div class="col-8">
                 <div class="row">
-                    <div class="col-md-6 col-12 order-md-2">
+                    <div class="col-md-6 col-12 order-md-2 p-0">
                         <img src="{{ asset('img/images/cuteanimated-43.jpg') }}" class="image-thumbnail" width="100%"
                             alt="">
                     </div>
@@ -65,7 +70,7 @@
                         <h4 class="font-weight-bold text-center">
                             Bagi Guru
                         </h4>
-                        <ol>
+                        <ol class="pl-4 pr-2 text-justify">
                             <li>
                                 Memberikan pedoman kepada guru untuk lebih memperhatikan resiliensi siswa pada saat
                                 pembelajaran di
@@ -87,7 +92,7 @@
         <div class="row d-flex justify-content-center benefits">
             <div class="col-8">
                 <div class="row">
-                    <div class="col-sm-6 col-12">
+                    <div class="col-sm-6 col-12 p-0">
                         <img src="{{ asset('img/images/students.jpg') }}" class="image-thumbnail" width="100%"
                             alt="">
                     </div>
@@ -95,7 +100,7 @@
                         <h4 class="font-weight-bold text-center">
                             Bagi Peserta Didik
                         </h4>
-                        <ol>
+                        <ol class="pl-4 pr-2 text-justify">
                             <li>
                                 Proses penilaian kesehatan mental siswa yang menjadi pengalaman menyenangkan sehingga siswa
                                 dapat
