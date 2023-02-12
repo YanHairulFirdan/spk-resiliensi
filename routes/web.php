@@ -11,15 +11,6 @@
 |
 */
 
-// use Illuminate\Routing\Route;
-
-// use Symfony\Component\Routing\Route;
-
-// $route  = new Route();
-
-// use Illuminate\Routing\Route;
-
-
 Route::prefix('/teacher')->group(function () {
     Route::get('login', 'TeacherController@login')->name('teacher.login');
     Route::get('register', 'TeacherController@register');
