@@ -201,7 +201,7 @@
                     <h4 class="font-weight-bold">Partner : </h4>
                     <div class="bg-white" style="height: 130px; width: 130px; border-radius: 50%;">
                         <img class="img-fluid rounded-circle"
-                            src="{{ asset("img/sman1.jpg") }} }}"
+                            src="{{ asset("img/sman1.jpg") }}"
                             alt="" srcset="">
                     </div>
                     <h5 class="my-3 font-weight-bold">SMA Negeri 1 Sape</h5>
