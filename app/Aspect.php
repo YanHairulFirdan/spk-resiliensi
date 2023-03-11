@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aspect extends Model
 {
-    protected $fillable = ['aspect', 'strength_suggestion', 'weak_suggestion'];
+    protected $fillable = ['aspect', 'descriptions', 'quote'];
+
     public function statements()
     {
         return $this->hasMany(Statement::class);
@@ -18,5 +19,10 @@ class Aspect extends Model
     public function links()
     {
         return $this->hasMany(Link::class);
+    }
+
+    public function getImagePath()
+    {
+        return asset('images/aspects/' . $this->image);
     }
 }

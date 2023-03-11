@@ -10,21 +10,19 @@
                     data-length="{{ $aspect->statements()->count() }}" data-aspect="{{ $aspect->aspect }}">
 
                     <div class="row justify-content-center">
-                        @if (file_exists('img/images/' . $aspect->aspect . '.jpg'))
-                            <div class="container" style="width: fit-content">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="rounded col-md-6">
-                                        <img src="img/images/{{ $aspect->aspect . '.jpg' }}" alt="" srcset=""
-                                            class="img-fluid" height="564px" width="564px">
-                                        <div class="text-center">
-                                            <span
-                                                style="text-align: center !important; font-size: small; font-style: italic"
-                                                class="font-weight-bold text-italic">"{{ $aspect->quote }}"</span>
-                                        </div>
+                        <div class="container" style="width: fit-content">
+                            <div class="row d-flex justify-content-center">
+                                <div class="rounded col-md-6">
+                                    <img src="{{ $aspect->getImagePath() }}" alt="" srcset=""
+                                        class="img-fluid" height="564px" width="564px">
+                                    <div class="text-center">
+                                        <span
+                                            style="text-align: center !important; font-size: small; font-style: italic"
+                                            class="font-weight-bold text-italic">"{{ $aspect->quote }}"</span>
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        </div>
                         @foreach ($aspect->statements as $statement)
                             <div class="card my-1 col-md-8 px-0">
                                 <div class="card-header bg-primary" style="">

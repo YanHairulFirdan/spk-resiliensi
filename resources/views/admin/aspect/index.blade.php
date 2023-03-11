@@ -20,7 +20,7 @@
                             <td class="text-center">{{ $aspect->aspect }}</td>
                             <td class="text-center">
                                 <a href="/admin/aspect/{{ $aspect->id }}/edit" class="btn btn-sm btn-success">Edit</a>
-                                <form action="/aspect/{{ $aspect->id }}" style="display: inline" method="post">
+                                <form action="{{ route('admin.aspect.destroy', $aspect) }}" style="display: inline" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger"
