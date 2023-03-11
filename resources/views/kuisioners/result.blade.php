@@ -24,7 +24,7 @@
                     <div class="row justify-content-center">
                         <div class="col-10">
                             <div class="font-weight-bold text-primary">
-                                <label for="" class="font-weight-bold">
+                                <label for="" class="font-weight-bold text-capitalize pl-3">
                                     {{ $labelChart[$loop->index] }} :
                                 </label>
                                 <span class="score"></span>
@@ -49,7 +49,7 @@
             <div class="row my-4 justify-content-center">
                 @foreach ($labels as $label)
                     <div class="card col-12 col-md-10">
-                        <div class="card-header bg-primary" id="{{ $loop->index }}heading">
+                        <div class="card-header bg-primary row" id="{{ $loop->index }}heading">
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapse_{{ $loop->index }}"
                                     aria-expanded="{{ $loop->index <= 0 ? 'true' : 'false' }}"
