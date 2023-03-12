@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Aspect;
 use App\Link;
 use Maatwebsite\Excel\Concerns\ToModel;
 
@@ -14,20 +15,16 @@ class LinkImport implements ToModel
      */
     public function model(array $row)
     {
-        $aspects = [
-            '',
-            'regulasi emosi',
-            'pengendalian impuls',
-            'optimisme',
-            'self efficacy',
-            'analisis kausal',
-            'empati',
-            'reaching out',
-        ];
-        return new Link([
-            'aspect_id' => (int) array_search($row[1], $aspects),
-            'link' => $row[2],
-            'judul' => $row[3]
-        ]);
+        $aspect = Aspect::query()->firstWhere('aspect', strtolower($row[0]));
+
+        if ($aspect) {
+            return new Link([
+                'aspect_id' => $aspect->id,
+                'link' => $row[1],
+                'judul' => $row[2],
+            ]);
+        }
+        
+        return null;
     }
 }
