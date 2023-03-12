@@ -18,13 +18,17 @@ class Score extends Model
     protected $table = 'scores';
     protected $fillable = [
         'user_id',
-        'regulasi_emosi',
-        'pengendalian_impuls',
-        'optimis',
-        'percaya_diri',
-        'analisis_kausal',
-        'empati',
-        'reaching_out',
-        'final_score',
+        'aspect_id',
+        'score',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function aspect()
+    {
+        return $this->belongsTo(Aspect::class);
+    }
 }
