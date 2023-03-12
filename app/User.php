@@ -41,8 +41,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Answear::class);
     }
-    public function score()
+    public function scores()
     {
-        return $this->hasOne(Score::class);
+        return $this->hasMany(Score::class);
     }
 }
