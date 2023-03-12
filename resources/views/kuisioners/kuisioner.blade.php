@@ -7,7 +7,7 @@
             {{-- {{ dd($options) }} --}}
             @foreach ($aspects as $aspect)
                 <div id="form-group-{{ $loop->iteration }}" class="my-4 input-group" class="form-wrapper"
-                    data-length="{{ $aspect->statements()->count() }}" data-aspect="{{ $aspect->aspect }}">
+                    data-length="{{ $aspect->statements_count }}" data-aspect="{{ $aspect->aspect }}">
 
                     <div class="row justify-content-center">
                         <div class="container" style="width: fit-content">
@@ -38,8 +38,8 @@
 
 
                                                     <input type="radio" class="form-check-input"
-                                                        name="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index }}"
-                                                        id="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}"
+                                                        name="{{ $aspect->aspect. '['. $loop->index .']' }}"
+                                                        id="{{ $aspect->aspect. '_' . $loop->index .'_'.$i}}"
                                                         value="{{ $statement->type == 'positif' ? $skor['positif'][$i] : $skor['negatif'][$i] }}"
                                                         data-aspectname="{{ $aspect->aspect }}"
                                                         onclick="handleSelectingOption()">
@@ -47,7 +47,7 @@
 
 
                                                     <label class="form-check-label"
-                                                        for="{{ $aspectsArr[$loop->parent->index] . '_' . $loop->index . $i }}">{{ $options[$i] }}</label>
+                                                        for="{{ $aspect->aspect. '_' . $loop->index .'_'.$i}}">{{ $options[$i] }}</label>
 
                                                 </div>
                                             </div>
