@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use Auth;
 
+use App\Aspect;
 use App\Score;
 use App\Teacher;
 use App\User;
@@ -25,10 +26,12 @@ class TeacherController extends Controller
     }
     public function index()
     {
-        $teacher = Auth()->user();
-        $dataScores = User::with('score')->where('class', $teacher->class)->get();
-        return view('teacher.index', compact('dataScores'));
-        // dd('ini index');
+        /** @var \App\Teacher $teacher */
+        $teacher = Auth()->guard('teacher')->user();
+        $aspects = Aspect::get();
+        $dataScores = $teacher->getStudents('scores.aspect:id,aspect');
+
+        return view('teacher.index', compact('dataScores', 'aspects'));
     }
     protected function guard()
     {
@@ -45,7 +48,6 @@ class TeacherController extends Controller
     }
     public function postLogin(Request $request)
     {
-        // dd($request);
         $request->validate([
             'username' => 'required',
             'password' => 'required|min:8',
@@ -78,10 +80,12 @@ class TeacherController extends Controller
 
     public function download()
     {
-        // set_time_limit(80);
-        $teacher = Auth()->user();
-        $dataScores = User::with('score')->where('class', $teacher->class)->get();
-        $pdf = PDF::loadview('teacher.download', ['dataScores' => $dataScores]);
+       /** @var \App\Teacher $teacher */
+       $teacher = Auth()->guard('teacher')->user();
+       $aspects = Aspect::get();
+       $dataScores = $teacher->getStudents('scores.aspect:id,aspect');
+
+        $pdf = PDF::loadview('teacher.download', ['dataScores' => $dataScores, 'aspects' => $aspects]);
         return $pdf->download('laporan-skor-test.pdf');
     }
 

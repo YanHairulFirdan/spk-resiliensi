@@ -23,33 +23,26 @@
                 <th class="text-center" style="text-align: center" colspan="7">Skor</th>
             </tr>
             <tr>
-                <th class="text-center" style="text-align: center">regulasi emosi</th>
-                <th class="text-center" style="text-align: center">pengendalian impuls</th>
-                <th class="text-center" style="text-align: center">optimis</th>
-                <th class="text-center" style="text-align: center">percaya diri</th>
-                <th class="text-center" style="text-align: center">analisis kausal</th>
-                <th class="text-center" style="text-align: center">empati</th>
-                <th class="text-center" style="text-align: center">reaching out</th>
+                @foreach ($aspects as $aspect)
+                    <th class="text-center" style="text-align: center; text-transform: capitalize">{{ $aspect->aspect }}</th>
+                @endforeach
             </tr>
         </thead>
         <tbody>
             @foreach ($dataScores as $student)
                 <tr>
                     <th scope="row">{{ $loop->index + 1 }}</th>
-                    <td class="text-center" style="text-align: center">{{ $student->name }}</td>
-                    <td class="text-center" style="text-align: center">{{ $student->class }}</td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->regulasi_emosi }}
-                    </td>
-                    <td class="text-center" style="text-align: center">
-                        {{ optional($student->score)->pengendalian_impuls }}</td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->optimis }}</td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->percaya_diri }}
-                    </td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->analisis_kausal }}
-                    </td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->empati }}</td>
-                    <td class="text-center" style="text-align: center">{{ optional($student->score)->reaching_out }}
-                    </td>
+                    <td class="text-center" style="text-align: center; text-transform: capitalize">{{ $student->name }}</td>
+                    <td class="text-center" style="text-align: center; text-transform: capitalize">{{ $student->class }}</td>
+                    @if ($student->scores->count() == 0)
+                        @for ($i = 0; $i < $aspects->count(); $i++)
+                            <td style="text-align: center; text-transform: capitalize">0</td>
+                        @endfor
+                    @else
+                        @foreach ($student->scores as $score)
+                            <td style="text-align: center; text-transform: capitalize">{{ $score->score }}</td>
+                        @endforeach
+                    @endif
                 </tr>
             @endforeach
         </tbody>

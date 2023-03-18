@@ -17,13 +17,9 @@
                         <th class="text-center" colspan="7">Skor</th>
                     </tr>
                     <tr>
-                        <th>regulasi emosi</th>
-                        <th>pengendalian impuls</th>
-                        <th>optimis</th>
-                        <th>percaya diri</th>
-                        <th>analisis kausal</th>
-                        <th>empati</th>
-                        <th>reaching out</th>
+                        @foreach ($aspects as $aspect)
+                            <th>{{ $aspect->aspect }}</th>
+                        @endforeach
                     </tr>
                 </thead>
                 <tbody>
@@ -32,22 +28,15 @@
                             <th scope="row">{{ $loop->index + 1 }}</th>
                             <td>{{ $student->name }}</td>
                             <td>{{ $student->class }}</td>
-                            <td>{{ optional($student->score)->regulasi_emosi }}</td>
-                            <td>{{ optional($student->score)->pengendalian_impuls }}</td>
-                            <td>{{ optional($student->score)->optimis }}</td>
-                            <td>{{ optional($student->score)->percaya_diri }}</td>
-                            <td>{{ optional($student->score)->analisis_kausal }}</td>
-                            <td>{{ optional($student->score)->empati }}</td>
-                            <td>{{ optional($student->score)->reaching_out }}</td>
-                            {{-- <td>
-                                <a href="/admin/quisioner/{{ $quisioner->id }}/edit" class="btn btn-sm btn-success">Edit</a>
-                                <form action="/admin/quisioner/{{ $quisioner->id }}" style="display: inline" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('apakah anda yakin ingin menghapus pertanyaan ini?')">Hapus</button>
-                                </form>
-                            </td> --}}
+                            @if ($student->scores->count() == 0)
+                                @for ($i = 0; $i < $aspects->count(); $i++)
+                                    <td>0</td>
+                                @endfor
+                            @else
+                                @foreach ($student->scores as $score)
+                                    <td>{{ $score->score }}</td>
+                                @endforeach
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
