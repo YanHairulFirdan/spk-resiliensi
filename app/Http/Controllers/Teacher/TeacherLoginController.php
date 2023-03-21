@@ -26,7 +26,7 @@ class TeacherLoginController extends Controller
 
         if (auth()->guard('teacher')->attempt($request->only(['email', 'password']))) {
             $request->session()->regenerate();
-            dd('ok');
+
             return redirect('/teacher');
         } else {
             return redirect()->back()->withErrors(['email atau password anda salah']);
