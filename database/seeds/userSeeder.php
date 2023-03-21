@@ -19,17 +19,13 @@ class userSeeder extends Seeder
     public $faker;
     public function run()
     {
-        User::query()->firstOrCreate([
-            'username' => 'admin',
-            "password" => Hash::make('admin123pass'),
-            "role" => 'admin'
-        ]);
-
-        User::query()->firstOrCreate([
-            'username' => 'user',
-            'name' => 'user',
-            "password" => Hash::make('user123pass'),
-            "role" => ''
-        ]);
+        User::query()->firstOrCreate(
+            ['username' => 'admin'],
+            [
+                'username' => 'admin',
+                "password" => Hash::make('admin123pass'),
+                "role"     => 'admin'
+            ]
+        );
     }
 }
