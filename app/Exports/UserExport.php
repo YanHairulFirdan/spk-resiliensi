@@ -17,6 +17,9 @@ class UserExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return User::select('name', 'username', 'class', 'phoneNumber')->get();
+        return User::query()
+            ->select('name', 'username', 'class', 'phoneNumber')
+            ->where('role', '!=', 'admin')
+            ->get();
     }
 }
