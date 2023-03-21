@@ -19,7 +19,8 @@ class UserExport implements FromCollection, WithHeadings
     {
         return User::query()
             ->select('name', 'username', 'class', 'phoneNumber')
-            ->where('role', '!=', 'admin')
+            ->where('role', '=', '')
+            ->orWhere('role', '=', null)
             ->get();
     }
 }

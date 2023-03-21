@@ -16,7 +16,8 @@ class studentController extends Controller
     {
         $students = User::query()
             ->select('id', 'name', 'username', 'class', 'phoneNumber')
-            ->where('role', '!=', 'admin')
+            ->where('role', '=', '')
+            ->orWhere('role', '=', null)
             ->paginate(20);
 
         return view('admin.student.index', compact('students'));
