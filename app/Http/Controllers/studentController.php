@@ -14,7 +14,11 @@ class studentController extends Controller
 {
     public function index()
     {
-        $students = User::select('id', 'name', 'username', 'class', 'phoneNumber')->paginate(20);
+        $students = User::query()
+            ->select('id', 'name', 'username', 'class', 'phoneNumber')
+            ->where('role', '!=', 'admin')
+            ->paginate(20);
+
         return view('admin.student.index', compact('students'));
     }
     public function edit(User $user)
