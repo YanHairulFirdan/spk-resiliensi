@@ -27,7 +27,7 @@
                             <div class="card my-1 col-md-8 px-0">
                                 <div class="card-header bg-primary" style="">
                                     <span class="text-white">
-                                        {{ $statement->statement }}
+                                        {{ $loop->iteration . '. ' . $statement->statement }}
                                     </span>
                                 </div>
                                 <div class="card-body px-0">
