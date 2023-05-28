@@ -35,6 +35,11 @@
         body{
             font-family: "Concert One", Arial, Helvetica, sans-serif !important;
         }
+
+        #logo {
+            width: 4em;
+            height: 4em;
+        }
     </style>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Fonts -->
@@ -52,7 +57,8 @@
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
             <div class="container">
                 <a class="navbar-brand text-white text-bold" href="{{ url('/') }}">
-                    <b>{{ config('Resilience', 'Resilience') }}</b>
+                    {{-- <b>{{ config('Resilience', 'Resilience') }}</b> --}}
+                    <img id="logo" src="{{ asset("img/images/logo.png") }}" alt="" srcset="">
                 </a>
                 <button class="navbar-toggler text-white" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -70,15 +76,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/">{{ __('Home') }}</a>
+                            <a class="nav-link text-white {{ request()->routeIs('home') ? 'font-weight-bold' : '' }}" href="/">{{ __('Home') }}</a>
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Masuk') }}</a>
+                                <a class="nav-link text-white {{ request()->routeIs('login') ? 'font-weight-bold' : '' }}" href="{{ route('login') }}">{{ __('Masuk') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link text-white"
+                                    <a class="nav-link text-white {{ request()->routeIs('register') ? 'font-weight-bold' : '' }}"
                                         href="{{ route('register') }}">{{ __('Daftar') }}</a>
                                 </li>
                             @endif
@@ -104,7 +110,7 @@
                             </li>
                         @endguest
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="/teacher">{{ __('Guru') }}</a>
+                            <a class="nav-link text-white {{ request()->routeIs('teacher.login') ? 'font-weight-bold' : '' }}" href="/teacher">{{ __('Guru') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -206,6 +212,13 @@
                     </div>
                     <h5 class="my-3 font-weight-bold">SMA Negeri 1 Sape</h5>
                     <span>Jalan Pelabuhan Sape</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row justify-content-center text-white">
+                <div class="col-md-12 text-center">
+                    <span>© 2021 Resiliensi. All rights reserved.</span>
                 </div>
             </div>
         </div>
