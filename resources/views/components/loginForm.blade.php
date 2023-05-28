@@ -20,7 +20,8 @@
         <div class="col-md-12">
             <input id="password" type="password" class="form-control input-lg @error('password') is-invalid @enderror"
                 name="password" required placeholder="Password">
-
+            {{-- buat link lupa password --}}
+            <a href="{{ route('password.request') }}" class="float-right">Lupa Password?</a>
             @error('password')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>

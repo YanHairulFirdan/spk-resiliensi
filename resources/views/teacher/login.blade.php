@@ -45,6 +45,7 @@
                                     <input id="password" type="password"
                                         class="form-control input-lg @error('password') is-invalid @enderror"
                                         name="password" required autocomplete="current-password" placeholder="Password">
+                                    <a href="{{ route('password.request') }}" class="float-right">Lupa Password?</a>
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
