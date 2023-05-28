@@ -26,7 +26,7 @@ Route::prefix('/teacher')->group(function () {
 
 
 // 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/admin-test', function () {
     return view('admin.index');
@@ -69,5 +69,3 @@ Route::get('/hasil', 'Quizcontroller@result')->name('user.quiz.result');
 
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
