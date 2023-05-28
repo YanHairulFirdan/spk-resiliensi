@@ -45,6 +45,13 @@
             </div>
         </div>
     </div>
+    @guest
+        <div class="d-flex justify-content-center my-5">
+            <a href="{{route('register')}}" class="btn btn-lg btn-outline-primary" style="text-transform: initial">
+                <span>Yuk daftar ...</span>
+            </a>
+        </div>
+    @endguest
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 container">
@@ -118,7 +125,7 @@
 
                 <div class="d-flex justify-content-center mt-5">
                     <a href="{{route('user.quiz.index')}}" class="btn btn-lg btn-outline-primary" style="text-transform: initial">
-                        <span>Yuk cek tingkat resiliensi kamu!</span>
+                        <span>Yuk cek ...</span>
                     </a>
                 </div>
             </div>
